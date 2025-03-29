@@ -147,4 +147,4 @@ This tool is designed for educational and authorized security testing purposes o
 
 ---
 
-© 2025 | [Your Name/Organization] | All Rights Reserved
+© 2025 | Sudosec Solutions | All Rights Reserved
