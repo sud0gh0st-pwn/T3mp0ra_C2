@@ -148,8 +148,9 @@ This tool is for me and others who are interested to learn security concepts tog
 
 - [Cryptography.io](https://cryptography.io/) for the secure cryptographic primitives
 - Contributors and security researchers who provided feedback
-- Great Educational Resource @MariyaSha [Youtube](https://www.youtube.com/PythonSimplified/)
-- Great Educational Resource @SteinOveHelset [Website](https://codewithstein.com/)
+- Great Educational Resource @MariyaSha [Youtube](https://www.youtube.com/PythonSimplified/) - Python
+- Great Educational Resource @SteinOveHelset [Website](https://codewithstein.com/)           - Python
+- Great Educational Resource @JohnHammond [Youtube](https://youtube.com/johnhammond010)      - Security
 ---
 
 © 2025 | Sudosec Solutions | All Rights Reserved
