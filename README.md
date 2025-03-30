@@ -142,11 +142,14 @@ def process_command(self, command):
 
 This tool is designed for educational and authorized security testing purposes only. Usage of Tempora for attacking targets without prior mutual consent is illegal and prohibited.
 
+This tool is for me and others who are interested to learn security concepts together 
+
 ## Acknowledgments
 
 - [Cryptography.io](https://cryptography.io/) for the secure cryptographic primitives
 - Contributors and security researchers who provided feedback
-
+- Great Educational Resource @MariyaSha [Youtube]{www.youtube.com/PythonSimplified}
+- Great Educational Resource @SteinOveHelset [Website]{https://codewithstein.com/}
 ---
 
 © 2025 | Sudosec Solutions | All Rights Reserved
