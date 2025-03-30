@@ -1,6 +1,8 @@
 # Tempora - Secure C2 Framework
 
-![Tempora](https://via.placeholder.com/800x200?text=Tempora+C2+Framework)
+<div align="center">
+  <img src="https://github.com/sud0gh0st-pwn/T3mp0ra_C2/blob/main/.github/img/Logo.png?raw=true" alt="Tempora" style="width:500px;"/>
+</div>
 
 Tempora is a robust, encrypted Command and Control (C2) framework designed for secure communication between a central server and distributed clients. Built with security and reliability in mind, Tempora features end-to-end encryption, asynchronous command dispatching, and resilient connections.
 
