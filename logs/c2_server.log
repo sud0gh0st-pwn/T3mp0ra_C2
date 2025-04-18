@@ -1,0 +1,708 @@
+2025-04-13 15:33:24,298 - INFO: Server listening on 0.0.0.0:5000
+2025-04-13 15:35:46,018 - INFO: Connection from ('127.0.0.1', 37064)
+2025-04-13 15:35:46,068 - INFO: Successful key exchange with ('127.0.0.1', 37064)
+2025-04-13 15:35:46,114 - INFO: Received from 127.0.0.1:37064: {'type': 'system_status', 'timestamp': 1744554946.0702412, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+2025-04-13 15:36:16,115 - ERROR: Error with 127.0.0.1:37064: timed out
+2025-04-13 15:36:16,115 - INFO: Client 127.0.0.1:37064 disconnected
+2025-04-13 15:36:16,116 - INFO: Connection from ('127.0.0.1', 35270)
+2025-04-13 15:36:16,162 - INFO: Successful key exchange with ('127.0.0.1', 35270)
+2025-04-13 15:36:16,205 - INFO: Received from 127.0.0.1:35270: {'type': 'system_status', 'timestamp': 1744554976.1633744, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+2025-04-13 15:36:20,055 - INFO: Shutting down admin interface
+2025-04-13 15:51:46,808 - INFO: Server listening on 0.0.0.0:5000
+2025-04-13 15:52:02,734 - INFO: Connection from ('127.0.0.1', 50598)
+2025-04-13 15:52:02,785 - INFO: Successful key exchange with ('127.0.0.1', 50598)
+2025-04-13 15:52:02,839 - INFO: Received from 127.0.0.1:50598: {'type': 'system_status', 'timestamp': 1744555922.7865527, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+2025-04-13 15:52:32,839 - ERROR: Error with 127.0.0.1:50598: timed out
+2025-04-13 15:52:32,839 - INFO: Client 127.0.0.1:50598 disconnected
+2025-04-13 15:52:32,840 - INFO: Connection from ('127.0.0.1', 46332)
+2025-04-13 15:52:32,887 - INFO: Successful key exchange with ('127.0.0.1', 46332)
+2025-04-13 15:52:32,930 - INFO: Received from 127.0.0.1:46332: {'type': 'system_status', 'timestamp': 1744555952.8887997, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+2025-04-13 15:52:36,876 - INFO: Shutting down admin interface
+2025-04-13 15:56:40,275 - INFO: [34mServer listening on 0.0.0.0:5000[0m
+2025-04-13 15:58:40,256 - INFO: Shutting down admin interface
+[90m2025-04-13 15:59:02,274[0m - INFO: [34mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 15:59:19,972[0m - INFO: Shutting down admin interface
+[90m2025-04-13 16:00:40,190[0m - [96mINFO:[0m [34mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 16:00:47,803[0m - [96mINFO:[0m Shutting down admin interface
+[90m2025-04-13 16:01:37,708[0m - [96mINFO:[0m Server listening on 0.0.0.0:5000
+[90m2025-04-13 16:02:47,336[0m - [96mINFO:[0m Connection from ('127.0.0.1', 53146)
+[90m2025-04-13 16:02:47,385[0m - [96mINFO:[0m Successful key exchange with ('127.0.0.1', 53146)
+[90m2025-04-13 16:02:47,431[0m - [96mINFO:[0m Received from 127.0.0.1:53146: {'type': 'system_status', 'timestamp': 1744556567.3865533, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+[90m2025-04-13 16:03:17,431[0m - [96mERROR:[0m Error with 127.0.0.1:53146: timed out
+[90m2025-04-13 16:03:17,432[0m - [96mINFO:[0m Client 127.0.0.1:53146 disconnected
+[90m2025-04-13 16:03:17,432[0m - [96mINFO:[0m Connection from ('127.0.0.1', 56336)
+[90m2025-04-13 16:03:17,480[0m - [96mINFO:[0m Successful key exchange with ('127.0.0.1', 56336)
+[90m2025-04-13 16:03:17,522[0m - [96mINFO:[0m Received from 127.0.0.1:56336: {'type': 'system_status', 'timestamp': 1744556597.4810445, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+[90m2025-04-13 16:03:47,522[0m - [96mERROR:[0m Error with 127.0.0.1:56336: timed out
+[90m2025-04-13 16:03:47,523[0m - [96mINFO:[0m Client 127.0.0.1:56336 disconnected
+[90m2025-04-13 16:03:47,524[0m - [96mINFO:[0m Connection from ('127.0.0.1', 55602)
+[90m2025-04-13 16:03:47,571[0m - [96mINFO:[0m Successful key exchange with ('127.0.0.1', 55602)
+[90m2025-04-13 16:03:47,614[0m - [96mINFO:[0m Received from 127.0.0.1:55602: {'type': 'system_status', 'timestamp': 1744556627.5720072, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+[90m2025-04-13 16:04:17,614[0m - [96mERROR:[0m Error with 127.0.0.1:55602: timed out
+[90m2025-04-13 16:04:17,615[0m - [96mINFO:[0m Client 127.0.0.1:55602 disconnected
+[90m2025-04-13 16:04:17,615[0m - [96mINFO:[0m Connection from ('127.0.0.1', 35376)
+[90m2025-04-13 16:04:17,662[0m - [96mINFO:[0m Successful key exchange with ('127.0.0.1', 35376)
+[90m2025-04-13 16:04:17,704[0m - [96mINFO:[0m Received from 127.0.0.1:35376: {'type': 'system_status', 'timestamp': 1744556657.6630347, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+[90m2025-04-13 16:04:22,950[0m - [96mINFO:[0m Shutting down admin interface
+[90m2025-04-13 16:06:13,121[0m - [96mINFO:[0m - [94mServer listening on 0.0.0.0:5000
+[90m2025-04-13 16:06:27,384[0m - [96mINFO:[0m - [94mConnection from ('127.0.0.1', 32998)
+[90m2025-04-13 16:06:27,435[0m - [96mINFO:[0m - [94mSuccessful key exchange with ('127.0.0.1', 32998)
+[90m2025-04-13 16:06:27,481[0m - [96mINFO:[0m - [94mReceived from 127.0.0.1:32998: {'type': 'system_status', 'timestamp': 1744556787.4370983, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}
+[90m2025-04-13 16:06:44,181[0m - [96mINFO:[0m - [94mShutting down admin interface
+[90m2025-04-13 16:07:27,599[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 16:07:37,506[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 40926)[0m
+[90m2025-04-13 16:07:37,557[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 40926)[0m
+[90m2025-04-13 16:07:37,604[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40926: {'type': 'system_status', 'timestamp': 1744556857.559108, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:08:07,604[0m - [96mERROR:[0m - [92mError with 127.0.0.1:40926: timed out[0m
+[90m2025-04-13 16:08:07,605[0m - [96mINFO:[0m - [92mClient 127.0.0.1:40926 disconnected[0m
+[90m2025-04-13 16:08:07,606[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42662)[0m
+[90m2025-04-13 16:08:07,650[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42662)[0m
+[90m2025-04-13 16:08:07,694[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42662: {'type': 'system_status', 'timestamp': 1744556887.6513612, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:08:37,694[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42662: timed out[0m
+[90m2025-04-13 16:08:37,695[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42662 disconnected[0m
+[90m2025-04-13 16:08:37,696[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 53796)[0m
+[90m2025-04-13 16:08:37,741[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 53796)[0m
+[90m2025-04-13 16:08:37,783[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53796: {'type': 'system_status', 'timestamp': 1744556917.742093, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:08:57,898[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 16:09:03,232[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 16:09:26,506[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35692)[0m
+[90m2025-04-13 16:09:26,558[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35692)[0m
+[90m2025-04-13 16:09:26,604[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:35692: {'type': 'system_status', 'timestamp': 1744556966.5602486, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:09:56,605[0m - [96mERROR:[0m - [92mError with 127.0.0.1:35692: timed out[0m
+[90m2025-04-13 16:09:56,605[0m - [96mINFO:[0m - [92mClient 127.0.0.1:35692 disconnected[0m
+[90m2025-04-13 16:09:56,606[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 51560)[0m
+[90m2025-04-13 16:09:56,653[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 51560)[0m
+[90m2025-04-13 16:09:56,696[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:51560: {'type': 'system_status', 'timestamp': 1744556996.6549373, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:10:26,697[0m - [96mERROR:[0m - [92mError with 127.0.0.1:51560: timed out[0m
+[90m2025-04-13 16:10:26,697[0m - [96mINFO:[0m - [92mClient 127.0.0.1:51560 disconnected[0m
+[90m2025-04-13 16:10:26,698[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 57128)[0m
+[90m2025-04-13 16:10:26,742[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 57128)[0m
+[90m2025-04-13 16:10:26,785[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:57128: {'type': 'system_status', 'timestamp': 1744557026.742808, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:10:56,785[0m - [96mERROR:[0m - [92mError with 127.0.0.1:57128: timed out[0m
+[90m2025-04-13 16:10:56,786[0m - [96mINFO:[0m - [92mClient 127.0.0.1:57128 disconnected[0m
+[90m2025-04-13 16:10:56,787[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 43930)[0m
+[90m2025-04-13 16:10:56,832[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 43930)[0m
+[90m2025-04-13 16:10:56,874[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43930: {'type': 'system_status', 'timestamp': 1744557056.833018, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:11:26,874[0m - [96mERROR:[0m - [92mError with 127.0.0.1:43930: timed out[0m
+[90m2025-04-13 16:11:26,875[0m - [96mINFO:[0m - [92mClient 127.0.0.1:43930 disconnected[0m
+[90m2025-04-13 16:11:26,876[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 40140)[0m
+[90m2025-04-13 16:11:26,920[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 40140)[0m
+[90m2025-04-13 16:11:26,962[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40140: {'type': 'system_status', 'timestamp': 1744557086.921292, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:11:56,962[0m - [96mERROR:[0m - [92mError with 127.0.0.1:40140: timed out[0m
+[90m2025-04-13 16:11:56,962[0m - [96mINFO:[0m - [92mClient 127.0.0.1:40140 disconnected[0m
+[90m2025-04-13 16:11:56,963[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45950)[0m
+[90m2025-04-13 16:11:57,008[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45950)[0m
+[90m2025-04-13 16:11:57,050[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45950: {'type': 'system_status', 'timestamp': 1744557117.009215, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:12:27,050[0m - [96mERROR:[0m - [92mError with 127.0.0.1:45950: timed out[0m
+[90m2025-04-13 16:12:27,050[0m - [96mINFO:[0m - [92mClient 127.0.0.1:45950 disconnected[0m
+[90m2025-04-13 16:12:27,051[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 38466)[0m
+[90m2025-04-13 16:12:27,098[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 38466)[0m
+[90m2025-04-13 16:12:27,141[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:38466: {'type': 'system_status', 'timestamp': 1744557147.0995739, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:12:57,141[0m - [96mERROR:[0m - [92mError with 127.0.0.1:38466: timed out[0m
+[90m2025-04-13 16:12:57,142[0m - [96mINFO:[0m - [92mClient 127.0.0.1:38466 disconnected[0m
+[90m2025-04-13 16:12:57,143[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 50150)[0m
+[90m2025-04-13 16:12:57,187[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 50150)[0m
+[90m2025-04-13 16:12:57,230[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:50150: {'type': 'system_status', 'timestamp': 1744557177.188985, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:13:27,230[0m - [96mERROR:[0m - [92mError with 127.0.0.1:50150: timed out[0m
+[90m2025-04-13 16:13:27,230[0m - [96mINFO:[0m - [92mClient 127.0.0.1:50150 disconnected[0m
+[90m2025-04-13 16:13:27,231[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42054)[0m
+[90m2025-04-13 16:13:27,278[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42054)[0m
+[90m2025-04-13 16:13:27,321[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42054: {'type': 'system_status', 'timestamp': 1744557207.279503, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:13:57,321[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42054: timed out[0m
+[90m2025-04-13 16:13:57,321[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42054 disconnected[0m
+[90m2025-04-13 16:13:57,322[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 40746)[0m
+[90m2025-04-13 16:13:57,367[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 40746)[0m
+[90m2025-04-13 16:13:57,409[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40746: {'type': 'system_status', 'timestamp': 1744557237.3680654, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:14:27,409[0m - [96mERROR:[0m - [92mError with 127.0.0.1:40746: timed out[0m
+[90m2025-04-13 16:14:27,410[0m - [96mINFO:[0m - [92mClient 127.0.0.1:40746 disconnected[0m
+[90m2025-04-13 16:14:27,411[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 60322)[0m
+[90m2025-04-13 16:14:27,455[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 60322)[0m
+[90m2025-04-13 16:14:27,497[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:60322: {'type': 'system_status', 'timestamp': 1744557267.4558134, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:14:57,497[0m - [96mERROR:[0m - [92mError with 127.0.0.1:60322: timed out[0m
+[90m2025-04-13 16:14:57,497[0m - [96mINFO:[0m - [92mClient 127.0.0.1:60322 disconnected[0m
+[90m2025-04-13 16:14:57,498[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35916)[0m
+[90m2025-04-13 16:14:57,547[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35916)[0m
+[90m2025-04-13 16:14:57,589[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:35916: {'type': 'system_status', 'timestamp': 1744557297.5481834, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:15:27,589[0m - [96mERROR:[0m - [92mError with 127.0.0.1:35916: timed out[0m
+[90m2025-04-13 16:15:27,590[0m - [96mINFO:[0m - [92mClient 127.0.0.1:35916 disconnected[0m
+[90m2025-04-13 16:15:27,590[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 57916)[0m
+[90m2025-04-13 16:15:27,637[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 57916)[0m
+[90m2025-04-13 16:15:27,680[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:57916: {'type': 'system_status', 'timestamp': 1744557327.6385913, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:15:57,680[0m - [96mERROR:[0m - [92mError with 127.0.0.1:57916: timed out[0m
+[90m2025-04-13 16:15:57,681[0m - [96mINFO:[0m - [92mClient 127.0.0.1:57916 disconnected[0m
+[90m2025-04-13 16:15:57,682[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 56100)[0m
+[90m2025-04-13 16:15:57,729[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 56100)[0m
+[90m2025-04-13 16:15:57,772[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:56100: {'type': 'system_status', 'timestamp': 1744557357.7304142, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:16:27,772[0m - [96mERROR:[0m - [92mError with 127.0.0.1:56100: timed out[0m
+[90m2025-04-13 16:16:27,773[0m - [96mINFO:[0m - [92mClient 127.0.0.1:56100 disconnected[0m
+[90m2025-04-13 16:16:27,774[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 58364)[0m
+[90m2025-04-13 16:16:27,819[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 58364)[0m
+[90m2025-04-13 16:16:27,861[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:58364: {'type': 'system_status', 'timestamp': 1744557387.82019, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:16:57,862[0m - [96mERROR:[0m - [92mError with 127.0.0.1:58364: timed out[0m
+[90m2025-04-13 16:16:57,862[0m - [96mINFO:[0m - [92mClient 127.0.0.1:58364 disconnected[0m
+[90m2025-04-13 16:16:57,863[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 48182)[0m
+[90m2025-04-13 16:16:57,909[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 48182)[0m
+[90m2025-04-13 16:16:57,952[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:48182: {'type': 'system_status', 'timestamp': 1744557417.9105017, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:17:27,952[0m - [96mERROR:[0m - [92mError with 127.0.0.1:48182: timed out[0m
+[90m2025-04-13 16:17:27,952[0m - [96mINFO:[0m - [92mClient 127.0.0.1:48182 disconnected[0m
+[90m2025-04-13 16:17:27,953[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 54194)[0m
+[90m2025-04-13 16:17:27,998[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 54194)[0m
+[90m2025-04-13 16:17:28,040[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:54194: {'type': 'system_status', 'timestamp': 1744557447.9993773, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:17:58,041[0m - [96mERROR:[0m - [92mError with 127.0.0.1:54194: timed out[0m
+[90m2025-04-13 16:17:58,041[0m - [96mINFO:[0m - [92mClient 127.0.0.1:54194 disconnected[0m
+[90m2025-04-13 16:17:58,042[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35138)[0m
+[90m2025-04-13 16:17:58,087[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35138)[0m
+[90m2025-04-13 16:17:58,130[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:35138: {'type': 'system_status', 'timestamp': 1744557478.0882711, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:18:28,130[0m - [96mERROR:[0m - [92mError with 127.0.0.1:35138: timed out[0m
+[90m2025-04-13 16:18:28,130[0m - [96mINFO:[0m - [92mClient 127.0.0.1:35138 disconnected[0m
+[90m2025-04-13 16:18:28,131[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 54970)[0m
+[90m2025-04-13 16:18:28,176[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 54970)[0m
+[90m2025-04-13 16:18:28,218[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:54970: {'type': 'system_status', 'timestamp': 1744557508.176841, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:18:58,218[0m - [96mERROR:[0m - [92mError with 127.0.0.1:54970: timed out[0m
+[90m2025-04-13 16:18:58,219[0m - [96mINFO:[0m - [92mClient 127.0.0.1:54970 disconnected[0m
+[90m2025-04-13 16:18:58,220[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 51762)[0m
+[90m2025-04-13 16:18:58,264[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 51762)[0m
+[90m2025-04-13 16:18:58,307[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:51762: {'type': 'system_status', 'timestamp': 1744557538.265567, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:19:28,307[0m - [96mERROR:[0m - [92mError with 127.0.0.1:51762: timed out[0m
+[90m2025-04-13 16:19:28,308[0m - [96mINFO:[0m - [92mClient 127.0.0.1:51762 disconnected[0m
+[90m2025-04-13 16:19:28,309[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45880)[0m
+[90m2025-04-13 16:19:28,357[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45880)[0m
+[90m2025-04-13 16:19:28,400[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45880: {'type': 'system_status', 'timestamp': 1744557568.358331, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:19:58,400[0m - [96mERROR:[0m - [92mError with 127.0.0.1:45880: timed out[0m
+[90m2025-04-13 16:19:58,400[0m - [96mINFO:[0m - [92mClient 127.0.0.1:45880 disconnected[0m
+[90m2025-04-13 16:19:58,401[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 43406)[0m
+[90m2025-04-13 16:19:58,448[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 43406)[0m
+[90m2025-04-13 16:19:58,491[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43406: {'type': 'system_status', 'timestamp': 1744557598.4494047, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:20:28,491[0m - [96mERROR:[0m - [92mError with 127.0.0.1:43406: timed out[0m
+[90m2025-04-13 16:20:28,492[0m - [96mINFO:[0m - [92mClient 127.0.0.1:43406 disconnected[0m
+[90m2025-04-13 16:20:28,493[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 38244)[0m
+[90m2025-04-13 16:20:28,538[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 38244)[0m
+[90m2025-04-13 16:20:28,582[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:38244: {'type': 'system_status', 'timestamp': 1744557628.539472, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:20:58,582[0m - [96mERROR:[0m - [92mError with 127.0.0.1:38244: timed out[0m
+[90m2025-04-13 16:20:58,582[0m - [96mINFO:[0m - [92mClient 127.0.0.1:38244 disconnected[0m
+[90m2025-04-13 16:20:58,583[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 52898)[0m
+[90m2025-04-13 16:20:58,629[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 52898)[0m
+[90m2025-04-13 16:20:58,672[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:52898: {'type': 'system_status', 'timestamp': 1744557658.630457, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:21:28,673[0m - [96mERROR:[0m - [92mError with 127.0.0.1:52898: timed out[0m
+[90m2025-04-13 16:21:28,673[0m - [96mINFO:[0m - [92mClient 127.0.0.1:52898 disconnected[0m
+[90m2025-04-13 16:21:28,674[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 41950)[0m
+[90m2025-04-13 16:21:28,720[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 41950)[0m
+[90m2025-04-13 16:21:28,763[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:41950: {'type': 'system_status', 'timestamp': 1744557688.7216465, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:21:58,763[0m - [96mERROR:[0m - [92mError with 127.0.0.1:41950: timed out[0m
+[90m2025-04-13 16:21:58,764[0m - [96mINFO:[0m - [92mClient 127.0.0.1:41950 disconnected[0m
+[90m2025-04-13 16:21:58,765[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42656)[0m
+[90m2025-04-13 16:21:58,814[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42656)[0m
+[90m2025-04-13 16:21:58,856[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42656: {'type': 'system_status', 'timestamp': 1744557718.8147526, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:22:28,856[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42656: timed out[0m
+[90m2025-04-13 16:22:28,857[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42656 disconnected[0m
+[90m2025-04-13 16:22:28,857[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 58480)[0m
+[90m2025-04-13 16:22:28,905[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 58480)[0m
+[90m2025-04-13 16:22:28,948[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:58480: {'type': 'system_status', 'timestamp': 1744557748.9065444, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:22:58,948[0m - [96mERROR:[0m - [92mError with 127.0.0.1:58480: timed out[0m
+[90m2025-04-13 16:22:58,948[0m - [96mINFO:[0m - [92mClient 127.0.0.1:58480 disconnected[0m
+[90m2025-04-13 16:22:58,949[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35848)[0m
+[90m2025-04-13 16:22:58,994[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35848)[0m
+[90m2025-04-13 16:22:59,036[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:35848: {'type': 'system_status', 'timestamp': 1744557778.9949565, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:23:29,036[0m - [96mERROR:[0m - [92mError with 127.0.0.1:35848: timed out[0m
+[90m2025-04-13 16:23:29,036[0m - [96mINFO:[0m - [92mClient 127.0.0.1:35848 disconnected[0m
+[90m2025-04-13 16:23:29,037[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 56912)[0m
+[90m2025-04-13 16:23:29,084[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 56912)[0m
+[90m2025-04-13 16:23:29,127[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:56912: {'type': 'system_status', 'timestamp': 1744557809.0856607, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:23:59,127[0m - [96mERROR:[0m - [92mError with 127.0.0.1:56912: timed out[0m
+[90m2025-04-13 16:23:59,128[0m - [96mINFO:[0m - [92mClient 127.0.0.1:56912 disconnected[0m
+[90m2025-04-13 16:23:59,129[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 49636)[0m
+[90m2025-04-13 16:23:59,174[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 49636)[0m
+[90m2025-04-13 16:23:59,217[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:49636: {'type': 'system_status', 'timestamp': 1744557839.1756246, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:24:29,217[0m - [96mERROR:[0m - [92mError with 127.0.0.1:49636: timed out[0m
+[90m2025-04-13 16:24:29,217[0m - [96mINFO:[0m - [92mClient 127.0.0.1:49636 disconnected[0m
+[90m2025-04-13 16:24:29,218[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 40734)[0m
+[90m2025-04-13 16:24:29,265[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 40734)[0m
+[90m2025-04-13 16:24:29,307[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40734: {'type': 'system_status', 'timestamp': 1744557869.2662563, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:24:59,307[0m - [96mERROR:[0m - [92mError with 127.0.0.1:40734: timed out[0m
+[90m2025-04-13 16:24:59,307[0m - [96mINFO:[0m - [92mClient 127.0.0.1:40734 disconnected[0m
+[90m2025-04-13 16:24:59,309[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 38580)[0m
+[90m2025-04-13 16:24:59,358[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 38580)[0m
+[90m2025-04-13 16:24:59,401[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:38580: {'type': 'system_status', 'timestamp': 1744557899.3594677, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:25:29,401[0m - [96mERROR:[0m - [92mError with 127.0.0.1:38580: timed out[0m
+[90m2025-04-13 16:25:29,402[0m - [96mINFO:[0m - [92mClient 127.0.0.1:38580 disconnected[0m
+[90m2025-04-13 16:25:29,402[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 60240)[0m
+[90m2025-04-13 16:25:29,448[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 60240)[0m
+[90m2025-04-13 16:25:29,491[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:60240: {'type': 'system_status', 'timestamp': 1744557929.4496377, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:25:59,491[0m - [96mERROR:[0m - [92mError with 127.0.0.1:60240: timed out[0m
+[90m2025-04-13 16:25:59,491[0m - [96mINFO:[0m - [92mClient 127.0.0.1:60240 disconnected[0m
+[90m2025-04-13 16:25:59,492[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 56908)[0m
+[90m2025-04-13 16:25:59,539[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 56908)[0m
+[90m2025-04-13 16:25:59,582[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:56908: {'type': 'system_status', 'timestamp': 1744557959.5405807, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:26:29,582[0m - [96mERROR:[0m - [92mError with 127.0.0.1:56908: timed out[0m
+[90m2025-04-13 16:26:29,583[0m - [96mINFO:[0m - [92mClient 127.0.0.1:56908 disconnected[0m
+[90m2025-04-13 16:26:29,584[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42928)[0m
+[90m2025-04-13 16:26:29,631[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42928)[0m
+[90m2025-04-13 16:26:29,673[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42928: {'type': 'system_status', 'timestamp': 1744557989.6320426, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:26:59,673[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42928: timed out[0m
+[90m2025-04-13 16:26:59,674[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42928 disconnected[0m
+[90m2025-04-13 16:26:59,675[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 48544)[0m
+[90m2025-04-13 16:26:59,722[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 48544)[0m
+[90m2025-04-13 16:26:59,765[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:48544: {'type': 'system_status', 'timestamp': 1744558019.723337, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:27:29,765[0m - [96mERROR:[0m - [92mError with 127.0.0.1:48544: timed out[0m
+[90m2025-04-13 16:27:29,765[0m - [96mINFO:[0m - [92mClient 127.0.0.1:48544 disconnected[0m
+[90m2025-04-13 16:27:29,766[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 48622)[0m
+[90m2025-04-13 16:27:29,811[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 48622)[0m
+[90m2025-04-13 16:27:29,853[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:48622: {'type': 'system_status', 'timestamp': 1744558049.811738, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:27:59,853[0m - [96mERROR:[0m - [92mError with 127.0.0.1:48622: timed out[0m
+[90m2025-04-13 16:27:59,853[0m - [96mINFO:[0m - [92mClient 127.0.0.1:48622 disconnected[0m
+[90m2025-04-13 16:27:59,854[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 34100)[0m
+[90m2025-04-13 16:27:59,901[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 34100)[0m
+[90m2025-04-13 16:27:59,945[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:34100: {'type': 'system_status', 'timestamp': 1744558079.9025161, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:28:29,945[0m - [96mERROR:[0m - [92mError with 127.0.0.1:34100: timed out[0m
+[90m2025-04-13 16:28:29,946[0m - [96mINFO:[0m - [92mClient 127.0.0.1:34100 disconnected[0m
+[90m2025-04-13 16:28:29,947[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 37384)[0m
+[90m2025-04-13 16:28:29,995[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 37384)[0m
+[90m2025-04-13 16:28:30,037[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:37384: {'type': 'system_status', 'timestamp': 1744558109.9957788, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:29:00,037[0m - [96mERROR:[0m - [92mError with 127.0.0.1:37384: timed out[0m
+[90m2025-04-13 16:29:00,038[0m - [96mINFO:[0m - [92mClient 127.0.0.1:37384 disconnected[0m
+[90m2025-04-13 16:29:00,039[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 47468)[0m
+[90m2025-04-13 16:29:00,083[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 47468)[0m
+[90m2025-04-13 16:29:00,125[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:47468: {'type': 'system_status', 'timestamp': 1744558140.0842257, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:29:30,125[0m - [96mERROR:[0m - [92mError with 127.0.0.1:47468: timed out[0m
+[90m2025-04-13 16:29:30,126[0m - [96mINFO:[0m - [92mClient 127.0.0.1:47468 disconnected[0m
+[90m2025-04-13 16:29:30,127[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 52428)[0m
+[90m2025-04-13 16:29:30,175[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 52428)[0m
+[90m2025-04-13 16:29:30,217[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:52428: {'type': 'system_status', 'timestamp': 1744558170.1758733, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:30:00,218[0m - [96mERROR:[0m - [92mError with 127.0.0.1:52428: timed out[0m
+[90m2025-04-13 16:30:00,218[0m - [96mINFO:[0m - [92mClient 127.0.0.1:52428 disconnected[0m
+[90m2025-04-13 16:30:00,219[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 59704)[0m
+[90m2025-04-13 16:30:00,265[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 59704)[0m
+[90m2025-04-13 16:30:00,309[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:59704: {'type': 'system_status', 'timestamp': 1744558200.266553, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:30:30,309[0m - [96mERROR:[0m - [92mError with 127.0.0.1:59704: timed out[0m
+[90m2025-04-13 16:30:30,310[0m - [96mINFO:[0m - [92mClient 127.0.0.1:59704 disconnected[0m
+[90m2025-04-13 16:30:30,311[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 50644)[0m
+[90m2025-04-13 16:30:30,355[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 50644)[0m
+[90m2025-04-13 16:30:30,397[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:50644: {'type': 'system_status', 'timestamp': 1744558230.355675, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:31:00,398[0m - [96mERROR:[0m - [92mError with 127.0.0.1:50644: timed out[0m
+[90m2025-04-13 16:31:00,398[0m - [96mINFO:[0m - [92mClient 127.0.0.1:50644 disconnected[0m
+[90m2025-04-13 16:31:00,399[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42202)[0m
+[90m2025-04-13 16:31:00,443[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42202)[0m
+[90m2025-04-13 16:31:00,487[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42202: {'type': 'system_status', 'timestamp': 1744558260.4446177, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:31:30,487[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42202: timed out[0m
+[90m2025-04-13 16:31:30,488[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42202 disconnected[0m
+[90m2025-04-13 16:31:30,489[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 56304)[0m
+[90m2025-04-13 16:31:30,535[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 56304)[0m
+[90m2025-04-13 16:31:30,578[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:56304: {'type': 'system_status', 'timestamp': 1744558290.5365334, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:32:00,579[0m - [96mERROR:[0m - [92mError with 127.0.0.1:56304: timed out[0m
+[90m2025-04-13 16:32:00,579[0m - [96mINFO:[0m - [92mClient 127.0.0.1:56304 disconnected[0m
+[90m2025-04-13 16:32:00,580[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 44268)[0m
+[90m2025-04-13 16:32:00,625[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 44268)[0m
+[90m2025-04-13 16:32:00,668[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:44268: {'type': 'system_status', 'timestamp': 1744558320.6263456, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:32:30,668[0m - [96mERROR:[0m - [92mError with 127.0.0.1:44268: timed out[0m
+[90m2025-04-13 16:32:30,668[0m - [96mINFO:[0m - [92mClient 127.0.0.1:44268 disconnected[0m
+[90m2025-04-13 16:32:30,669[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 60610)[0m
+[90m2025-04-13 16:32:30,716[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 60610)[0m
+[90m2025-04-13 16:32:30,759[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:60610: {'type': 'system_status', 'timestamp': 1744558350.7174997, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:33:00,760[0m - [96mERROR:[0m - [92mError with 127.0.0.1:60610: timed out[0m
+[90m2025-04-13 16:33:00,760[0m - [96mINFO:[0m - [92mClient 127.0.0.1:60610 disconnected[0m
+[90m2025-04-13 16:33:00,761[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 47128)[0m
+[90m2025-04-13 16:33:00,807[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 47128)[0m
+[90m2025-04-13 16:33:00,849[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:47128: {'type': 'system_status', 'timestamp': 1744558380.8080711, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:33:30,849[0m - [96mERROR:[0m - [92mError with 127.0.0.1:47128: timed out[0m
+[90m2025-04-13 16:33:30,850[0m - [96mINFO:[0m - [92mClient 127.0.0.1:47128 disconnected[0m
+[90m2025-04-13 16:33:30,850[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 51854)[0m
+[90m2025-04-13 16:33:30,895[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 51854)[0m
+[90m2025-04-13 16:33:30,938[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:51854: {'type': 'system_status', 'timestamp': 1744558410.8966837, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:34:00,938[0m - [96mERROR:[0m - [92mError with 127.0.0.1:51854: timed out[0m
+[90m2025-04-13 16:34:00,939[0m - [96mINFO:[0m - [92mClient 127.0.0.1:51854 disconnected[0m
+[90m2025-04-13 16:34:00,940[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 54868)[0m
+[90m2025-04-13 16:34:00,987[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 54868)[0m
+[90m2025-04-13 16:34:01,030[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:54868: {'type': 'system_status', 'timestamp': 1744558440.9888349, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:34:31,030[0m - [96mERROR:[0m - [92mError with 127.0.0.1:54868: timed out[0m
+[90m2025-04-13 16:34:31,030[0m - [96mINFO:[0m - [92mClient 127.0.0.1:54868 disconnected[0m
+[90m2025-04-13 16:34:31,031[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 55842)[0m
+[90m2025-04-13 16:34:31,078[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 55842)[0m
+[90m2025-04-13 16:34:31,120[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:55842: {'type': 'system_status', 'timestamp': 1744558471.0793915, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:35:01,121[0m - [96mERROR:[0m - [92mError with 127.0.0.1:55842: timed out[0m
+[90m2025-04-13 16:35:01,121[0m - [96mINFO:[0m - [92mClient 127.0.0.1:55842 disconnected[0m
+[90m2025-04-13 16:35:01,122[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 33898)[0m
+[90m2025-04-13 16:35:01,167[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 33898)[0m
+[90m2025-04-13 16:35:01,209[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:33898: {'type': 'system_status', 'timestamp': 1744558501.1678174, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:35:31,209[0m - [96mERROR:[0m - [92mError with 127.0.0.1:33898: timed out[0m
+[90m2025-04-13 16:35:31,209[0m - [96mINFO:[0m - [92mClient 127.0.0.1:33898 disconnected[0m
+[90m2025-04-13 16:35:31,210[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45418)[0m
+[90m2025-04-13 16:35:31,255[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45418)[0m
+[90m2025-04-13 16:35:31,297[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45418: {'type': 'system_status', 'timestamp': 1744558531.2561216, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:36:01,298[0m - [96mERROR:[0m - [92mError with 127.0.0.1:45418: timed out[0m
+[90m2025-04-13 16:36:01,298[0m - [96mINFO:[0m - [92mClient 127.0.0.1:45418 disconnected[0m
+[90m2025-04-13 16:36:01,299[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 48320)[0m
+[90m2025-04-13 16:36:01,344[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 48320)[0m
+[90m2025-04-13 16:36:01,386[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:48320: {'type': 'system_status', 'timestamp': 1744558561.344946, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:36:31,386[0m - [96mERROR:[0m - [92mError with 127.0.0.1:48320: timed out[0m
+[90m2025-04-13 16:36:31,387[0m - [96mINFO:[0m - [92mClient 127.0.0.1:48320 disconnected[0m
+[90m2025-04-13 16:36:31,388[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 36910)[0m
+[90m2025-04-13 16:36:31,435[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 36910)[0m
+[90m2025-04-13 16:36:31,478[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:36910: {'type': 'system_status', 'timestamp': 1744558591.436707, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:37:01,478[0m - [96mERROR:[0m - [92mError with 127.0.0.1:36910: timed out[0m
+[90m2025-04-13 16:37:01,479[0m - [96mINFO:[0m - [92mClient 127.0.0.1:36910 disconnected[0m
+[90m2025-04-13 16:37:01,480[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35906)[0m
+[90m2025-04-13 16:37:01,525[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35906)[0m
+[90m2025-04-13 16:37:01,567[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:35906: {'type': 'system_status', 'timestamp': 1744558621.5261269, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:37:31,567[0m - [96mERROR:[0m - [92mError with 127.0.0.1:35906: timed out[0m
+[90m2025-04-13 16:37:31,567[0m - [96mINFO:[0m - [92mClient 127.0.0.1:35906 disconnected[0m
+[90m2025-04-13 16:37:31,569[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 59168)[0m
+[90m2025-04-13 16:37:31,614[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 59168)[0m
+[90m2025-04-13 16:37:31,656[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:59168: {'type': 'system_status', 'timestamp': 1744558651.615102, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:38:01,656[0m - [96mERROR:[0m - [92mError with 127.0.0.1:59168: timed out[0m
+[90m2025-04-13 16:38:01,656[0m - [96mINFO:[0m - [92mClient 127.0.0.1:59168 disconnected[0m
+[90m2025-04-13 16:38:01,658[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45694)[0m
+[90m2025-04-13 16:38:01,706[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45694)[0m
+[90m2025-04-13 16:38:01,748[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45694: {'type': 'system_status', 'timestamp': 1744558681.7071753, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:38:31,748[0m - [96mERROR:[0m - [92mError with 127.0.0.1:45694: timed out[0m
+[90m2025-04-13 16:38:31,749[0m - [96mINFO:[0m - [92mClient 127.0.0.1:45694 disconnected[0m
+[90m2025-04-13 16:38:31,750[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 42982)[0m
+[90m2025-04-13 16:38:31,795[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 42982)[0m
+[90m2025-04-13 16:38:31,838[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:42982: {'type': 'system_status', 'timestamp': 1744558711.7957864, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 16:39:01,838[0m - [96mERROR:[0m - [92mError with 127.0.0.1:42982: timed out[0m
+[90m2025-04-13 16:39:01,838[0m - [96mINFO:[0m - [92mClient 127.0.0.1:42982 disconnected[0m
+[90m2025-04-13 16:39:01,839[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 58876)[0m
+[90m2025-04-13 16:39:01,840[0m - [96mERROR:[0m - [92mClient handling error with ('127.0.0.1', 58876): Client not ready for key exchange[0m
+[90m2025-04-13 16:49:58,575[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 17:05:02,546[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 17:05:29,303[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 47770)[0m
+[90m2025-04-13 17:05:29,354[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 47770)[0m
+[90m2025-04-13 17:05:29,399[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:47770: {'type': 'system_status', 'timestamp': 1744560329.355536, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:05:59,400[0m - [96mERROR:[0m - [92mError with 127.0.0.1:47770: timed out[0m
+[90m2025-04-13 17:05:59,400[0m - [96mINFO:[0m - [92mClient 127.0.0.1:47770 disconnected[0m
+[90m2025-04-13 17:05:59,401[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 33254)[0m
+[90m2025-04-13 17:05:59,447[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 33254)[0m
+[90m2025-04-13 17:05:59,490[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:33254: {'type': 'system_status', 'timestamp': 1744560359.4484217, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:06:19,747[0m - [96mINFO:[0m - [92mTask added: {'type': 'cmd', 'cmd': 'ls', 'timestamp': 1744560379.7473671}[0m
+[90m2025-04-13 17:06:29,490[0m - [96mERROR:[0m - [92mError with 127.0.0.1:33254: timed out[0m
+[90m2025-04-13 17:06:29,491[0m - [96mINFO:[0m - [92mClient 127.0.0.1:33254 disconnected[0m
+[90m2025-04-13 17:06:29,491[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 38796)[0m
+[90m2025-04-13 17:06:29,538[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 38796)[0m
+[90m2025-04-13 17:06:29,581[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:38796: {'type': 'system_status', 'timestamp': 1744560389.5396476, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:06:47,300[0m - [96mINFO:[0m - [92mTask added: {'type': 'cmd', 'cmd': None, 'timestamp': 1744560407.300703}[0m
+[90m2025-04-13 17:06:59,581[0m - [96mERROR:[0m - [92mError with 127.0.0.1:38796: timed out[0m
+[90m2025-04-13 17:06:59,582[0m - [96mINFO:[0m - [92mClient 127.0.0.1:38796 disconnected[0m
+[90m2025-04-13 17:06:59,583[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45310)[0m
+[90m2025-04-13 17:06:59,627[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45310)[0m
+[90m2025-04-13 17:06:59,669[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45310: {'type': 'system_status', 'timestamp': 1744560419.6279588, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:07:03,845[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 17:09:46,491[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 17:09:51,491[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 53912)[0m
+[90m2025-04-13 17:09:51,542[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 53912)[0m
+[90m2025-04-13 17:09:51,589[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53912: {'type': 'system_status', 'timestamp': 1744560591.5444775, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:10:21,590[0m - [96mERROR:[0m - [92mError with 127.0.0.1:53912: timed out[0m
+[90m2025-04-13 17:10:21,590[0m - [96mINFO:[0m - [92mClient 127.0.0.1:53912 disconnected[0m
+[90m2025-04-13 17:10:21,591[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 36902)[0m
+[90m2025-04-13 17:10:21,637[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 36902)[0m
+[90m2025-04-13 17:10:21,681[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:36902: {'type': 'system_status', 'timestamp': 1744560621.6382701, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:10:51,681[0m - [96mERROR:[0m - [92mError with 127.0.0.1:36902: timed out[0m
+[90m2025-04-13 17:10:51,681[0m - [96mINFO:[0m - [92mClient 127.0.0.1:36902 disconnected[0m
+[90m2025-04-13 17:10:51,682[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 50910)[0m
+[90m2025-04-13 17:10:51,727[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 50910)[0m
+[90m2025-04-13 17:10:51,769[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:50910: {'type': 'system_status', 'timestamp': 1744560651.7281623, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:11:21,770[0m - [96mERROR:[0m - [92mError with 127.0.0.1:50910: timed out[0m
+[90m2025-04-13 17:11:21,770[0m - [96mINFO:[0m - [92mClient 127.0.0.1:50910 disconnected[0m
+[90m2025-04-13 17:11:21,771[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 60066)[0m
+[90m2025-04-13 17:11:21,815[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 60066)[0m
+[90m2025-04-13 17:11:21,857[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:60066: {'type': 'system_status', 'timestamp': 1744560681.816081, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:11:33,912[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 17:13:13,646[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 17:13:16,548[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 43298)[0m
+[90m2025-04-13 17:13:16,597[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 43298)[0m
+[90m2025-04-13 17:13:16,643[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744560796.598676, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:14:16,603[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744560856.6026616, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:15:16,604[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744560916.6034093, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:16:16,604[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744560976.6040034, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:17:16,605[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561036.6045132, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:18:16,605[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561096.6050668, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:19:16,606[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561156.6056674, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:19:30,569[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 53540)[0m
+[90m2025-04-13 17:19:30,620[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 53540)[0m
+[90m2025-04-13 17:19:30,667[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561170.6217134, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:20:16,607[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561216.606607, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:20:30,627[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561230.626404, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:21:16,607[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561276.6070936, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:21:30,628[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561290.6272457, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:22:16,608[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561336.607651, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:22:30,629[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561350.6280265, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:23:16,609[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561396.608211, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:23:30,629[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561410.6288028, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:24:16,609[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561456.6086907, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:24:30,630[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561470.6295762, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:25:16,609[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561516.609149, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:25:30,631[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561530.6304018, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:26:16,610[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561576.609622, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:26:30,632[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561590.6312068, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:27:16,610[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561636.6101182, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:27:30,633[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561650.6320276, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:28:16,612[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561696.6106367, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:28:30,633[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561710.6327767, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:29:16,612[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561756.6114035, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:29:30,634[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561770.633556, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:30:16,612[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561816.6121314, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:30:30,635[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561830.6344254, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:31:16,613[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561876.6126904, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:31:30,636[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561890.6352212, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:32:16,614[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561936.613217, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:32:30,637[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744561950.6360059, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:33:16,615[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744561996.6139543, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:33:30,637[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562010.6368065, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:34:16,615[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562056.6146452, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:34:30,638[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562070.6376255, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:35:16,616[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562116.6156619, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:35:30,639[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562130.6384351, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:36:16,617[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562176.6164334, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:36:30,640[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562190.6393108, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:37:16,618[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562236.6172001, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:37:30,640[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562250.640069, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:38:16,619[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562296.6179488, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:38:30,642[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562310.6412802, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:39:16,619[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562356.6184955, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:39:30,643[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562370.6421747, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:40:16,620[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562416.6190326, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:40:30,643[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562430.6429374, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:41:16,621[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562476.6201067, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:41:30,644[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562490.6436217, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:42:16,621[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562536.620815, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:42:30,645[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562550.6443458, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:43:16,622[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562596.6214886, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:43:30,646[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562610.645077, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:44:16,623[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562656.622023, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:44:30,646[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562670.645983, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:45:16,623[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562716.6227765, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:45:30,647[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562730.6465232, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:46:16,624[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562776.6234834, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:46:30,648[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562790.6472974, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:47:16,625[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562836.624232, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:47:30,648[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562850.6478326, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:48:16,626[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562896.6250033, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:48:30,649[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562910.6483574, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:49:16,626[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744562956.6257954, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:49:30,649[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744562970.648947, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:50:16,628[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563016.626969, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:50:30,650[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563030.6494458, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:51:16,628[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563076.6277742, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:51:30,650[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563090.6499748, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:52:16,629[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563136.6284993, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:52:30,651[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563150.650531, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:53:16,630[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563196.6293025, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:53:30,651[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563210.6511598, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:54:16,631[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563256.6301076, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:54:30,652[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563270.6516714, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:55:16,631[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563316.6308932, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:55:30,653[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563330.6521556, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:56:16,632[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563376.6316485, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:56:30,653[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563390.6527762, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:57:16,633[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563436.6328585, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:57:30,654[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563450.6532922, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:58:16,634[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563496.6335974, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:58:30,654[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563510.6540272, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:59:16,635[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563556.6343834, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 17:59:30,656[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563570.655148, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:00:16,636[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563616.635166, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:00:30,656[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563630.6559873, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:01:16,637[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563676.6359754, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:01:30,657[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563690.6567175, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:02:16,637[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563736.6367693, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:02:30,658[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563750.657513, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:03:16,638[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563796.637799, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:03:30,659[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563810.6582148, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:04:16,639[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563856.6385248, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:04:30,659[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563870.6589816, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:05:16,639[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563916.6391025, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:05:30,660[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563930.6596832, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:06:16,640[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744563976.6398163, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:06:30,661[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744563990.660442, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:07:16,642[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564036.6411083, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:07:30,661[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564050.6611807, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:08:16,642[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564096.6418493, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:08:30,662[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564110.6619258, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:09:16,643[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564156.64256, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:09:30,663[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564170.6626284, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:10:16,644[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564216.6433244, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:10:30,664[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564230.6633818, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:11:16,644[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564276.6440516, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:11:30,665[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564290.6641319, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:12:16,645[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564336.6448066, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:12:30,665[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564350.6651144, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:13:16,646[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564396.6455123, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:13:30,666[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564410.6658895, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:14:16,647[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564456.6462855, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:14:30,667[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564470.6666708, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:15:16,647[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564516.6471426, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:15:30,668[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564530.66757, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:16:16,648[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564576.6478748, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:16:30,669[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564590.668331, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:17:16,649[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564636.6485567, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:17:30,669[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564650.6690924, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:18:16,650[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564696.6493258, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:18:30,670[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564710.6698022, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:19:16,650[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564756.6500373, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:19:30,671[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564770.6704874, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:20:16,651[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564816.6507862, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:20:30,672[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564830.6712778, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:21:16,652[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564876.6515079, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:21:30,672[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564890.6720085, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:22:16,653[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564936.6522403, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:22:30,673[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744564950.6728332, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:23:16,653[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744564996.6529858, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:23:30,674[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565010.6735425, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:24:16,654[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565056.6536713, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:24:30,675[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565070.6742628, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:25:16,655[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565116.6544921, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:25:30,676[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565130.674987, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:26:16,656[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565176.6552522, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:26:30,676[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565190.6757114, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:27:16,656[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565236.6560464, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:27:30,677[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565250.6763935, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:28:16,657[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565296.6568098, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:28:30,678[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565310.6770613, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:29:16,658[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565356.6575506, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:29:30,679[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565370.6781702, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:30:16,659[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565416.6582954, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:30:30,679[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565430.6788588, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:31:16,659[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565476.6590383, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:31:30,680[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565490.6795685, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:32:16,660[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565536.659766, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:32:30,681[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565550.6802175, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:33:16,661[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565596.6604497, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:33:30,681[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565610.6807113, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:34:16,662[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565656.6611817, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:34:30,682[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565670.6813352, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:35:16,662[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565716.6619074, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:35:30,682[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565730.681936, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:36:16,663[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565776.6626017, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:36:30,683[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565790.6825871, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:37:16,664[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565836.66339, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:37:30,684[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565850.683318, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:38:16,665[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565896.6641626, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:38:30,685[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565910.6840792, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:39:16,665[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744565956.6648865, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:39:30,686[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744565970.6850266, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:40:16,666[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566016.6655512, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:40:30,686[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566030.6857886, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:41:16,666[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566076.6660345, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:41:30,687[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566090.6863081, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:42:16,667[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566136.6665177, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:42:30,687[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566150.6870954, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:43:16,667[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566196.6670845, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:43:30,688[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566210.6876824, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:44:16,668[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566256.6675253, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:44:30,688[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566270.688216, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:45:16,668[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566316.6682823, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:45:30,689[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566330.6887867, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:46:16,669[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566376.6687872, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:46:30,690[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566390.689434, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:47:16,670[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566436.6694882, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:47:30,690[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566450.6900117, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:48:16,671[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:43298: {'type': 'system_status', 'timestamp': 1744566496.6702602, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:48:30,691[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566510.6904895, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:49:05,482[0m - [96mINFO:[0m - [92mClient 127.0.0.1:43298 disconnected[0m
+[90m2025-04-13 18:49:30,692[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:53540: {'type': 'system_status', 'timestamp': 1744566570.69123, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:49:44,057[0m - [96mINFO:[0m - [92mClient 127.0.0.1:53540 disconnected[0m
+[90m2025-04-13 18:52:25,270[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 18:56:14,014[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 18:56:36,272[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 45656)[0m
+[90m2025-04-13 18:56:36,323[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 45656)[0m
+[90m2025-04-13 18:56:36,369[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45656: {'type': 'system_status', 'timestamp': 1744566996.3250008, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:57:36,329[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:45656: {'type': 'system_status', 'timestamp': 1744567056.3285437, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:57:53,760[0m - [96mINFO:[0m - [92mClient 127.0.0.1:45656 disconnected[0m
+[90m2025-04-13 18:57:57,531[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 18:58:03,299[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 18:58:09,235[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 40858)[0m
+[90m2025-04-13 18:58:09,287[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 40858)[0m
+[90m2025-04-13 18:58:09,333[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40858: {'type': 'system_status', 'timestamp': 1744567089.2885025, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:59:09,293[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:40858: {'type': 'system_status', 'timestamp': 1744567149.2923195, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m
+[90m2025-04-13 18:59:10,525[0m - [96mINFO:[0m - [92m[91mClient 127.0.0.1:40858 disconnected[0m[0m
+[90m2025-04-13 18:59:17,296[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 18:59:20,698[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 18:59:39,239[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 33092)[0m
+[90m2025-04-13 18:59:39,289[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 33092)[0m
+[90m2025-04-13 18:59:39,335[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:33092: [1;34m{'type': 'system_status', 'timestamp': 1744567179.2903597, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:00:39,295[0m - [96mINFO:[0m - [92mReceived from 127.0.0.1:33092: [1;34m{'type': 'system_status', 'timestamp': 1744567239.2944856, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:00:44,493[0m - [96mINFO:[0m - [92m[91mClient 127.0.0.1:33092 disconnected[0m[0m
+[90m2025-04-13 19:02:18,762[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:02:24,707[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 19:02:30,349[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 60286)[0m
+[90m2025-04-13 19:02:30,401[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 60286)[0m
+[90m2025-04-13 19:02:30,449[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:60286: [1;34m{'type': 'system_status', 'timestamp': 1744567350.4023166, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:03:15,697[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:03:53,949[0m - [96mINFO:[0m - [92mServer listening on 0.0.0.0:5000[0m
+[90m2025-04-13 19:03:59,730[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 51016)[0m
+[90m2025-04-13 19:03:59,780[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 51016)[0m
+[90m2025-04-13 19:03:59,828[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567439.7818742, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:04:59,787[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567499.7861245, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:05:59,787[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567559.7869725, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:06:59,788[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567619.7877636, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:07:59,789[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567679.7884984, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:08:59,789[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:51016: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567739.7890215, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:09:10,930[0m - [96mINFO:[0m - [92m[91mClient 127.0.0.1:51016 disconnected[0m[0m
+[90m2025-04-13 19:09:17,435[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:09:33,405[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-13 19:09:39,882[0m - [96mINFO:[0m - [92mConnection from ('127.0.0.1', 35780)[0m
+[90m2025-04-13 19:09:39,931[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 35780)[0m
+[90m2025-04-13 19:09:39,979[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:35780: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567779.9326909, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:10:39,937[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:35780: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567839.9362369, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:10:43,986[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:11:37,120[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-13 19:11:43,145[0m - [96mINFO:[0m - [92m[94mConnection from ('127.0.0.1', 46148)[0m[0m
+[90m2025-04-13 19:11:43,193[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 46148)[0m
+[90m2025-04-13 19:11:43,240[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:46148: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567903.1946142, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:12:07,471[0m - [96mINFO:[0m - [92m[91mClient 127.0.0.1:46148 disconnected[0m[0m
+[90m2025-04-13 19:12:11,183[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:12:14,856[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-13 19:12:19,899[0m - [96mINFO:[0m - [92mConnection from [94m('127.0.0.1', 38792)[0m[0m
+[90m2025-04-13 19:12:19,951[0m - [96mINFO:[0m - [92mSuccessful key exchange with ('127.0.0.1', 38792)[0m
+[90m2025-04-13 19:12:19,998[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:38792: 
+[1;34m{'type': 'system_status', 'timestamp': 1744567939.953067, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:13:12,055[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:13:19,972[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-13 19:13:24,460[0m - [96mINFO:[0m - [92mConnection from [94m('127.0.0.1', 39686)[0m[0m
+[90m2025-04-13 19:13:24,511[0m - [96mINFO:[0m - [92mSuccessful key exchange with [94m('127.0.0.1', 39686)[0m[0m
+[90m2025-04-13 19:13:24,557[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:39686: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568004.5123107, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:14:24,518[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:39686: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568064.5166345, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:14:28,075[0m - [96mINFO:[0m - [92mShutting down admin interface[0m
+[90m2025-04-13 19:14:37,608[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-13 19:14:42,493[0m - [96mINFO:[0m - [92mConnection from [96m('127.0.0.1', 45134)[0m[0m
+[90m2025-04-13 19:14:42,540[0m - [96mINFO:[0m - [92mSuccessful key exchange with [96m('127.0.0.1', 45134)[0m[0m
+[90m2025-04-13 19:14:42,585[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568082.5414784, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:15:42,545[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568142.544617, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:16:42,546[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568202.545233, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:17:42,546[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568262.5458407, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:18:42,547[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568322.5463178, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:19:42,547[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568382.5468392, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:20:42,548[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568442.5474205, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:21:42,548[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568502.5479174, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:22:42,549[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568562.5483916, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:23:42,549[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568622.5489392, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-13 19:24:42,550[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:45134: 
+[1;34m{'type': 'system_status', 'timestamp': 1744568682.5494332, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-18 17:28:45,413[0m - [96mINFO:[0m - [92mServer listening on [93m0.0.0.0:5000[0m[0m
+[90m2025-04-18 17:29:02,142[0m - [96mINFO:[0m - [92mConnection from [96m('127.0.0.1', 36840)[0m[0m
+[90m2025-04-18 17:29:02,194[0m - [96mINFO:[0m - [92mSuccessful key exchange with [96m('127.0.0.1', 36840)[0m[0m
+[90m2025-04-18 17:29:15,461[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:36840: 
+[1;34m{'type': 'system_status', 'timestamp': 1744993742.196222, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-18 17:30:15,428[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:36840: 
+[1;34m{'type': 'system_status', 'timestamp': 1744993815.4205775, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
+[90m2025-04-18 17:31:15,437[0m - [96mINFO:[0m - [92mReceived from [96m127.0.0.1:36840: 
+[1;34m{'type': 'system_status', 'timestamp': 1744993875.4278479, 'system_info': {'os': 'Linux', 'release': '6.13.7-hardened1-1-hardened', 'machine': 'x86_64', 'processor': '', 'hostname': 'T3MP0RA'}}[0m[0m
