@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Tempora C2 - Payloads{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Payload Generator</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="#" id="generate-payload-form">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Basic Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="payload_type">Payload Type</label>
+                            <select name="payload_type" id="payload_type" required>
+                                <option value="python">Python</option>
+                                <option value="powershell">PowerShell</option>
+                                <option value="bash">Bash</option>
+                                <option value="exe">Windows Executable</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="c2_host">C2 Server Host</label>
+                            <input type="text" name="c2_host" id="c2_host" value="localhost" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="c2_port">C2 Server Port</label>
+                            <input type="number" name="c2_port" id="c2_port" value="5000" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Advanced Options</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="encryption">Encryption</label>
+                            <select name="encryption" id="encryption">
+                                <option value="aes256">AES-256</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="persistence">Persistence Method</label>
+                            <select name="persistence" id="persistence">
+                                <option value="none">None</option>
+                                <option value="registry">Registry (Windows)</option>
+                                <option value="cron">Cron Job (Linux)</option>
+                                <option value="startup">Startup Folder (Windows)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="obfuscation">Obfuscation Level</label>
+                            <select name="obfuscation" id="obfuscation">
+                                <option value="none">None</option>
+                                <option value="basic">Basic</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-primary">Generate Payload</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Generated Payload</h2>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <textarea id="payload_code" rows="10" readonly placeholder="Generated payload will appear here..."></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-secondary" id="copy-payload-btn">Copy to Clipboard</button>
+            <button class="btn btn-secondary" id="download-payload-btn">Download</button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Saved Payloads</h2>
+    </div>
+    <div class="card-body">
+        <table id="saved-payloads-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Created</th>
+                    <th>C2 Host</th>
+                    <th>C2 Port</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if saved_payloads %}
+                {% for payload in saved_payloads %}
+                <tr>
+                    <td>{{ payload.name }}</td>
+                    <td>{{ payload.type }}</td>
+                    <td>{{ payload.created_at }}</td>
+                    <td>{{ payload.c2_host }}</td>
+                    <td>{{ payload.c2_port }}</td>
+                    <td class="flex">
+                        <button class="btn btn-secondary mr-2">Edit</button>
+                        <button class="btn btn-secondary mr-2">Download</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="6">No saved payloads.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Tempora C2 - Clients{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Connected Clients</h2>
+        <a href="{{ url_for('clients') }}" class="btn btn-secondary">Refresh</a>
+    </div>
+    <div class="card-body">
+        <table id="clients-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Last Activity</th>
+                    <th>Connected Since</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if clients %}
+                {% for client in clients %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.address }}</td>
+                    <td>
+                        <span class="badge {% if client.active %}badge-success{% else %}badge-danger{% endif %}">
+                            {% if client.active %}Active{% else %}Inactive{% endif %}
+                        </span>
+                    </td>
+                    <td>{{ client.last_seen }}</td>
+                    <td>{{ client.connected_since }}</td>
+                    <td class="flex">
+                        <a href="{{ url_for('client_detail', client_id=client.id) }}" class="btn btn-secondary mr-2">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="6">No clients connected.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

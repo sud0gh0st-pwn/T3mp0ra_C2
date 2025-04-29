@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Payload - Tempora C2{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="fas fa-file-code me-2"></i>Generate Payload</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Payload Configuration</h6>
+            </div>
+            <div class="card-body">
+                <form id="payload-form">
+                    <div class="mb-3">
+                        <label for="platform" class="form-label">Target Platform</label>
+                        <select class="form-select" id="platform" name="platform">
+                            <option value="windows">Windows</option>
+                            <option value="linux">Linux</option>
+                            <option value="macos">macOS</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="c2_host" class="form-label">C2 Server Host</label>
+                        <input type="text" class="form-control" id="c2_host" name="c2_host" placeholder="Enter C2 server host or IP" value="{{ request.host.split(':')[0] }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="c2_port" class="form-label">C2 Server Port</label>
+                        <input type="number" class="form-control" id="c2_port" name="c2_port" placeholder="Enter C2 server port" value="8443">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="encryption" name="encryption">
+                        <label class="form-check-label" for="encryption">Encrypt Communication</label>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="persistence" name="persistence">
+                        <label class="form-check-label" for="persistence">Add Persistence</label>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="obfuscation" name="obfuscation">
+                        <label class="form-check-label" for="obfuscation">Obfuscate Payload</label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="button" id="generate-btn" class="btn btn-primary">
+                            <i class="fas fa-cogs me-2"></i>Generate Payload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow mb-4" id="payload-result" style="display: none;">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-success">Generated Payload</h6>
+                <div>
+                    <button id="copy-payload" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-copy me-1"></i>Copy
+                    </button>
+                    <button id="download-payload" class="btn btn-sm btn-outline-success">
+                        <i class="fas fa-download me-1"></i>Download
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>Copy this code or download the payload to deploy on the target system.
+                    </div>
+                </div>
+                <pre class="bg-dark text-light p-3 rounded" id="payload-code" style="max-height: 500px; overflow-y: auto;"></pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Generate payload button click
+        $('#generate-btn').click(function() {
+            // Show loading state
+            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Generating...');
+            $(this).prop('disabled', true);
+            
+            // Collect form data
+            const payloadData = {
+                platform: $('#platform').val(),
+                c2_host: $('#c2_host').val(),
+                c2_port: $('#c2_port').val(),
+                encryption: $('#encryption').prop('checked'),
+                persistence: $('#persistence').prop('checked'),
+                obfuscation: $('#obfuscation').prop('checked')
+            };
+            
+            // Send request to generate payload
+            $.ajax({
+                url: '/api/generate_payload',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(payloadData),
+                success: function(response) {
+                    // Reset button state
+                    $('#generate-btn').html('<i class="fas fa-cogs me-2"></i>Generate Payload');
+                    $('#generate-btn').prop('disabled', false);
+                    
+                    // Show the payload
+                    $('#payload-result').show();
+                    $('#payload-code').text(response.payload || response.payload_code);
+                    
+                    // Scroll to the result
+                    $('html, body').animate({
+                        scrollTop: $('#payload-result').offset().top - 100
+                    }, 500);
+                },
+                error: function(xhr) {
+                    // Reset button state
+                    $('#generate-btn').html('<i class="fas fa-cogs me-2"></i>Generate Payload');
+                    $('#generate-btn').prop('disabled', false);
+                    
+                    // Show error
+                    alert('Error generating payload: ' + (xhr.responseJSON ? xhr.responseJSON.error : 'Unknown error'));
+                }
+            });
+        });
+        
+        // Copy payload to clipboard
+        $('#copy-payload').click(function() {
+            const payloadCode = $('#payload-code').text();
+            navigator.clipboard.writeText(payloadCode).then(function() {
+                alert('Payload copied to clipboard!');
+            }, function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = payloadCode;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Payload copied to clipboard!');
+            });
+        });
+        
+        // Download payload
+        $('#download-payload').click(function() {
+            const platform = $('#platform').val();
+            const payloadCode = $('#payload-code').text();
+            const extension = platform === 'windows' ? '.bat' : '.sh';
+            
+            const blob = new Blob([payloadCode], {type: 'text/plain'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'tempora_payload' + extension;
+            link.click();
+        });
+    });
+</script>
+{% endblock %} 

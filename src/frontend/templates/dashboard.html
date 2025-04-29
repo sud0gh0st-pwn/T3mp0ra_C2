@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Tempora C2{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Server Status</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span class="text-success server-status-indicator">
+                                <i class="fas fa-circle"></i> Online
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-server fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Connected Clients</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span class="client-count">--</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Active Tasks</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span class="task-count">--</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-tasks fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Server Uptime</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span class="uptime">--</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Clients</h6>
+                <a href="{{ url_for('clients') }}" class="btn btn-sm btn-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="recent-clients-table">
+                        <thead>
+                            <tr>
+                                <th>Client ID</th>
+                                <th>Hostname</th>
+                                <th>OS</th>
+                                <th>Last Seen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="text-center">Loading clients...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Tasks</h6>
+                <a href="{{ url_for('tasks') }}" class="btn btn-sm btn-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="recent-tasks-table">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Client</th>
+                                <th>Command</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="text-center">Loading tasks...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Function to update dashboard data
+        function updateDashboard() {
+            // Get server status
+            $.ajax({
+                url: '/api/status',
+                type: 'GET',
+                success: function(data) {
+                    if (data.status === 'online') {
+                        $('.server-status-indicator').html('<i class="fas fa-circle"></i> Online');
+                        $('.server-status-indicator').removeClass('text-danger').addClass('text-success');
+                    } else {
+                        $('.server-status-indicator').html('<i class="fas fa-circle"></i> Offline');
+                        $('.server-status-indicator').removeClass('text-success').addClass('text-danger');
+                    }
+                    $('.uptime').text(data.uptime || '--');
+                },
+                error: function() {
+                    $('.server-status-indicator').html('<i class="fas fa-circle"></i> Offline');
+                    $('.server-status-indicator').removeClass('text-success').addClass('text-danger');
+                }
+            });
+
+            // Get client count and recent clients
+            $.ajax({
+                url: '/api/clients',
+                type: 'GET',
+                success: function(data) {
+                    const clients = data.clients || [];
+                    $('.client-count').text(clients.length);
+                    
+                    // Update recent clients table
+                    if (clients.length > 0) {
+                        let clientRows = '';
+                        // Take the 5 most recent clients
+                        clients.slice(0, 5).forEach(function(client) {
+                            clientRows += `
+                                <tr>
+                                    <td><a href="/clients/${client.id}">${client.id.substring(0, 8)}</a></td>
+                                    <td>${client.hostname || 'Unknown'}</td>
+                                    <td>${client.os || 'Unknown'}</td>
+                                    <td>${client.last_seen || 'Unknown'}</td>
+                                </tr>
+                            `;
+                        });
+                        $('#recent-clients-table tbody').html(clientRows);
+                    } else {
+                        $('#recent-clients-table tbody').html('<tr><td colspan="4" class="text-center">No clients connected</td></tr>');
+                    }
+                },
+                error: function() {
+                    $('.client-count').text('--');
+                    $('#recent-clients-table tbody').html('<tr><td colspan="4" class="text-center">Error loading clients</td></tr>');
+                }
+            });
+
+            // Get tasks count and recent tasks
+            $.ajax({
+                url: '/api/tasks',
+                type: 'GET',
+                success: function(data) {
+                    const tasks = data.tasks || [];
+                    $('.task-count').text(tasks.length);
+                    
+                    // Update recent tasks table
+                    if (tasks.length > 0) {
+                        let taskRows = '';
+                        // Take the 5 most recent tasks
+                        tasks.slice(0, 5).forEach(function(task) {
+                            const statusClass = task.status === 'completed' ? 'text-success' : 
+                                              (task.status === 'pending' ? 'text-warning' : 'text-danger');
+                            taskRows += `
+                                <tr>
+                                    <td>${task.id.substring(0, 8)}</td>
+                                    <td>${task.client_id.substring(0, 8)}</td>
+                                    <td>${task.command.substring(0, 20)}${task.command.length > 20 ? '...' : ''}</td>
+                                    <td class="${statusClass}">${task.status}</td>
+                                </tr>
+                            `;
+                        });
+                        $('#recent-tasks-table tbody').html(taskRows);
+                    } else {
+                        $('#recent-tasks-table tbody').html('<tr><td colspan="4" class="text-center">No tasks available</td></tr>');
+                    }
+                },
+                error: function() {
+                    $('.task-count').text('--');
+                    $('#recent-tasks-table tbody').html('<tr><td colspan="4" class="text-center">Error loading tasks</td></tr>');
+                }
+            });
+        }
+
+        // Update dashboard on page load
+        updateDashboard();
+
+        // Auto-refresh every 10 seconds
+        setInterval(updateDashboard, 10000);
+    });
+</script>
+{% endblock %} 

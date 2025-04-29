@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks - Tempora C2{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="fas fa-tasks me-2"></i>Task Management</h1>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <ul class="nav nav-tabs card-header-tabs" id="task-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-tasks-tab" data-bs-toggle="tab" data-bs-target="#all-tasks" type="button" role="tab" aria-controls="all-tasks" aria-selected="true">All Tasks</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab" aria-controls="completed" aria-selected="false">Completed</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed" type="button" role="tab" aria-controls="failed" aria-selected="false">Failed</button>
+                    </li>
+                </ul>
+                <button id="refresh-tasks" class="btn btn-sm btn-primary">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="task-tabs-content">
+                    <div class="tab-pane fade show active" id="all-tasks" role="tabpanel" aria-labelledby="all-tasks-tab">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="all-tasks-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Command</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                        <th>Completed</th>
+                                        <th>Output</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="text-center">Loading tasks...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pending-tasks-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Command</th>
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center">Loading pending tasks...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="completed-tasks-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Command</th>
+                                        <th>Created</th>
+                                        <th>Completed</th>
+                                        <th>Output</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="text-center">Loading completed tasks...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="failed" role="tabpanel" aria-labelledby="failed-tab">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="failed-tasks-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Command</th>
+                                        <th>Created</th>
+                                        <th>Error</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center">Loading failed tasks...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Create New Task</h6>
+            </div>
+            <div class="card-body">
+                <form id="create-task-form">
+                    <div class="mb-3">
+                        <label for="client_id" class="form-label">Target Client</label>
+                        <select class="form-select" id="client_id" name="client_id" required>
+                            <option value="">Select Client</option>
+                            <!-- Client options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="command" class="form-label">Command</label>
+                        <input type="text" class="form-control" id="command" name="command" required placeholder="Enter command to execute">
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="button" id="send-task-btn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>Send Task
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for viewing task output -->
+<div class="modal fade" id="outputModal" tabindex="-1" aria-labelledby="outputModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="outputModalLabel">Task Output</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <pre id="task-output" class="bg-dark text-light p-3 rounded" style="max-height: 400px; overflow-y: auto;"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Load tasks and clients
+        loadTasks();
+        loadClients();
+        
+        // Function to load tasks
+        function loadTasks() {
+            $.ajax({
+                url: '/api/tasks',
+                type: 'GET',
+                success: function(data) {
+                    const tasks = data.tasks || [];
+                    updateTaskTables(tasks);
+                },
+                error: function() {
+                    // Show error messages in all tables
+                    ['all-tasks', 'pending', 'completed', 'failed'].forEach(function(tableId) {
+                        const colSpan = tableId === 'all-tasks' ? 7 : (tableId === 'completed' ? 6 : 5);
+                        $(`#${tableId}-tasks-table tbody`).html(`<tr><td colspan="${colSpan}" class="text-center">Error loading tasks</td></tr>`);
+                    });
+                }
+            });
+        }
+        
+        // Function to update task tables
+        function updateTaskTables(tasks) {
+            // Filter tasks by status
+            const pendingTasks = tasks.filter(task => task.status === 'pending');
+            const completedTasks = tasks.filter(task => task.status === 'completed');
+            const failedTasks = tasks.filter(task => task.status === 'failed');
+            
+            // Update All Tasks table
+            if (tasks.length > 0) {
+                let allTasksRows = '';
+                tasks.forEach(function(task) {
+                    const statusClass = task.status === 'completed' ? 'text-success' : 
+                                     (task.status === 'pending' ? 'text-warning' : 'text-danger');
+                    
+                    allTasksRows += `
+                        <tr>
+                            <td>${task.id.substring(0, 8)}</td>
+                            <td>${task.client_id.substring(0, 8)}</td>
+                            <td>${task.command.substring(0, 30)}${task.command.length > 30 ? '...' : ''}</td>
+                            <td class="${statusClass}">${task.status}</td>
+                            <td>${task.created_at || 'Unknown'}</td>
+                            <td>${task.completed_at || 'N/A'}</td>
+                            <td>
+                                ${task.output ? 
+                                    `<button class="btn btn-sm btn-info view-output" data-output="${encodeURIComponent(task.output)}">
+                                        <i class="fas fa-eye"></i>
+                                    </button>` : 
+                                    'N/A'}
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#all-tasks-table tbody').html(allTasksRows);
+            } else {
+                $('#all-tasks-table tbody').html('<tr><td colspan="7" class="text-center">No tasks available</td></tr>');
+            }
+            
+            // Update Pending Tasks table
+            if (pendingTasks.length > 0) {
+                let pendingTasksRows = '';
+                pendingTasks.forEach(function(task) {
+                    pendingTasksRows += `
+                        <tr>
+                            <td>${task.id.substring(0, 8)}</td>
+                            <td>${task.client_id.substring(0, 8)}</td>
+                            <td>${task.command.substring(0, 30)}${task.command.length > 30 ? '...' : ''}</td>
+                            <td>${task.created_at || 'Unknown'}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger cancel-task" data-task-id="${task.id}">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#pending-tasks-table tbody').html(pendingTasksRows);
+            } else {
+                $('#pending-tasks-table tbody').html('<tr><td colspan="5" class="text-center">No pending tasks</td></tr>');
+            }
+            
+            // Update Completed Tasks table
+            if (completedTasks.length > 0) {
+                let completedTasksRows = '';
+                completedTasks.forEach(function(task) {
+                    completedTasksRows += `
+                        <tr>
+                            <td>${task.id.substring(0, 8)}</td>
+                            <td>${task.client_id.substring(0, 8)}</td>
+                            <td>${task.command.substring(0, 30)}${task.command.length > 30 ? '...' : ''}</td>
+                            <td>${task.created_at || 'Unknown'}</td>
+                            <td>${task.completed_at || 'N/A'}</td>
+                            <td>
+                                ${task.output ? 
+                                    `<button class="btn btn-sm btn-info view-output" data-output="${encodeURIComponent(task.output)}">
+                                        <i class="fas fa-eye"></i>
+                                    </button>` : 
+                                    'N/A'}
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#completed-tasks-table tbody').html(completedTasksRows);
+            } else {
+                $('#completed-tasks-table tbody').html('<tr><td colspan="6" class="text-center">No completed tasks</td></tr>');
+            }
+            
+            // Update Failed Tasks table
+            if (failedTasks.length > 0) {
+                let failedTasksRows = '';
+                failedTasks.forEach(function(task) {
+                    failedTasksRows += `
+                        <tr>
+                            <td>${task.id.substring(0, 8)}</td>
+                            <td>${task.client_id.substring(0, 8)}</td>
+                            <td>${task.command.substring(0, 30)}${task.command.length > 30 ? '...' : ''}</td>
+                            <td>${task.created_at || 'Unknown'}</td>
+                            <td>${task.error || 'Unknown error'}</td>
+                        </tr>
+                    `;
+                });
+                $('#failed-tasks-table tbody').html(failedTasksRows);
+            } else {
+                $('#failed-tasks-table tbody').html('<tr><td colspan="5" class="text-center">No failed tasks</td></tr>');
+            }
+        }
+        
+        // Function to load clients for the dropdown
+        function loadClients() {
+            $.ajax({
+                url: '/api/clients',
+                type: 'GET',
+                success: function(data) {
+                    const clients = data.clients || [];
+                    
+                    if (clients.length > 0) {
+                        let clientOptions = '<option value="">Select Client</option>';
+                        clients.forEach(function(client) {
+                            clientOptions += `<option value="${client.id}">${client.id.substring(0, 8)} - ${client.hostname || client.ip_address || 'Unknown'}</option>`;
+                        });
+                        $('#client_id').html(clientOptions);
+                    } else {
+                        $('#client_id').html('<option value="">No clients available</option>');
+                    }
+                },
+                error: function() {
+                    $('#client_id').html('<option value="">Error loading clients</option>');
+                }
+            });
+        }
+        
+        // Refresh button click
+        $('#refresh-tasks').click(function() {
+            loadTasks();
+            loadClients();
+        });
+        
+        // Send task button click
+        $('#send-task-btn').click(function() {
+            const clientId = $('#client_id').val();
+            const command = $('#command').val();
+            
+            if (!clientId) {
+                alert('Please select a client');
+                return;
+            }
+            
+            if (!command) {
+                alert('Please enter a command');
+                return;
+            }
+            
+            // Show loading state
+            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+            $(this).prop('disabled', true);
+            
+            $.ajax({
+                url: '/api/task',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    client_id: clientId,
+                    command: command
+                }),
+                success: function(data) {
+                    // Reset button state
+                    $('#send-task-btn').html('<i class="fas fa-paper-plane me-2"></i>Send Task');
+                    $('#send-task-btn').prop('disabled', false);
+                    
+                    // Clear form
+                    $('#command').val('');
+                    
+                    // Show success message
+                    alert('Task sent successfully!');
+                    
+                    // Refresh tasks
+                    loadTasks();
+                },
+                error: function(xhr) {
+                    // Reset button state
+                    $('#send-task-btn').html('<i class="fas fa-paper-plane me-2"></i>Send Task');
+                    $('#send-task-btn').prop('disabled', false);
+                    
+                    // Show error
+                    alert('Error sending task: ' + (xhr.responseJSON ? xhr.responseJSON.error : 'Unknown error'));
+                }
+            });
+        });
+        
+        // View output button click
+        $(document).on('click', '.view-output', function() {
+            const output = decodeURIComponent($(this).data('output'));
+            $('#task-output').text(output);
+            $('#outputModal').modal('show');
+        });
+        
+        // Auto-refresh every 30 seconds
+        setInterval(function() {
+            loadTasks();
+        }, 30000);
+    });
+</script>
+{% endblock %} 

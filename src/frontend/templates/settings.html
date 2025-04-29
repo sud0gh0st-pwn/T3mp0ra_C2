@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Tempora C2 - Settings{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Server Settings</h2>
+        <div class="flex">
+            <span class="badge {% if server_status %}badge-success{% else %}badge-danger{% endif %}">
+                {% if server_status %}Server Online{% else %}Server Offline{% endif %}
+            </span>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="#">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Network Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="server_host">Server Host</label>
+                            <input type="text" name="server_host" id="server_host" value="{{ settings.server_host }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="server_port">Server Port</label>
+                            <input type="number" name="server_port" id="server_port" value="{{ settings.server_port }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="web_host">Web Interface Host</label>
+                            <input type="text" name="web_host" id="web_host" value="{{ settings.web_host }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="web_port">Web Interface Port</label>
+                            <input type="number" name="web_port" id="web_port" value="{{ settings.web_port }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="use_https">Use HTTPS</label>
+                            <select name="use_https" id="use_https">
+                                <option value="true" {% if settings.use_https %}selected{% endif %}>Enabled</option>
+                                <option value="false" {% if not settings.use_https %}selected{% endif %}>Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Security Settings</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="access_key">Access Key</label>
+                            <input type="password" name="access_key" id="access_key" value="{{ settings.access_key }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="encryption_enabled">Encryption</label>
+                            <select name="encryption_enabled" id="encryption_enabled">
+                                <option value="true" {% if settings.encryption_enabled %}selected{% endif %}>Enabled</option>
+                                <option value="false" {% if not settings.encryption_enabled %}selected{% endif %}>Disabled</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="default_encryption_key">Default Encryption Key (leave blank for auto-generated)</label>
+                            <input type="password" name="default_encryption_key" id="default_encryption_key" value="{{ settings.default_encryption_key }}">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Logging Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="log_level">Log Level</label>
+                            <select name="log_level" id="log_level">
+                                <option value="DEBUG" {% if settings.log_level == 'DEBUG' %}selected{% endif %}>DEBUG</option>
+                                <option value="INFO" {% if settings.log_level == 'INFO' %}selected{% endif %}>INFO</option>
+                                <option value="WARNING" {% if settings.log_level == 'WARNING' %}selected{% endif %}>WARNING</option>
+                                <option value="ERROR" {% if settings.log_level == 'ERROR' %}selected{% endif %}>ERROR</option>
+                                <option value="CRITICAL" {% if settings.log_level == 'CRITICAL' %}selected{% endif %}>CRITICAL</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="log_file">Log File</label>
+                            <input type="text" name="log_file" id="log_file" value="{{ settings.log_file }}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="console_logging">Console Logging</label>
+                            <select name="console_logging" id="console_logging">
+                                <option value="true" {% if settings.console_logging %}selected{% endif %}>Enabled</option>
+                                <option value="false" {% if not settings.console_logging %}selected{% endif %}>Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+                <button type="button" class="btn btn-secondary">Restart Server</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">System Information</h2>
+    </div>
+    <div class="card-body">
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">System Status</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Python Version:</strong> {{ system_info.python_version }}</p>
+                    <p><strong>Operating System:</strong> {{ system_info.os }}</p>
+                    <p><strong>CPU Usage:</strong> {{ system_info.cpu_usage }}</p>
+                    <p><strong>Memory Usage:</strong> {{ system_info.memory_usage }}</p>
+                    <p><strong>Disk Space:</strong> {{ system_info.disk_space }}</p>
+                    <p><strong>Server Uptime:</strong> {{ system_info.uptime }}</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Database</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Database Status:</strong> <span class="badge badge-success">Connected</span></p>
+                    <p><strong>Clients Stored:</strong> {{ clients_count|default(0) }}</p>
+                    <p><strong>Tasks Stored:</strong> {{ tasks_count|default(0) }}</p>
+                    <div class="form-group mt-1">
+                        <button type="button" class="btn btn-secondary">Backup Database</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Operation Controls</h2>
+    </div>
+    <div class="card-body">
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Server Management</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary mb-2" {% if server_status %}disabled{% endif %}>Start Server</button>
+                        <button type="button" class="btn btn-danger mb-2" {% if not server_status %}disabled{% endif %}>Stop Server</button>
+                        <button type="button" class="btn btn-secondary mb-2">Restart Server</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Data Management</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-danger mb-2">Clear All Tasks</button>
+                        <button type="button" class="btn btn-danger mb-2">Remove Inactive Clients</button>
+                        <button type="button" class="btn btn-secondary mb-2">Export All Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

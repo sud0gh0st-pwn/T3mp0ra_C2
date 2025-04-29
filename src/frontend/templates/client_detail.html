@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block title %}Client Details - Tempora C2{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12 d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-laptop me-2"></i>Client Details</h1>
+        <button id="refresh-client" class="btn btn-primary">
+            <i class="fas fa-sync-alt me-2"></i>Refresh
+        </button>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Basic Information</h6>
+            </div>
+            <div class="card-body">
+                <div class="client-info">
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Client ID</h5>
+                        <p id="client-id" class="text-muted">Loading...</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Status</h5>
+                        <p><span id="client-status" class="badge bg-secondary">Loading...</span></p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Last Seen</h5>
+                        <p id="client-last-seen" class="text-muted">Loading...</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Connected Since</h5>
+                        <p id="client-connected-since" class="text-muted">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">System Information</h6>
+            </div>
+            <div class="card-body">
+                <div id="system-info">
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Hostname</h5>
+                        <p id="client-hostname" class="text-muted">Loading...</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Operating System</h5>
+                        <p id="client-os" class="text-muted">Loading...</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Username</h5>
+                        <p id="client-username" class="text-muted">Loading...</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">IP Address</h5>
+                        <p id="client-ip" class="text-muted">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Task History</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="client-tasks-table">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Command</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th>Completed</th>
+                                <th>Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center">Loading tasks...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Send Command</h6>
+            </div>
+            <div class="card-body">
+                <form id="command-form">
+                    <input type="hidden" id="command-client-id">
+                    <div class="mb-3">
+                        <label for="command" class="form-label">Command</label>
+                        <input type="text" class="form-control" id="command" name="command" required placeholder="Enter command to execute">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="button" id="send-command-btn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>Send Command
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for viewing task output -->
+<div class="modal fade" id="outputModal" tabindex="-1" aria-labelledby="outputModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="outputModalLabel">Task Output</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <pre id="task-output" class="bg-dark text-light p-3 rounded" style="max-height: 400px; overflow-y: auto;"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Get client ID from URL
+        const pathParts = window.location.pathname.split('/');
+        const clientId = pathParts[pathParts.length - 1];
+        
+        // Update command form client ID
+        $('#command-client-id').val(clientId);
+        
+        // Load client data and tasks
+        loadClientData(clientId);
+        
+        // Function to load client data
+        function loadClientData(clientId) {
+            $.ajax({
+                url: `/api/clients/${clientId}`,
+                type: 'GET',
+                success: function(data) {
+                    updateClientInfo(data);
+                    loadClientTasks(clientId);
+                },
+                error: function() {
+                    alert('Error loading client data');
+                }
+            });
+        }
+        
+        // Function to update client info on the page
+        function updateClientInfo(client) {
+            // Basic info
+            $('#client-id').text(client.id || 'Unknown');
+            
+            const isActive = client.active || (new Date(client.last_seen) > new Date(Date.now() - 300000)); // 5 minutes
+            if (isActive) {
+                $('#client-status').removeClass('bg-danger').addClass('bg-success').text('Active');
+            } else {
+                $('#client-status').removeClass('bg-success').addClass('bg-danger').text('Inactive');
+            }
+            
+            $('#client-last-seen').text(client.last_seen || 'Unknown');
+            $('#client-connected-since').text(client.connected_since || 'Unknown');
+            
+            // System info
+            if (client.system_info) {
+                $('#client-hostname').text(client.system_info.hostname || 'Unknown');
+                $('#client-os').text(`${client.system_info.os || 'Unknown'} ${client.system_info.version || ''} (${client.system_info.architecture || 'Unknown'})`);
+                $('#client-username').text(client.system_info.username || 'Unknown');
+                $('#client-ip').text(client.system_info.ip || client.ip_address || 'Unknown');
+            }
+        }
+        
+        // Function to load client tasks
+        function loadClientTasks(clientId) {
+            $.ajax({
+                url: '/api/tasks',
+                type: 'GET',
+                success: function(data) {
+                    const tasks = data.tasks || [];
+                    const clientTasks = tasks.filter(task => task.client_id === clientId);
+                    
+                    if (clientTasks.length > 0) {
+                        let taskRows = '';
+                        clientTasks.forEach(function(task) {
+                            const statusClass = task.status === 'completed' ? 'text-success' : 
+                                             (task.status === 'pending' ? 'text-warning' : 'text-danger');
+                            
+                            taskRows += `
+                                <tr>
+                                    <td>${task.id.substring(0, 8)}</td>
+                                    <td>${task.command.substring(0, 30)}${task.command.length > 30 ? '...' : ''}</td>
+                                    <td class="${statusClass}">${task.status}</td>
+                                    <td>${task.created_at || 'Unknown'}</td>
+                                    <td>${task.completed_at || 'N/A'}</td>
+                                    <td>
+                                        ${task.output ? 
+                                            `<button class="btn btn-sm btn-info view-output" data-output="${encodeURIComponent(task.output)}">
+                                                <i class="fas fa-eye"></i>
+                                            </button>` : 
+                                            'N/A'}
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        $('#client-tasks-table tbody').html(taskRows);
+                    } else {
+                        $('#client-tasks-table tbody').html('<tr><td colspan="6" class="text-center">No tasks for this client</td></tr>');
+                    }
+                },
+                error: function() {
+                    $('#client-tasks-table tbody').html('<tr><td colspan="6" class="text-center">Error loading tasks</td></tr>');
+                }
+            });
+        }
+        
+        // Refresh button click
+        $('#refresh-client').click(function() {
+            loadClientData(clientId);
+        });
+        
+        // Send command button click
+        $('#send-command-btn').click(function() {
+            const command = $('#command').val();
+            
+            if (!command) {
+                alert('Please enter a command');
+                return;
+            }
+            
+            // Show loading state
+            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+            $(this).prop('disabled', true);
+            
+            $.ajax({
+                url: '/api/task',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    client_id: clientId,
+                    command: command
+                }),
+                success: function(data) {
+                    // Reset button state
+                    $('#send-command-btn').html('<i class="fas fa-paper-plane me-2"></i>Send Command');
+                    $('#send-command-btn').prop('disabled', false);
+                    
+                    // Clear form
+                    $('#command').val('');
+                    
+                    // Show success message
+                    alert('Command sent successfully!');
+                    
+                    // Refresh tasks
+                    loadClientTasks(clientId);
+                },
+                error: function(xhr) {
+                    // Reset button state
+                    $('#send-command-btn').html('<i class="fas fa-paper-plane me-2"></i>Send Command');
+                    $('#send-command-btn').prop('disabled', false);
+                    
+                    // Show error
+                    alert('Error sending command: ' + (xhr.responseJSON ? xhr.responseJSON.error : 'Unknown error'));
+                }
+            });
+        });
+        
+        // View output button click
+        $(document).on('click', '.view-output', function() {
+            const output = decodeURIComponent($(this).data('output'));
+            $('#task-output').text(output);
+            $('#outputModal').modal('show');
+        });
+        
+        // Auto-refresh every 30 seconds
+        setInterval(function() {
+            loadClientData(clientId);
+        }, 30000);
+    });
+</script>
+{% endblock %} 
