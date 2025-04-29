@@ -9,3 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm" # Adding npm for dependency updates
+    directory: "/src/frontend/" # Location of package manifests (e.g., where package.json is located)
+    schedule:
+      interval: "weekly"
