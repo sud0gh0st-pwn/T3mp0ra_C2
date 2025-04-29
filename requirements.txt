@@ -12,7 +12,7 @@ urllib3==2.4.0
 certifi==2025.4.26
 cryptography==39.0.2
 pyOpenSSL==23.0.0
-cffi==1.15.1
+cffi==1.17.1
 pycparser==2.21
 Flask-WTF==1.2.2
 Flask-Login==0.6.2
