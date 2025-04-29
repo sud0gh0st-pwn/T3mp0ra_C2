@@ -14,6 +14,6 @@ cryptography==39.0.2
 pyOpenSSL==23.0.0
 cffi==1.15.1
 pycparser==2.21
-Flask-WTF==1.1.1
+Flask-WTF==1.2.2
 Flask-Login==0.6.2
 WTForms==3.0.1
