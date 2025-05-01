@@ -142,6 +142,37 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Scans</h6>
+                <a href="{{ url_for('recon') }}" class="btn btn-sm btn-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="recent-scans-table">
+                        <thead>
+                            <tr>
+                                <th>Start Time</th>
+                                <th>Target Range</th>
+                                <th>Status</th>
+                                <th>Open Ports</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="text-center">Loading scans...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -234,6 +265,44 @@
                 error: function() {
                     $('.task-count').text('--');
                     $('#recent-tasks-table tbody').html('<tr><td colspan="4" class="text-center">Error loading tasks</td></tr>');
+                }
+            });
+
+            // Get recent scans
+            $.ajax({
+                url: '/api/recon/scan/history',
+                type: 'GET',
+                success: function(data) {
+                    const scans = data.scans || [];
+                    
+                    // Update recent scans table
+                    if (scans.length > 0) {
+                        let scanRows = '';
+                        // Take the 5 most recent scans
+                        scans.slice(0, 5).forEach(function(scan) {
+                            const statusClass = scan.status === 'completed' ? 'text-success' : 
+                                              (scan.status === 'running' ? 'text-primary' : 'text-warning');
+                            scanRows += `
+                                <tr>
+                                    <td>${new Date(scan.start_time).toLocaleString()}</td>
+                                    <td>${scan.start_ip} - ${scan.end_ip}</td>
+                                    <td><span class="${statusClass}">${scan.status}</span></td>
+                                    <td>${scan.open_ports}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" onclick="window.location.href='/recon/scan-results/${scan.id}'">
+                                            View Results
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        $('#recent-scans-table tbody').html(scanRows);
+                    } else {
+                        $('#recent-scans-table tbody').html('<tr><td colspan="5" class="text-center">No scans available</td></tr>');
+                    }
+                },
+                error: function() {
+                    $('#recent-scans-table tbody').html('<tr><td colspan="5" class="text-center">Error loading scans</td></tr>');
                 }
             });
         }

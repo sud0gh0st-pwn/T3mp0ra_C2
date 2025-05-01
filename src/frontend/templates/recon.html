@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Reconnaissance Tools{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Reconnaissance Tools</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Network Scanner Card -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Network Scanner</h5>
+                                    <p class="card-text">Scan IP ranges for open ports and services.</p>
+                                    <a href="{{ url_for('scan_range') }}" class="btn btn-primary">Configure Scan</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder for future tools -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Service Enumeration</h5>
+                                    <p class="card-text">Enumerate services and gather detailed information.</p>
+                                    <button class="btn btn-secondary" disabled>Coming Soon</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Vulnerability Scanner</h5>
+                                    <p class="card-text">Scan for known vulnerabilities in discovered services.</p>
+                                    <button class="btn btn-secondary" disabled>Coming Soon</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scans Section -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Recent Scans</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Start Time</th>
+                                                    <th>Target Range</th>
+                                                    <th>Status</th>
+                                                    <th>Open Ports</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="recentScans">
+                                                <!-- Will be populated by TypeScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dist/recon.js') }}"></script>
+{% endblock %} 

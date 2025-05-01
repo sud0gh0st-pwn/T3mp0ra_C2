@@ -104,6 +104,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'recon' %}active{% endif %}" href="{{ url_for('recon') }}">
+                                <i class="fas fa-search"></i> Recon
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {% if request.endpoint == 'generate_payload' %}active{% endif %}" href="{{ url_for('generate_payload') }}">
                                 <i class="fas fa-file-code"></i> Generate Payload
                             </a>

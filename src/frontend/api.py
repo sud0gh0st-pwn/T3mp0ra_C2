@@ -7,7 +7,8 @@ This module provides the API endpoints for communicating with the C2 server.
 import os
 import sys
 import logging
-from flask import Blueprint, request, jsonify, current_app
+import json
+from flask import Blueprint, request, jsonify, current_app, render_template
 from c2_api_client import C2APIClient
 
 # Setup logging
@@ -17,11 +18,15 @@ logger = logging.getLogger("tempora-api")
 C2_API_HOST = os.environ.get('C2_API_HOST', '127.0.0.1')
 C2_API_PORT = int(os.environ.get('C2_API_PORT', 5000))
 
-# Create Blueprint for API routes
+# Create Blueprints for different route groups
 api_bp = Blueprint('api', __name__, url_prefix='/api')
+recon_bp = Blueprint('recon', __name__, url_prefix='/recon')
 
 # Create a single C2APIClient instance for all API requests
 c2_client = C2APIClient(server_host=C2_API_HOST, server_port=C2_API_PORT)
+
+# Scan configuration storage
+SCAN_CONFIG_FILE = 'scan_config.json'
 
 # API Routes
 @api_bp.route('/status')
@@ -80,4 +85,90 @@ def generate_payload():
     if response is None:
         return jsonify({'error': 'Failed to generate payload'}), 500
     
-    return jsonify(response) 
+    return jsonify(response)
+
+# Recon Routes
+@recon_bp.route('/scan-range')
+def scan_range():
+    """Render the scan range configuration page"""
+    return render_template('scan_range.html')
+
+@api_bp.route('/recon/scan/start', methods=['POST'])
+def start_scan():
+    """Start a new network scan"""
+    try:
+        config = request.form.to_dict()
+        
+        # Convert string values to appropriate types
+        if 'ports' in config:
+            config['ports'] = [int(p) for p in config['ports'].split(',')]
+        
+        numeric_fields = ['max_threads', 'rate_limit', 'timeout', 'max_retries', 
+                         'max_connections', 'chunk_size', 'batch_size']
+        for field in numeric_fields:
+            if field in config:
+                config[field] = float(config[field]) if '.' in config[field] else int(config[field])
+        
+        boolean_fields = ['cache_results', 'common_ports_first']
+        for field in boolean_fields:
+            if field in config:
+                config[field] = config[field] == 'on'
+        
+        # Send scan request to C2 server
+        response = c2_client.send_request('start_scan', config)
+        if response is None:
+            return jsonify({'error': 'Failed to start scan'}), 500
+        
+        return jsonify({'success': True, 'scan_id': response.get('scan_id')})
+    except Exception as e:
+        logger.error(f"Error starting scan: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@api_bp.route('/recon/scan/progress')
+def get_scan_progress():
+    """Get the progress of the current scan"""
+    try:
+        response = c2_client.send_request('scan_progress')
+        if response is None:
+            return jsonify({'error': 'Failed to get scan progress'}), 500
+        return jsonify(response)
+    except Exception as e:
+        logger.error(f"Error getting scan progress: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@api_bp.route('/recon/scan/config/save', methods=['POST'])
+def save_scan_config():
+    """Save the current scan configuration"""
+    try:
+        config = request.json
+        with open(SCAN_CONFIG_FILE, 'w') as f:
+            json.dump(config, f, indent=4)
+        return jsonify({'success': True})
+    except Exception as e:
+        logger.error(f"Error saving scan configuration: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@api_bp.route('/recon/scan/config/load')
+def load_scan_config():
+    """Load the saved scan configuration"""
+    try:
+        if os.path.exists(SCAN_CONFIG_FILE):
+            with open(SCAN_CONFIG_FILE, 'r') as f:
+                config = json.load(f)
+            return jsonify(config)
+        return jsonify({})
+    except Exception as e:
+        logger.error(f"Error loading scan configuration: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@api_bp.route('/recon/scan/stop', methods=['POST'])
+def stop_scan():
+    """Stop the current scan"""
+    try:
+        response = c2_client.send_request('stop_scan')
+        if response is None:
+            return jsonify({'error': 'Failed to stop scan'}), 500
+        return jsonify({'success': True})
+    except Exception as e:
+        logger.error(f"Error stopping scan: {e}")
+        return jsonify({'error': str(e)}), 500 

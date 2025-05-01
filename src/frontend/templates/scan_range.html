@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Network Scanner{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Network Scanner Configuration</h3>
+                </div>
+                <div class="card-body">
+                    <form id="scanConfigForm" method="POST" action="{{ url_for('start_scan') }}">
+                        <div class="row">
+                            <!-- Basic Configuration -->
+                            <div class="col-md-6">
+                                <h4>Basic Configuration</h4>
+                                <div class="form-group">
+                                    <label for="start_ip">Start IP Address</label>
+                                    <input type="text" class="form-control" id="start_ip" name="start_ip" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="end_ip">End IP Address</label>
+                                    <input type="text" class="form-control" id="end_ip" name="end_ip">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ports">Ports to Scan</label>
+                                    <input type="text" class="form-control" id="ports" name="ports" 
+                                           placeholder="e.g., 80,443,22,21" value="80,443,22,21,23,25,53,110,143,445,3389">
+                                </div>
+                            </div>
+
+                            <!-- Performance Settings -->
+                            <div class="col-md-6">
+                                <h4>Performance Settings</h4>
+                                <div class="form-group">
+                                    <label for="max_threads">Maximum Threads</label>
+                                    <input type="number" class="form-control" id="max_threads" name="max_threads" 
+                                           value="500" min="1" max="1000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="rate_limit">Rate Limit (scans/second)</label>
+                                    <input type="number" class="form-control" id="rate_limit" name="rate_limit" 
+                                           value="5000" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="timeout">Timeout (seconds)</label>
+                                    <input type="number" class="form-control" id="timeout" name="timeout" 
+                                           value="0.2" step="0.1" min="0.1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <!-- Advanced Settings -->
+                            <div class="col-md-6">
+                                <h4>Advanced Settings</h4>
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="cache_results" 
+                                               name="cache_results" checked>
+                                        <label class="custom-control-label" for="cache_results">Cache Results</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="common_ports_first" 
+                                               name="common_ports_first" checked>
+                                        <label class="custom-control-label" for="common_ports_first">Scan Common Ports First</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="max_retries">Maximum Retries</label>
+                                    <input type="number" class="form-control" id="max_retries" name="max_retries" 
+                                           value="3" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Resource Settings -->
+                            <div class="col-md-6">
+                                <h4>Resource Settings</h4>
+                                <div class="form-group">
+                                    <label for="max_connections">Maximum Connections</label>
+                                    <input type="number" class="form-control" id="max_connections" name="max_connections" 
+                                           value="2000" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="chunk_size">IP Range Chunk Size</label>
+                                    <input type="number" class="form-control" id="chunk_size" name="chunk_size" 
+                                           value="10000" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="batch_size">Database Batch Size</label>
+                                    <input type="number" class="form-control" id="batch_size" name="batch_size" 
+                                           value="10000" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Start Scan</button>
+                                <button type="button" class="btn btn-secondary" id="saveConfig">Save Configuration</button>
+                                <button type="button" class="btn btn-info" id="loadConfig">Load Configuration</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Section (Initially Hidden) -->
+    <div class="row mt-4" id="progressSection" style="display: none;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Scan Progress</h3>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    <div class="mt-3">
+                        <p>Completed: <span id="completedTasks">0</span> / <span id="totalTasks">0</span></p>
+                        <p>Open Ports Found: <span id="openPorts">0</span></p>
+                        <p>Scan Rate: <span id="scanRate">0</span> scans/second</p>
+                        <p>Current Target: <span id="currentTarget">-</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dist/scan_range.js') }}"></script>
+{% endblock %} 

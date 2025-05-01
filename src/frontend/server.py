@@ -11,6 +11,7 @@ import logging
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_wtf import CSRFProtect
 from functools import wraps
+from api import api_bp, recon_bp
 
 # Setup logging
 logger = logging.getLogger("tempora-server")
@@ -42,6 +43,10 @@ def save_config(settings):
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', os.urandom(24))
 csrf = CSRFProtect(app)
+
+# Register blueprints
+app.register_blueprint(api_bp)
+app.register_blueprint(recon_bp)
 
 # Load initial settings
 config = load_config()
@@ -190,6 +195,18 @@ def settings():
                          system_info=system_info,
                          server_status=server_status)
 
+@app.route('/recon')
+@login_required
+def recon():
+    """Reconnaissance tools dashboard"""
+    return render_template('recon.html')
+
+@app.route('/recon/scan-range')
+@login_required
+def scan_range():
+    """Network scanner configuration page"""
+    return render_template('scan_range.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Handle 404 errors"""
@@ -198,9 +215,4 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e):
     """Handle 500 errors"""
-    return render_template('error.html', error="Internal server error"), 500
-
-# Import and register the API blueprint
-def register_api(app):
-    from api import api_bp
-    app.register_blueprint(api_bp) 
+    return render_template('error.html', error="Internal server error"), 500 
