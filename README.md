@@ -40,6 +40,11 @@ Tempora is a robust, encrypted Command and Control (C2) framework designed for s
 - **Multi-client Management**: Simultaneous control of multiple clients
 - **Task Scheduling**: Schedule commands for future execution
 - **Data Export**: Export client data and task history
+- **Network Reconnaissance**: Built-in tools for network scanning and enumeration
+  - IP Range Scanner with configurable parameters
+  - Service Detection
+  - GeoIP Location (using MaxMind GeoLite2 databases)
+  - Results caching and export capabilities
 
 ## 🏗 Architecture
 
@@ -67,6 +72,40 @@ Tempora operates on a server-client model with a modern web interface:
 │    Queue    │
 └─────────────┘
 ```
+
+## 🔍 Recon Tools
+
+### Network Scanner
+
+The built-in network scanner provides comprehensive network reconnaissance capabilities:
+
+- **IP Range Scanning**: Scan entire subnets or specific IP ranges
+- **Port Configuration**: 
+  - Scan specific ports or port ranges
+  - Common ports scanning optimization
+  - Service version detection
+- **Performance Settings**:
+  - Configurable thread count
+  - Rate limiting
+  - Connection timeout
+  - Maximum retries
+- **Resource Management**:
+  - Chunk size for IP ranges
+  - Database batch operations
+  - Connection pooling
+- **Results**:
+  - Real-time progress monitoring
+  - GeoIP information for discovered hosts
+  - Export results in multiple formats
+  - Results caching for faster subsequent scans
+
+### Usage
+
+Access the recon tools through:
+1. Web Interface: Navigate to the Recon section
+2. Configure scan parameters
+3. Monitor progress in real-time
+4. View and export results
 
 ## 🚀 Installation
 
