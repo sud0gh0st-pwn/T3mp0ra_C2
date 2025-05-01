@@ -12,6 +12,10 @@
   [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
   [![Code Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen.svg)](#)
   [![Last Commit](https://img.shields.io/github/last-commit/sud0gh0st-pwn/T3mp0ra_C2.svg)](#)
+  [![Python](https://img.shields.io/badge/python-67.3%25-blue.svg)](#)
+  [![HTML](https://img.shields.io/badge/html-18.3%25-orange.svg)](#)
+  [![TypeScript](https://img.shields.io/badge/typescript-12.8%25-blue.svg)](#)
+  [![CSS](https://img.shields.io/badge/css-1.6%25-purple.svg)](#)
 </div>
 
 Tempora is a robust, encrypted Command and Control (C2) framework designed for secure communication between a central server and distributed clients. Built with security and reliability in mind, Tempora features end-to-end encryption, asynchronous command dispatching, and resilient connections.
@@ -21,6 +25,7 @@ Tempora is a robust, encrypted Command and Control (C2) framework designed for s
 - [Quick Start](#-quick-start)
 - [Features](#-features)
 - [Architecture](#-architecture)
+- [Languages](#-languages)
 - [Installation](#-installation)
 - [Configuration](#-configuration)
 - [Usage](#-usage)
@@ -32,6 +37,35 @@ Tempora is a robust, encrypted Command and Control (C2) framework designed for s
 - [FAQ](#-faq)
 - [Troubleshooting](#-troubleshooting)
 - [Roadmap](#-roadmap)
+
+## 💻 Languages
+
+Tempora is built using a modern stack of technologies:
+
+- **Python (67.3%)**: Core server functionality, client implementation, and backend services
+- **HTML (18.3%)**: Web interface structure and templates
+- **TypeScript (12.8%)**: Frontend interactivity and type-safe code
+- **CSS (1.6%)**: Styling and responsive design
+
+### Technology Stack
+
+- **Backend**:
+  - Python 3.8+ for core functionality
+  - Flask for web server
+  - Redis for message queuing
+  - SQLite for data storage
+
+- **Frontend**:
+  - TypeScript for type-safe development
+  - Bootstrap for responsive design
+  - jQuery for DOM manipulation
+  - Custom CSS for styling
+
+- **Development Tools**:
+  - Git for version control
+  - Docker for containerization
+  - pytest for testing
+  - ESLint for TypeScript linting
 
 ## ⚡ Quick Start
 
