@@ -10,7 +10,7 @@ charset-normalizer==3.4.1
 idna==3.4
 urllib3==2.4.0
 certifi==2025.4.26
-cryptography==39.0.2
+cryptography==44.0.1
 pyOpenSSL==23.0.0
 cffi==1.17.1
 pycparser==2.21
