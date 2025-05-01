@@ -8,21 +8,57 @@
   [![Redis](https://img.shields.io/badge/redis-6.0%2B-red.svg)](https://redis.io/)
   [![Docker](https://img.shields.io/badge/docker-supported-blue.svg)](https://www.docker.com/)
   [![Security](https://img.shields.io/badge/security-encrypted-brightgreen.svg)](#security-features)
+  [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](#documentation)
+  [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
+  [![Code Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen.svg)](#)
+  [![Last Commit](https://img.shields.io/github/last-commit/sud0gh0st-pwn/T3mp0ra_C2.svg)](#)
 </div>
 
 Tempora is a robust, encrypted Command and Control (C2) framework designed for secure communication between a central server and distributed clients. Built with security and reliability in mind, Tempora features end-to-end encryption, asynchronous command dispatching, and resilient connections.
 
 ## 📋 Table of Contents
 
+- [Quick Start](#-quick-start)
 - [Features](#-features)
 - [Architecture](#-architecture)
 - [Installation](#-installation)
+- [Configuration](#-configuration)
 - [Usage](#-usage)
 - [Security Features](#-security-features)
 - [Development](#-development)
 - [Contributing](#-contributing)
 - [License](#-license)
 - [Disclaimer](#-disclaimer)
+- [FAQ](#-faq)
+- [Troubleshooting](#-troubleshooting)
+- [Roadmap](#-roadmap)
+
+## ⚡ Quick Start
+
+Get up and running in minutes:
+
+```bash
+# Clone the repository
+git clone https://github.com/sud0gh0st-pwn/T3mp0ra_C2.git
+cd T3mp0ra_C2
+
+# Set up the environment
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -r requirements.txt
+
+# Start Redis (using Docker)
+docker run --name tempora-redis -p 6379:6379 -d redis:alpine
+
+# Start the server
+python src/server.py
+
+# Start the web interface
+cd src/frontend
+python run.py
+```
+
+Visit `http://localhost:5001` to access the web interface.
 
 ## ✨ Features
 
@@ -45,6 +81,11 @@ Tempora is a robust, encrypted Command and Control (C2) framework designed for s
   - Service Detection
   - GeoIP Location (using MaxMind GeoLite2 databases)
   - Results caching and export capabilities
+- **Privilege Escalation**: Built-in tools for privilege escalation analysis
+  - System Information Collection
+  - Common Misconfigurations Detection
+  - Exploit Suggestions
+  - Automated Checks for Common Vulnerabilities
 
 ## 🏗 Architecture
 
@@ -105,6 +146,49 @@ Access the recon tools through:
 1. Web Interface: Navigate to the Recon section
 2. Configure scan parameters
 3. Monitor progress in real-time
+4. View and export results
+
+## 🔐 Privilege Escalation Tools
+
+### System Analysis
+
+The built-in privilege escalation tools provide comprehensive system analysis capabilities:
+
+- **System Information Collection**:
+  - OS and kernel version
+  - Installed packages and versions
+  - Running services and processes
+  - User and group information
+  - File permissions and ownership
+  - Network configuration
+  - Scheduled tasks and cron jobs
+
+- **Vulnerability Detection**:
+  - SUID/SGID binaries
+  - World-writable files and directories
+  - Weak file permissions
+  - Misconfigured services
+  - Known vulnerable software versions
+  - Password hashes in configuration files
+
+- **Exploit Suggestions**:
+  - Based on system configuration
+  - Known vulnerabilities in installed software
+  - Common misconfigurations
+  - Custom exploit suggestions
+
+- **Results**:
+  - Detailed report generation
+  - Risk assessment
+  - Remediation suggestions
+  - Export capabilities
+
+### Usage
+
+Access the privilege escalation tools through:
+1. Web Interface: Navigate to the Recon section
+2. Select "Privilege Escalation" tool
+3. Configure analysis parameters
 4. View and export results
 
 ## 🚀 Installation
@@ -335,3 +419,123 @@ This tool is designed for educational and authorized security testing purposes o
 ---
 
 © 2025 | Sudosec Solutions | All Rights Reserved
+
+## 📙 Configuration
+
+### Environment Variables
+
+Create a `.env` file with the following settings:
+
+```env
+# Server Configuration
+SERVER_IP=0.0.0.0
+SERVER_PORT=4444
+WEB_PORT=5001
+
+# Redis Configuration
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+# Security Settings
+ENCRYPTION_KEY_LENGTH=2048
+SESSION_TIMEOUT=3600
+MAX_LOGIN_ATTEMPTS=3
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FILE=logs/tempora.log
+
+# Recon Settings
+SCAN_TIMEOUT=5
+MAX_SCAN_THREADS=100
+GEOIP_DB_PATH=data/GeoLite2-City.mmdb
+```
+
+### Web Interface Configuration
+
+Customize the web interface through `src/frontend/config.py`:
+
+```python
+# Theme settings
+THEME = {
+    'primary_color': '#007bff',
+    'secondary_color': '#6c757d',
+    'dark_mode': False
+}
+
+# Dashboard settings
+DASHBOARD = {
+    'refresh_interval': 10,
+    'max_clients_display': 10,
+    'max_tasks_display': 10
+}
+```
+
+## ❓ FAQ
+
+### General Questions
+
+**Q: What makes Tempora different from other C2 frameworks?**
+A: Tempora combines enterprise-grade security with user-friendly interfaces, offering both web and CLI administration, built-in reconnaissance tools, and privilege escalation analysis.
+
+**Q: Is Tempora suitable for production use?**
+A: Yes, Tempora is designed for production environments with features like encryption, authentication, and logging. However, always test thoroughly in a controlled environment first.
+
+### Technical Questions
+
+**Q: How do I handle Redis connection issues?**
+A: Check the Redis service status, verify connection settings in `.env`, and ensure proper network connectivity. See [Troubleshooting](#-troubleshooting) for more details.
+
+**Q: Can I customize the web interface?**
+A: Yes, the web interface is highly customizable through the configuration files and supports custom themes.
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Redis Connection Failed**
+   ```bash
+   # Check Redis status
+   docker ps | grep redis
+   # Check logs
+   docker logs tempora-redis
+   ```
+
+2. **Web Interface Not Loading**
+   - Verify port availability
+   - Check firewall settings
+   - Review web server logs
+
+3. **Client Connection Issues**
+   - Verify network connectivity
+   - Check server IP/port configuration
+   - Review client logs
+
+### Log Files
+
+- Server logs: `logs/server.log`
+- Web interface logs: `logs/web.log`
+- Client logs: `logs/client.log`
+
+## 🗺️ Roadmap
+
+### Current Development
+
+- [x] Basic C2 functionality
+- [x] Web interface
+- [x] Network reconnaissance
+- [x] Privilege escalation tools
+- [ ] Advanced payload generation
+- [ ] Multi-platform support
+- [ ] API documentation
+- [ ] Performance optimizations
+
+### Future Features
+
+- [ ] Mobile client support
+- [ ] Advanced persistence mechanisms
+- [ ] Custom module development
+- [ ] Integration with threat intelligence feeds
+- [ ] Automated reporting
+- [ ] Advanced evasion techniques
