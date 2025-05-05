@@ -122,7 +122,7 @@ def start_scan():
         return jsonify({'success': True, 'scan_id': response.get('scan_id')})
     except Exception as e:
         logger.error(f"Error starting scan: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'An internal error has occurred.'}), 500
 
 @api_bp.route('/recon/scan/progress')
 def get_scan_progress():
@@ -134,7 +134,7 @@ def get_scan_progress():
         return jsonify(response)
     except Exception as e:
         logger.error(f"Error getting scan progress: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'An internal error has occurred.'}), 500
 
 @api_bp.route('/recon/scan/config/save', methods=['POST'])
 def save_scan_config():
@@ -146,7 +146,7 @@ def save_scan_config():
         return jsonify({'success': True})
     except Exception as e:
         logger.error(f"Error saving scan configuration: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'An internal error has occurred.'}), 500
 
 @api_bp.route('/recon/scan/config/load')
 def load_scan_config():
@@ -159,7 +159,7 @@ def load_scan_config():
         return jsonify({})
     except Exception as e:
         logger.error(f"Error loading scan configuration: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'An internal error has occurred.'}), 500
 
 @api_bp.route('/recon/scan/stop', methods=['POST'])
 def stop_scan():
@@ -171,4 +171,4 @@ def stop_scan():
         return jsonify({'success': True})
     except Exception as e:
         logger.error(f"Error stopping scan: {e}")
-        return jsonify({'error': str(e)}), 500 
+        return jsonify({'error': 'An internal error has occurred.'}), 500
