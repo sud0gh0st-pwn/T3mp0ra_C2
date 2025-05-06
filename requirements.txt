@@ -7,7 +7,7 @@ click==8.1.8
 itsdangerous==2.2.0
 colorama==0.4.6
 charset-normalizer==3.4.1
-idna==3.7
+idna==3.10
 urllib3==2.4.0
 certifi==2025.4.26
 cryptography==44.0.1
