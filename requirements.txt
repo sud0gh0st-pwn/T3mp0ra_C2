@@ -9,7 +9,7 @@ colorama==0.4.6
 charset-normalizer==3.4.2
 idna==3.10
 urllib3==2.4.0
-certifi==2025.4.26
+certifi==2025.7.14
 cryptography==45.0.3
 pyOpenSSL==25.1.0
 cffi==1.17.1
