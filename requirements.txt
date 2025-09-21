@@ -8,7 +8,7 @@ itsdangerous==2.2.0
 colorama==0.4.6
 charset-normalizer==3.4.3
 idna==3.10
-urllib3==2.4.0
+urllib3==2.5.0
 certifi==2025.4.26
 cryptography==45.0.7
 pyOpenSSL==25.1.0
