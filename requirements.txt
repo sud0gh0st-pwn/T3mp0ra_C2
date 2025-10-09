@@ -13,7 +13,7 @@ certifi==2025.10.5
 cryptography==45.0.7
 pyOpenSSL==25.1.0
 cffi==1.17.1
-pycparser==2.22
+pycparser==2.23
 Flask-WTF==1.2.2
 Flask-Login==0.6.3
 WTForms==3.2.1
