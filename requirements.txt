@@ -12,6 +12,7 @@ urllib3==2.5.0
 certifi==2025.10.5
 cryptography==46.0.3
 pyOpenSSL==25.3.0
+impacket==0.12.0
 cffi==1.17.1
 pycparser==2.23
 Flask-WTF==1.2.2
