@@ -1,0 +1,4 @@
+2025-12-02 00:22:03,688 - INFO: C2 Server initialized
+2025-12-02 00:22:03,689 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:22:03,882 - INFO: Connection from [96m('172.20.0.3', 45040)[0m
+2025-12-02 00:22:03,883 - INFO: New connection from ('172.20.0.3', 45040)
