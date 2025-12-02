@@ -1,6 +1,13 @@
 version: "3.9"
 
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: tempora-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
   c2-server:
     build: .
     container_name: tempora-server
@@ -13,17 +20,33 @@ services:
       - ./logs:/app/logs
     environment:
       - PYTHONUNBUFFERED=1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
     stdin_open: true
     tty: true
 
-  c2-client:
+  frontend:
     build: .
-    container_name: tempora-client
-    working_dir: /app/src
-    command: ["python", "client.py", "--host", "c2-server", "--port", "${PORT:-5000}", "--interval", "5"]
-    depends_on:
-      - c2-server
+    container_name: tempora-frontend
+    working_dir: /app/src/frontend
+    command: ["python", "run.py", "--host", "0.0.0.0", "--port", "${WEB_PORT:-5001}"]
+    ports:
+      - "${WEB_PORT:-5001}:${WEB_PORT:-5001}"
+    volumes:
+      - .:/app
     environment:
       - PYTHONUNBUFFERED=1
+      - C2_API_HOST=c2-server
+      - C2_API_PORT=${PORT:-5000}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - c2-server
+      - redis
     stdin_open: true
     tty: true
+
+volumes:
+  redis-data:

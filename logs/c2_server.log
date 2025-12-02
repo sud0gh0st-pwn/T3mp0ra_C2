@@ -2,3 +2,135 @@
 2025-12-02 00:22:03,689 - INFO: Server listening on [93m0.0.0.0:5000[0m
 2025-12-02 00:22:03,882 - INFO: Connection from [96m('172.20.0.3', 45040)[0m
 2025-12-02 00:22:03,883 - INFO: New connection from ('172.20.0.3', 45040)
+2025-12-02 00:22:49,887 - INFO: Connection from [96m('172.20.0.1', 51732)[0m
+2025-12-02 00:22:49,888 - INFO: New connection from ('172.20.0.1', 51732)
+2025-12-02 00:22:49,888 - ERROR: Error handling client ('172.20.0.1', 51732): Client not ready for key exchange
+2025-12-02 00:22:51,013 - INFO: Connection from [96m('172.20.0.1', 51738)[0m
+2025-12-02 00:22:51,014 - INFO: New connection from ('172.20.0.1', 51738)
+2025-12-02 00:22:51,014 - ERROR: Error handling client ('172.20.0.1', 51738): Client not ready for key exchange
+2025-12-02 00:22:56,070 - INFO: Connection from [96m('172.20.0.1', 43986)[0m
+2025-12-02 00:22:56,071 - INFO: New connection from ('172.20.0.1', 43986)
+2025-12-02 00:22:56,072 - ERROR: Error handling client ('172.20.0.1', 43986): Client not ready for key exchange
+2025-12-02 00:22:58,195 - INFO: Connection from [96m('172.20.0.1', 43998)[0m
+2025-12-02 00:22:58,197 - INFO: New connection from ('172.20.0.1', 43998)
+2025-12-02 00:22:58,197 - ERROR: Error handling client ('172.20.0.1', 43998): Client not ready for key exchange
+2025-12-02 00:22:59,270 - INFO: Connection from [96m('172.20.0.1', 44014)[0m
+2025-12-02 00:22:59,270 - INFO: New connection from ('172.20.0.1', 44014)
+2025-12-02 00:22:59,270 - ERROR: Error handling client ('172.20.0.1', 44014): Client not ready for key exchange
+2025-12-02 00:23:04,314 - INFO: Connection from [96m('172.20.0.1', 44018)[0m
+2025-12-02 00:23:04,314 - INFO: New connection from ('172.20.0.1', 44018)
+2025-12-02 00:23:04,315 - ERROR: Error handling client ('172.20.0.1', 44018): Client not ready for key exchange
+2025-12-02 00:23:28,133 - INFO: Connection from [96m('172.20.0.1', 54930)[0m
+2025-12-02 00:23:28,134 - INFO: New connection from ('172.20.0.1', 54930)
+2025-12-02 00:23:28,134 - ERROR: Error handling client ('172.20.0.1', 54930): Client not ready for key exchange
+2025-12-02 00:23:29,223 - INFO: Connection from [96m('172.20.0.1', 54944)[0m
+2025-12-02 00:23:29,224 - INFO: New connection from ('172.20.0.1', 54944)
+2025-12-02 00:23:29,224 - ERROR: Error handling client ('172.20.0.1', 54944): Client not ready for key exchange
+2025-12-02 00:23:34,270 - INFO: Connection from [96m('172.20.0.1', 54946)[0m
+2025-12-02 00:23:34,270 - INFO: New connection from ('172.20.0.1', 54946)
+2025-12-02 00:23:34,271 - ERROR: Error handling client ('172.20.0.1', 54946): Client not ready for key exchange
+2025-12-02 00:24:03,983 - ERROR: Error handling client ('172.20.0.3', 45040): Client not ready for key exchange
+2025-12-02 00:24:04,320 - INFO: Connection from [96m('172.20.0.1', 47392)[0m
+2025-12-02 00:24:04,322 - INFO: New connection from ('172.20.0.1', 47392)
+2025-12-02 00:24:04,323 - ERROR: Error handling client ('172.20.0.1', 47392): Client not ready for key exchange
+2025-12-02 00:32:06,839 - INFO: C2 Server initialized
+2025-12-02 00:32:06,840 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:32:06,980 - INFO: Connection from [96m('172.20.0.4', 53040)[0m
+2025-12-02 00:32:06,980 - INFO: New connection from ('172.20.0.4', 53040)
+2025-12-02 00:32:18,449 - INFO: Connection from [96m('172.20.0.1', 34536)[0m
+2025-12-02 00:32:18,450 - INFO: New connection from ('172.20.0.1', 34536)
+2025-12-02 00:32:18,450 - ERROR: Error handling client ('172.20.0.1', 34536): Client not ready for key exchange
+2025-12-02 00:32:19,534 - INFO: Connection from [96m('172.20.0.1', 34538)[0m
+2025-12-02 00:32:19,534 - INFO: New connection from ('172.20.0.1', 34538)
+2025-12-02 00:32:19,534 - ERROR: Error handling client ('172.20.0.1', 34538): Client not ready for key exchange
+2025-12-02 00:32:24,585 - INFO: Connection from [96m('172.20.0.1', 34554)[0m
+2025-12-02 00:32:24,585 - INFO: New connection from ('172.20.0.1', 34554)
+2025-12-02 00:32:24,585 - ERROR: Error handling client ('172.20.0.1', 34554): Client not ready for key exchange
+2025-12-02 00:32:46,777 - ERROR: Error handling client ('172.20.0.4', 53040): Client not ready for key exchange
+2025-12-02 00:34:00,931 - INFO: C2 Server initialized
+2025-12-02 00:34:00,932 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:34:01,079 - INFO: Connection from [96m('172.20.0.4', 58192)[0m
+2025-12-02 00:34:01,080 - INFO: New connection from ('172.20.0.4', 58192)
+2025-12-02 00:34:01,131 - INFO: Client tgf0Bf4jmXrkTJ38vewLJQ== registered successfully
+2025-12-02 00:34:34,437 - INFO: Connection from [96m('172.20.0.1', 37850)[0m
+2025-12-02 00:34:34,439 - INFO: New connection from ('172.20.0.1', 37850)
+2025-12-02 00:34:34,440 - ERROR: Error handling client ('172.20.0.1', 37850): Client not ready for key exchange
+2025-12-02 00:34:35,485 - INFO: Connection from [96m('172.20.0.1', 37860)[0m
+2025-12-02 00:34:35,485 - INFO: New connection from ('172.20.0.1', 37860)
+2025-12-02 00:34:35,486 - ERROR: Error handling client ('172.20.0.1', 37860): Client not ready for key exchange
+2025-12-02 00:34:40,522 - INFO: Connection from [96m('172.20.0.1', 58780)[0m
+2025-12-02 00:34:40,523 - INFO: New connection from ('172.20.0.1', 58780)
+2025-12-02 00:34:40,523 - ERROR: Error handling client ('172.20.0.1', 58780): Client not ready for key exchange
+2025-12-02 00:34:53,721 - INFO: Connection from [96m('172.20.0.1', 48324)[0m
+2025-12-02 00:34:53,722 - INFO: New connection from ('172.20.0.1', 48324)
+2025-12-02 00:34:53,723 - ERROR: Error handling client ('172.20.0.1', 48324): Client not ready for key exchange
+2025-12-02 00:35:36,502 - INFO: C2 Server initialized
+2025-12-02 00:35:36,503 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:35:36,606 - INFO: Connection from [96m('172.20.0.4', 41306)[0m
+2025-12-02 00:35:36,607 - INFO: New connection from ('172.20.0.4', 41306)
+2025-12-02 00:35:36,662 - INFO: Client IBLd6MgLcuxnlEmoOjV9Ng== registered successfully
+2025-12-02 00:35:46,627 - INFO: Connection from [96m('172.20.0.1', 56946)[0m
+2025-12-02 00:35:46,627 - INFO: New connection from ('172.20.0.1', 56946)
+2025-12-02 00:35:46,629 - ERROR: Error handling client ('172.20.0.1', 56946): Client not ready for key exchange
+2025-12-02 00:35:47,763 - INFO: Connection from [96m('172.20.0.1', 56952)[0m
+2025-12-02 00:35:47,763 - INFO: New connection from ('172.20.0.1', 56952)
+2025-12-02 00:35:47,765 - ERROR: Error handling client ('172.20.0.1', 56952): Client not ready for key exchange
+2025-12-02 00:36:17,841 - INFO: Connection from [96m('172.20.0.1', 34544)[0m
+2025-12-02 00:36:17,845 - INFO: New connection from ('172.20.0.1', 34544)
+2025-12-02 00:36:17,846 - ERROR: Error handling client ('172.20.0.1', 34544): Client not ready for key exchange
+2025-12-02 00:36:38,245 - INFO: Connection from [96m('172.20.0.1', 60564)[0m
+2025-12-02 00:36:38,246 - INFO: New connection from ('172.20.0.1', 60564)
+2025-12-02 00:36:38,247 - ERROR: Error handling client ('172.20.0.1', 60564): Client not ready for key exchange
+2025-12-02 00:36:39,325 - INFO: Connection from [96m('172.20.0.1', 60570)[0m
+2025-12-02 00:36:39,326 - INFO: New connection from ('172.20.0.1', 60570)
+2025-12-02 00:36:39,326 - ERROR: Error handling client ('172.20.0.1', 60570): Client not ready for key exchange
+2025-12-02 00:38:18,487 - INFO: C2 Server initialized
+2025-12-02 00:38:18,488 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:38:18,610 - INFO: Connection from [96m('172.20.0.4', 49374)[0m
+2025-12-02 00:38:18,611 - INFO: New connection from ('172.20.0.4', 49374)
+2025-12-02 00:38:18,665 - INFO: Client StQul6DQzdKvubJOWTFI0Q== registered successfully
+2025-12-02 00:38:36,327 - INFO: Connection from [96m('172.20.0.1', 36006)[0m
+2025-12-02 00:38:36,330 - INFO: New connection from ('172.20.0.1', 36006)
+2025-12-02 00:38:36,330 - WARNING: Ignoring connection ('172.20.0.1', 36006): unexpected preamble (b'GET / HTTP/1.1\r\nHost: 0.0.0.0:5000\r\nConnection: keep-alive\r\nDNT: 1\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8\r\nSec-GPC: 1\r\nAccept-Language: en-GB,en;q=0.7\r\nAccept-Encoding: gzip, deflate\r\n\r\n')
+2025-12-02 00:38:37,417 - INFO: Connection from [96m('172.20.0.1', 36012)[0m
+2025-12-02 00:38:37,417 - INFO: New connection from ('172.20.0.1', 36012)
+2025-12-02 00:38:37,418 - WARNING: Ignoring connection ('172.20.0.1', 36012): unexpected preamble (b'GET / HTTP/1.1\r\nHost: 0.0.0.0:5000\r\nConnection: keep-alive\r\nCache-Control: max-age=0\r\nDNT: 1\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8\r\nSec-GPC: 1\r\nAccept-Language: en-GB,en;q=0.7\r\nAccept-Encoding: gzip, deflate\r\n\r\n')
+2025-12-02 00:41:54,093 - INFO: C2 Server initialized
+2025-12-02 00:41:54,094 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:43:32,034 - INFO: C2 Server initialized
+2025-12-02 00:43:32,035 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:43:53,930 - INFO: Connection from [96m('172.20.0.4', 44546)[0m
+2025-12-02 00:43:53,930 - INFO: New connection from ('172.20.0.4', 44546)
+2025-12-02 00:43:53,932 - ERROR: Error handling client ('172.20.0.4', 44546): Socket closed while receiving data
+2025-12-02 00:44:23,988 - INFO: Connection from [96m('172.20.0.4', 53720)[0m
+2025-12-02 00:44:23,989 - INFO: New connection from ('172.20.0.4', 53720)
+2025-12-02 00:44:23,992 - ERROR: Error handling client ('172.20.0.4', 53720): Socket closed while receiving data
+2025-12-02 00:45:07,895 - INFO: Connection from [96m('172.20.0.1', 49308)[0m
+2025-12-02 00:45:07,895 - INFO: New connection from ('172.20.0.1', 49308)
+2025-12-02 00:45:07,951 - INFO: Client zQLpSNI7eanHDLdqhEXlQQ== registered successfully
+2025-12-02 00:45:20,633 - INFO: Connection from [96m('172.20.0.4', 45272)[0m
+2025-12-02 00:45:20,636 - INFO: New connection from ('172.20.0.4', 45272)
+2025-12-02 00:45:20,638 - ERROR: Error handling client ('172.20.0.4', 45272): Socket closed while receiving data
+2025-12-02 00:47:45,918 - INFO: C2 Server initialized
+2025-12-02 00:47:45,919 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:47:55,080 - INFO: Connection from [96m('172.20.0.1', 56994)[0m
+2025-12-02 00:47:55,081 - INFO: New connection from ('172.20.0.1', 56994)
+2025-12-02 00:47:55,135 - INFO: Client D4po45bTmOiF_lgo4qw9Eg== registered successfully
+2025-12-02 00:48:19,082 - INFO: Connection from [96m('172.20.0.4', 53814)[0m
+2025-12-02 00:48:19,087 - INFO: New connection from ('172.20.0.4', 53814)
+2025-12-02 00:48:19,140 - INFO: Client BckL5kZng7TofrB1g0xIGw== registered successfully
+2025-12-02 00:50:04,163 - ERROR: Error handling client BckL5kZng7TofrB1g0xIGw==: [Errno 104] Connection reset by peer
+2025-12-02 00:52:54,598 - INFO: C2 Server initialized
+2025-12-02 00:52:54,599 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:53:05,729 - INFO: Connection from [96m('172.20.0.1', 52506)[0m
+2025-12-02 00:53:05,730 - INFO: New connection from ('172.20.0.1', 52506)
+2025-12-02 00:53:05,783 - INFO: Client FhkrdUdrQuyF3MZUmbHqOg== registered successfully
+2025-12-02 00:58:07,844 - INFO: C2 Server initialized
+2025-12-02 00:58:07,845 - INFO: Server listening on [93m0.0.0.0:5000[0m
+2025-12-02 00:58:34,147 - INFO: Connection from [96m('172.20.0.1', 36018)[0m
+2025-12-02 00:58:34,148 - INFO: New connection from ('172.20.0.1', 36018)
+2025-12-02 00:58:34,200 - INFO: Client Oqcxbusm9Bnq66WiWSGJbQ== registered successfully
+2025-12-02 00:58:43,484 - INFO: Connection from [96m('172.20.0.4', 35712)[0m
+2025-12-02 00:58:43,488 - INFO: New connection from ('172.20.0.4', 35712)
+2025-12-02 00:58:43,537 - INFO: Client MqYau0hJjcTLJ3x9n1bUBA== registered successfully
+2025-12-02 01:00:19,501 - ERROR: Error handling client MqYau0hJjcTLJ3x9n1bUBA==: [Errno 104] Connection reset by peer

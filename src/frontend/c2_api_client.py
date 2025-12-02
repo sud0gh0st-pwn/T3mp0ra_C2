@@ -20,6 +20,7 @@ class C2APIClient:
         self.server_port = server_port
         self.socket = None
         self.connected = False
+        self.client_id = None
         self.symmetric_key = None
         self.hmac_key = None
         self.cipher_suite = None
@@ -44,13 +45,13 @@ class C2APIClient:
             self.socket.connect((self.server_host, self.server_port))
             self.logger.info("Connected to server")
             
-            # Send CLIENT_READY first
-            self.socket.sendall(b'CLIENT_READY')
-            
             # Wait for server's READY_FOR_KEY_EXCHANGE
             server_ready = self.socket.recv(1024)
             if server_ready != b'READY_FOR_KEY_EXCHANGE':
                 raise ValueError("Server not ready for key exchange")
+
+            # Send CLIENT_READY after server preamble
+            self.socket.sendall(b'CLIENT_READY')
             
             # Receive server's public key
             server_public_key_pem = self.socket.recv(2048)
@@ -90,6 +91,18 @@ class C2APIClient:
             exchange_result = self.socket.recv(1024)
             if exchange_result != b'KEY_EXCHANGE_COMPLETE':
                 raise ValueError("Key exchange failed")
+
+            # Receive client id if provided
+            try:
+                client_id_len_raw = self.socket.recv(4)
+                if len(client_id_len_raw) == 4:
+                    client_id_len = int.from_bytes(client_id_len_raw, "big")
+                    client_id_bytes = self.socket.recv(client_id_len)
+                    if len(client_id_bytes) == client_id_len:
+                        self.client_id = client_id_bytes.decode()
+                        self.logger.info(f"Assigned client id: {self.client_id}")
+            except Exception:
+                self.client_id = None
             
             self.logger.info("Successful key exchange")
             self.connected = True

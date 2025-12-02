@@ -38,10 +38,7 @@ def main():
     logger.info(f"Starting Tempora C2 Frontend on {args.host}:{args.port}")
     
     # Import and configure Flask app
-    from frontend.server import app, register_api
-    
-    # Register the API endpoints with the main Flask app
-    register_api(app)
+    from frontend.server import app
     
     # Run the application
     app.run(
