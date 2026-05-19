@@ -177,8 +177,7 @@ class ScanRange {
     private updateProgressUI(data: ScanProgress): void {
         const progress = (data.completed_tasks / data.total_tasks) * 100;
         this.progressBar.style.width = `${progress}%`;
-        this.progressBar.textContent = `${progress.toFixed(2)}%`;
-        
+        this.progressBar.textContent = `${progress.toFixed(2)}%`;        
         this.completedTasks.textContent = data.completed_tasks.toString();
         this.totalTasks.textContent = data.total_tasks.toString();
         this.openPorts.textContent = data.open_ports.toString();
