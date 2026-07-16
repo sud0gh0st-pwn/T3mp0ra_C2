@@ -10,6 +10,12 @@ charset-normalizer==3.4.4
 idna==3.15
 urllib3==2.7.0
 certifi==2025.11.12
+cryptography==46.0.3
+pyOpenSSL==25.3.0
+impacket==0.13.0
+cffi==1.17.1
+cryptography==44.0.1
+pyOpenSSL==24.0.0
 cryptography==48.0.1
 pyOpenSSL==26.0.0
 impacket==0.12.0
