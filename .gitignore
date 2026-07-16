@@ -20,6 +20,7 @@ wheels/
 .installed.cfg
 *.egg
 
+t3mp0ra_v2_roadmap.md
 # Virtual Environment
 .env
 .venv

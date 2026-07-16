@@ -20,6 +20,7 @@ class C2APIClient:
         self.server_port = server_port
         self.socket = None
         self.connected = False
+        self.client_id = None
         self.symmetric_key = None
         self.hmac_key = None
         self.cipher_suite = None
@@ -44,13 +45,13 @@ class C2APIClient:
             self.socket.connect((self.server_host, self.server_port))
             self.logger.info("Connected to server")
             
-            # Send CLIENT_READY first
-            self.socket.sendall(b'CLIENT_READY')
-            
             # Wait for server's READY_FOR_KEY_EXCHANGE
             server_ready = self.socket.recv(1024)
             if server_ready != b'READY_FOR_KEY_EXCHANGE':
                 raise ValueError("Server not ready for key exchange")
+
+            # Send CLIENT_READY after server preamble
+            self.socket.sendall(b'CLIENT_READY')
             
             # Receive server's public key
             server_public_key_pem = self.socket.recv(2048)
@@ -90,6 +91,18 @@ class C2APIClient:
             exchange_result = self.socket.recv(1024)
             if exchange_result != b'KEY_EXCHANGE_COMPLETE':
                 raise ValueError("Key exchange failed")
+
+            # Receive client id if provided
+            try:
+                client_id_len_raw = self.socket.recv(4)
+                if len(client_id_len_raw) == 4:
+                    client_id_len = int.from_bytes(client_id_len_raw, "big")
+                    client_id_bytes = self.socket.recv(client_id_len)
+                    if len(client_id_bytes) == client_id_len:
+                        self.client_id = client_id_bytes.decode()
+                        self.logger.info(f"Assigned client id: {self.client_id}")
+            except Exception:
+                self.client_id = None
             
             self.logger.info("Successful key exchange")
             self.connected = True
@@ -101,66 +114,68 @@ class C2APIClient:
             return False
     
     def send_request(self, request_type, data=None):
-        """Send an encrypted request to the server and get the response"""
-        if not self.connected:
-            if not self.connect():
-                return None
-        
-        try:
+            """Send an encrypted request to the server and get the response"""
+            # Use an exclusive connection lock to prevent thread clashing
             with self.socket_lock:
-                request = {
-                    'type': request_type,
-                    'data': data,
-                    'timestamp': time.time()
-                }
+                if not self.connected:
+                    if not self._connect():
+                        return None
                 
-                encrypted_request = self.cipher_suite.encrypt(
-                    json.dumps(request).encode()
-                )
-                h = hmac.HMAC(self.hmac_key, hashes.SHA256())
-                h.update(encrypted_request)
-                request_hmac = h.finalize()
-                
-                data_length = len(encrypted_request).to_bytes(4, 'big')
-                self.socket.sendall(data_length)
-                self.socket.sendall(encrypted_request)
-                self.socket.sendall(request_hmac)
-                
-                # Wait for response
-                length_bytes = self.socket.recv(4)
-                if len(length_bytes) != 4:
-                    return None
-                data_length = int.from_bytes(length_bytes, 'big')
-                
-                encrypted_response = b''
-                while len(encrypted_response) < data_length:
-                    chunk = self.socket.recv(data_length - len(encrypted_response))
-                    if not chunk:
-                        break
-                    encrypted_response += chunk
-                
-                if len(encrypted_response) != data_length:
-                    return None
-                
-                response_hmac = self.socket.recv(32)
-                if len(response_hmac) != 32:
-                    return None
-                
-                h = hmac.HMAC(self.hmac_key, hashes.SHA256())
-                h.update(encrypted_response)
                 try:
+                    request = {
+                        'type': request_type,
+                        'data': data,
+                        'timestamp': time.time()
+                    }
+                    
+                    encrypted_request = self.cipher_suite.encrypt(
+                        json.dumps(request).encode()
+                    )
+                    h = hmac.HMAC(self.hmac_key, hashes.SHA256())
+                    h.update(encrypted_request)
+                    request_hmac = h.finalize()
+                    
+                    data_length = len(encrypted_request).to_bytes(4, 'big')
+                    self.socket.sendall(data_length)
+                    self.socket.sendall(encrypted_request)
+                    self.socket.sendall(request_hmac)
+                    
+                    # Wait for response
+                    length_bytes = self.socket.recv(4)
+                    if len(length_bytes) != 4:
+                        raise ConnectionError("Missing or malformed payload header size")
+                    data_length = int.from_bytes(length_bytes, 'big')
+                    
+                    encrypted_response = b''
+                    while len(encrypted_response) < data_length:
+                        chunk = self.socket.recv(data_length - len(encrypted_response))
+                        if not chunk:
+                            break
+                        encrypted_response += chunk
+                    
+                    if len(encrypted_response) != data_length:
+                        raise ConnectionError("Payload data truncated mid-stream")
+                    
+                    response_hmac = self.socket.recv(32)
+                    if len(response_hmac) != 32:
+                        raise ConnectionError("Missing validation MAC signature")
+                    
+                    h = hmac.HMAC(self.hmac_key, hashes.SHA256())
+                    h.update(encrypted_response)
                     h.verify(response_hmac)
-                except Exception:
+                    
+                    response = json.loads(self.cipher_suite.decrypt(encrypted_response).decode())
+                    return response
+                        
+                except Exception as e:
+                    self.logger.error(f"Request execution failed: {e}")
+                    self.cleanup()
                     return None
-                
-                response = json.loads(self.cipher_suite.decrypt(encrypted_response).decode())
-                return response
-                
-        except Exception as e:
-            self.logger.error(f"Request error: {e}")
-            self.cleanup()
-            return None
-    
+                finally:
+                    # OPTIONAL: If your server terminates connections post-response, 
+                    # force cleanup here to cycle a fresh socket next time.
+                    # self.cleanup()
+                    pass
     def cleanup(self):
         """Clean up resources"""
         if self.socket:

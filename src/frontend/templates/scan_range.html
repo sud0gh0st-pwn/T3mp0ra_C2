@@ -2,8 +2,7 @@
 
 {% block title %}Network Scanner{% endblock %}
 
-{% block content %}
-<div class="container-fluid">
+{% block page_content %} <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -11,9 +10,8 @@
                     <h3 class="card-title">Network Scanner Configuration</h3>
                 </div>
                 <div class="card-body">
-                    <form id="scanConfigForm" method="POST" action="{{ url_for('start_scan') }}">
+                    <form id="scanConfigForm" method="POST" action="/api/recon/scan/start">
                         <div class="row">
-                            <!-- Basic Configuration -->
                             <div class="col-md-6">
                                 <h4>Basic Configuration</h4>
                                 <div class="form-group">
@@ -31,7 +29,6 @@
                                 </div>
                             </div>
 
-                            <!-- Performance Settings -->
                             <div class="col-md-6">
                                 <h4>Performance Settings</h4>
                                 <div class="form-group">
@@ -53,7 +50,6 @@
                         </div>
 
                         <div class="row mt-4">
-                            <!-- Advanced Settings -->
                             <div class="col-md-6">
                                 <h4>Advanced Settings</h4>
                                 <div class="form-group">
@@ -77,7 +73,6 @@
                                 </div>
                             </div>
 
-                            <!-- Resource Settings -->
                             <div class="col-md-6">
                                 <h4>Resource Settings</h4>
                                 <div class="form-group">
@@ -111,7 +106,6 @@
         </div>
     </div>
 
-    <!-- Progress Section (Initially Hidden) -->
     <div class="row mt-4" id="progressSection" style="display: none;">
         <div class="col-12">
             <div class="card">
@@ -137,4 +131,4 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/dist/scan_range.js') }}"></script>
-{% endblock %} 
+{% endblock %}

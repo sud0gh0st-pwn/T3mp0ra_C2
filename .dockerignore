@@ -1,0 +1,16 @@
+.git
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info
+dist/
+build/
+.env
+.venv
+env/
+venv/
+logs/
+*.log
+node_modules/
+*.sqlite3
+*.db

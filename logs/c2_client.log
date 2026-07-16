@@ -1,0 +1,252 @@
+2025-12-02 00:45:07,893 - INFO: C2 Client initialized
+2025-12-02 00:45:07,893 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 00:45:07,894 - INFO: Connected to server
+2025-12-02 00:45:07,952 - INFO: Successful key exchange
+2025-12-02 00:45:17,282 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:45:17,283 - DEBUG: Heartbeat received from server
+2025-12-02 00:45:32,196 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:45:32,196 - DEBUG: Heartbeat received from server
+2025-12-02 00:45:47,240 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:45:47,240 - DEBUG: Heartbeat received from server
+2025-12-02 00:46:02,243 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:46:02,243 - DEBUG: Heartbeat received from server
+2025-12-02 00:46:17,246 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:46:17,246 - DEBUG: Heartbeat received from server
+2025-12-02 00:46:32,250 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:46:32,250 - DEBUG: Heartbeat received from server
+2025-12-02 00:46:42,803 - INFO: Disconnecting from server
+2025-12-02 00:46:47,251 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:46:47,252 - DEBUG: Heartbeat received from server
+2025-12-02 00:47:55,077 - INFO: C2 Client initialized
+2025-12-02 00:47:55,078 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 00:47:55,078 - INFO: Connected to server
+2025-12-02 00:47:55,135 - INFO: Successful key exchange
+2025-12-02 00:48:01,129 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:48:01,129 - DEBUG: Heartbeat received from server
+2025-12-02 00:48:16,056 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:48:16,057 - DEBUG: Heartbeat received from server
+2025-12-02 00:48:31,099 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:48:31,100 - DEBUG: Heartbeat received from server
+2025-12-02 00:48:46,103 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:48:46,105 - DEBUG: Heartbeat received from server
+2025-12-02 00:49:01,107 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:49:01,107 - DEBUG: Heartbeat received from server
+2025-12-02 00:49:06,844 - INFO: Disconnecting from server
+2025-12-02 00:49:16,110 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:49:16,111 - DEBUG: Heartbeat received from server
+2025-12-02 00:53:05,728 - INFO: C2 Client initialized
+2025-12-02 00:53:05,728 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 00:53:05,728 - INFO: Connected to server
+2025-12-02 00:53:05,824 - INFO: Assigned client id: FhkrdUdrQuyF3MZUmbHqOg==
+2025-12-02 00:53:05,824 - INFO: Successful key exchange
+2025-12-02 00:53:09,735 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:53:09,735 - DEBUG: Heartbeat received from server
+2025-12-02 00:53:24,697 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:53:24,698 - DEBUG: Heartbeat received from server
+2025-12-02 00:53:26,241 - INFO: Disconnecting from server
+2025-12-02 00:53:39,742 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:53:39,742 - DEBUG: Heartbeat received from server
+2025-12-02 00:58:34,146 - INFO: C2 Client initialized
+2025-12-02 00:58:34,146 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 00:58:34,147 - INFO: Connected to server
+2025-12-02 00:58:34,241 - INFO: Assigned client id: Oqcxbusm9Bnq66WiWSGJbQ==
+2025-12-02 00:58:34,241 - INFO: Successful key exchange
+2025-12-02 00:58:37,990 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:58:37,991 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:58:52,941 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:58:52,941 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:59:07,986 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:59:07,986 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:59:22,990 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:59:22,991 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:59:37,993 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:59:37,993 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:59:52,996 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 00:59:52,996 - DEBUG: Heartbeat received from server (client id: Oqcxbusm9Bnq66WiWSGJbQ==)
+2025-12-02 00:59:56,117 - INFO: Disconnecting from server
+2025-12-02 01:05:53,590 - INFO: C2 Client initialized
+2025-12-02 01:05:53,590 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 01:05:53,590 - INFO: Connected to server
+2025-12-02 01:05:53,682 - INFO: Assigned client id: BBP_LPaArA7iJbvXn6RiMw==
+2025-12-02 01:05:53,682 - INFO: Successful key exchange
+2025-12-02 01:06:05,027 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:06:05,027 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:06:19,967 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:06:19,967 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:06:35,011 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:06:35,012 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:06:50,015 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:06:50,015 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:07:05,018 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:07:05,018 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:07:20,021 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:07:20,021 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:07:22,823 - INFO: Disconnecting from server
+2025-12-02 01:07:35,025 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:07:35,025 - DEBUG: Heartbeat received from server (client id: BBP_LPaArA7iJbvXn6RiMw==)
+2025-12-02 01:09:24,648 - INFO: C2 Client initialized
+2025-12-02 01:09:24,648 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 01:09:24,649 - INFO: Connected to server
+2025-12-02 01:09:24,743 - INFO: Assigned client id: nX96ol7nEd-sHKDF1ZWr_Q==
+2025-12-02 01:09:24,743 - INFO: Successful key exchange
+2025-12-02 01:09:33,955 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:09:33,956 - DEBUG: Heartbeat received from server (client id: nX96ol7nEd-sHKDF1ZWr_Q==)
+2025-12-02 01:09:45,971 - INFO: Disconnecting from server
+2025-12-02 01:09:48,904 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:09:48,905 - DEBUG: Heartbeat received from server (client id: nX96ol7nEd-sHKDF1ZWr_Q==)
+2025-12-02 01:11:25,146 - INFO: C2 Client initialized
+2025-12-02 01:11:25,147 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 01:11:25,147 - INFO: Connected to server
+2025-12-02 01:11:25,242 - INFO: Assigned client id: iBm2rNH0-OoTTwyJOUjwtw==
+2025-12-02 01:11:25,244 - INFO: Successful key exchange
+2025-12-02 01:11:35,857 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:11:35,858 - DEBUG: Heartbeat received from server (client id: iBm2rNH0-OoTTwyJOUjwtw==)
+2025-12-02 01:11:50,869 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:11:50,869 - DEBUG: Heartbeat received from server (client id: iBm2rNH0-OoTTwyJOUjwtw==)
+2025-12-02 01:12:05,871 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:12:05,871 - DEBUG: Heartbeat received from server (client id: iBm2rNH0-OoTTwyJOUjwtw==)
+2025-12-02 01:12:20,874 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:12:20,875 - DEBUG: Heartbeat received from server (client id: iBm2rNH0-OoTTwyJOUjwtw==)
+2025-12-02 01:12:35,877 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:12:35,878 - DEBUG: Heartbeat received from server (client id: iBm2rNH0-OoTTwyJOUjwtw==)
+2025-12-02 01:12:38,949 - INFO: Connected to server
+2025-12-02 01:12:38,951 - ERROR: Connection error: Server not ready for key exchange
+2025-12-02 01:16:34,315 - INFO: Disconnecting from server
+2025-12-02 01:21:35,185 - INFO: C2 Client initialized
+2025-12-02 01:21:35,186 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 01:21:35,186 - INFO: Connected to server
+2025-12-02 01:21:35,277 - INFO: Assigned client id: cvzeWPPebEe6PJG3s59PZg==
+2025-12-02 01:21:35,277 - INFO: Successful key exchange
+2025-12-02 01:21:39,829 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:21:39,830 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:21:54,837 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:21:54,837 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:22:09,841 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:22:09,841 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:22:24,843 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:22:24,843 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:22:39,845 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:22:39,845 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:22:54,848 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:22:54,848 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:23:09,851 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:23:09,851 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:23:24,854 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:23:24,855 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:23:39,858 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:23:39,858 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:23:54,862 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:23:54,862 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:24:09,866 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:24:09,867 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:24:24,868 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:24:24,868 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:24:39,872 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:24:39,872 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:24:52,652 - INFO: Disconnecting from server
+2025-12-02 01:24:54,875 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:24:54,876 - DEBUG: Heartbeat received from server (client id: cvzeWPPebEe6PJG3s59PZg==)
+2025-12-02 01:25:24,314 - INFO: C2 Client initialized
+2025-12-02 01:25:24,314 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2025-12-02 01:25:24,314 - INFO: Connected to server
+2025-12-02 01:25:24,408 - INFO: Assigned client id: 255QBKx2Qe_7pnRUhtXAvA==
+2025-12-02 01:25:24,410 - INFO: Successful key exchange
+2025-12-02 01:25:34,948 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:25:34,949 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:25:49,904 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:25:49,907 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:26:04,948 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:26:04,948 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:26:19,950 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:26:19,951 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:26:34,954 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:26:34,954 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:26:49,960 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:26:49,961 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2025-12-02 01:26:51,995 - INFO: Disconnecting from server
+2025-12-02 01:27:04,961 - DEBUG: Processing command type: heartbeat, id: unknown
+2025-12-02 01:27:04,961 - DEBUG: Heartbeat received from server (client id: 255QBKx2Qe_7pnRUhtXAvA==)
+2026-05-19 19:04:32,599 - INFO: C2 Client initialized
+2026-05-19 19:04:32,599 - INFO: Attempting to connect to server at 127.0.0.1:5000
+2026-05-19 19:04:32,600 - INFO: Connected to server
+2026-05-19 19:04:32,696 - INFO: Assigned client id: foQpX2v97_-03A4UOjOSFw==
+2026-05-19 19:04:32,696 - INFO: Successful key exchange
+2026-05-19 19:04:42,321 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:04:42,323 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:04:57,204 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:04:57,206 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:05:12,248 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:05:12,249 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:05:27,253 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:05:27,254 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:05:42,265 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:05:42,266 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:05:57,268 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:05:57,269 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:06:12,275 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:06:12,276 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:06:27,285 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:06:27,286 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:06:42,290 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:06:42,290 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:06:57,295 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:06:57,296 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:07:12,300 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:07:12,301 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:07:27,305 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:07:27,305 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:07:42,313 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:07:42,314 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:07:57,320 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:07:57,325 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:08:12,327 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:08:12,327 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:08:27,341 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:08:27,342 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:08:42,346 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:08:42,348 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:08:57,359 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:08:57,360 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:09:12,365 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:09:12,366 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:09:27,378 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:09:27,378 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:09:42,384 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:09:42,385 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:09:57,392 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:09:57,393 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:10:12,408 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:10:12,408 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:10:27,417 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:10:27,421 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:10:42,422 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:10:42,422 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:10:57,431 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:10:57,432 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:11:12,437 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:11:12,438 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:11:27,443 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:11:27,445 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:11:42,462 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:11:42,463 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:11:57,470 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:11:57,471 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:12:12,481 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:12:12,482 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:12:27,493 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:12:27,493 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:12:42,508 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:12:42,509 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:12:57,512 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:12:57,513 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:13:12,520 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:13:12,521 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:13:27,530 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:13:27,531 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:13:42,554 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:13:42,554 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:13:57,553 - DEBUG: Processing command type: heartbeat, id: unknown
+2026-05-19 19:13:57,554 - DEBUG: Heartbeat received from server (client id: foQpX2v97_-03A4UOjOSFw==)
+2026-05-19 19:14:22,696 - INFO: Connected to server
+2026-05-19 19:14:22,698 - ERROR: Connection error: Server not ready for key exchange
+2026-05-19 19:16:24,447 - INFO: Disconnecting from server

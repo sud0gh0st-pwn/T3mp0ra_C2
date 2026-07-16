@@ -8,10 +8,12 @@ import os
 import sys
 import json
 import logging
+import time
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_wtf import CSRFProtect
 from functools import wraps
 from api import api_bp, recon_bp
+from api import c2_client
 
 # Setup logging
 logger = logging.getLogger("tempora-server")
@@ -103,7 +105,27 @@ def dashboard():
 @login_required
 def clients():
     """Page listing all connected clients"""
-    return render_template('clients.html')
+    client_list = []
+    try:
+        response = c2_client.send_request('clients')
+        if not response:
+            raise RuntimeError("No response from C2 server")
+        now = time.time()
+        for c in response.get('clients', []):
+            last_activity = c.get('last_activity')
+            age = now - last_activity if isinstance(last_activity, (int, float)) else None
+            connected_since = c.get('connected_since')
+            connected_age = now - connected_since if isinstance(connected_since, (int, float)) else None
+            client_list.append({
+                'id': c.get('id', 'unknown'),
+                'address': f"{c.get('address')[0]}:{c.get('address')[1]}" if isinstance(c.get('address'), (list, tuple)) and len(c.get('address')) >= 2 else str(c.get('address')),
+                'active': age is not None and age <= 60,
+                'last_seen': f"{age:.1f}s ago" if age is not None else "unknown",
+                'connected_since': f"{connected_age/60:.1f}m ago" if connected_age is not None else "unknown"
+            })
+    except Exception as exc:
+        flash(f"Failed to load clients: {exc}", "danger")
+    return render_template('clients.html', clients=client_list)
 
 @app.route('/clients/<client_id>')
 @login_required

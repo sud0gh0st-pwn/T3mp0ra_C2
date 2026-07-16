@@ -321,6 +321,7 @@ python run.py --port 5001
 4. Or use Docker Compose for the entire stack:
 ```bash
 docker-compose up -d
+# brings up Redis, the C2 server (exposed on ${PORT:-5000}), and the web frontend on ${WEB_PORT:-5001}
 ```
 
 ### Web Interface Features
